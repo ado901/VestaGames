@@ -43,7 +43,7 @@ namespace Sito.Controllers
                 var result= wcf.Registrazione(utente.ut);
                 if (result.Item1)
                 {
-                    Session["utenteAttivo"] = utente.ut;
+                    Session["utenteAttivo"] = utente.ut.email;
                     return View("Index");
                 }
                 

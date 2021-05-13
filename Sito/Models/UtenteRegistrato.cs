@@ -16,6 +16,7 @@ namespace Sito.Models
         }
         public Utente ut { get; private set; }
         [Required]
+        [DataType(DataType.EmailAddress, ErrorMessage = "E-mail non valida")]
         public string email
         {
             get
