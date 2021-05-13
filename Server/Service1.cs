@@ -85,14 +85,14 @@ namespace server
                         cognome = ut.cognome,
                         nascita = datanascita,
                         indirizzo = ut.indirizzo,
-                        portafoglio = ut.portafoglio
+                        portafoglio = 0
                     };
                     //controllo se la mail è già presente nel sistema
                     if (db.utenti.Where((x) => x.email == ut.email).Any())
                     {
                         throw new Exception("Email già presente nel sistema");
                     }
-
+                    
                     db.utenti.Add(utente);
                     db.SaveChanges();
 
