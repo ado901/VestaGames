@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace server.Classi
 {
-    class Commesso
+    public class Commesso
     {
         public long codice_commesso { get; set; }
         public string nome { get; set; }

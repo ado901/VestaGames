@@ -23,8 +23,8 @@
           <Property Name="genere" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="producer" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="quantità" Type="int" Nullable="false" />
-          <Property Name="data_uscita" Type="date" Nullable="false" />
           <Property Name="prezzo" Type="float" Nullable="false" />
+          <Property Name="data_uscita" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="transazioni">
           <Key>
@@ -137,7 +137,7 @@
           <Property Name="genere" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="producer" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="quantità" Type="Int32" Nullable="false" />
-          <Property Name="data_uscita" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="data_uscita" Type="Int64" Nullable="false" />
           <Property Name="prezzo" Type="Double" Nullable="false" />
           <NavigationProperty Name="transazioni" Relationship="TecnichedisvilModel.FK_transazioni_prodotto" FromRole="prodotto" ToRole="transazioni" />
         </EntityType>

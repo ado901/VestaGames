@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/server" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/server" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:7793/Design_Time_Addresses/server/Service1/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="Utente">
     <xs:sequence>
       <xs:element minOccurs="0" name="cognome" nillable="true" type="xs:string" />
@@ -12,4 +13,23 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Utente" nillable="true" type="tns:Utente" />
+  <xs:simpleType name="Service1.Esito">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OK">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="KO">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">0</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Service1.Esito" nillable="true" type="tns:Service1.Esito" />
 </xs:schema>

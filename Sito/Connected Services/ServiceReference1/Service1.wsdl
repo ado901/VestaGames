@@ -6,6 +6,7 @@
       <xsd:import schemaLocation="http://localhost:7793/Design_Time_Addresses/server/Service1/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:7793/Design_Time_Addresses/server/Service1/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/server" />
       <xsd:import schemaLocation="http://localhost:7793/Design_Time_Addresses/server/Service1/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xsd:import schemaLocation="http://localhost:7793/Design_Time_Addresses/server/Service1/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/server.Classi" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService1_DoWork_InputMessage">
@@ -32,6 +33,12 @@
   <wsdl:message name="IService1_Registrazione_OutputMessage">
     <wsdl:part name="parameters" element="tns:RegistrazioneResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_getProdotti_InputMessage">
+    <wsdl:part name="parameters" element="tns:getProdotti" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getProdotti_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getProdottiResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/DoWork" message="tns:IService1_DoWork_InputMessage" />
@@ -48,6 +55,10 @@
     <wsdl:operation name="Registrazione">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/Registrazione" message="tns:IService1_Registrazione_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/RegistrazioneResponse" message="tns:IService1_Registrazione_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getProdotti">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getProdotti" message="tns:IService1_getProdotti_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getProdottiResponse" message="tns:IService1_getProdotti_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -81,6 +92,15 @@
     </wsdl:operation>
     <wsdl:operation name="Registrazione">
       <soap:operation soapAction="http://tempuri.org/IService1/Registrazione" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProdotti">
+      <soap:operation soapAction="http://tempuri.org/IService1/getProdotti" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

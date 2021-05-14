@@ -25,7 +25,7 @@ namespace server
         public string genere { get; set; }
         public string producer { get; set; }
         public int quantità { get; set; }
-        public System.DateTime data_uscita { get; set; }
+        public long data_uscita { get; set; }
         public double prezzo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using server.Classi;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -10,6 +11,13 @@ namespace server
     // NOTA: è possibile utilizzare il comando "Rinomina" del menu "Refactoring" per modificare il nome di classe "Service1" nel codice e nel file di configurazione contemporaneamente.
     public class Service1 : IService1
     {
+        const string OK = "OK";
+        private TecnichedisvilEntities db = new TecnichedisvilEntities();
+        public enum Esito: int
+        {
+            OK = 1,
+            KO = 0
+        }
         public const string CONNECTIONSTRING = "Data Source=LAPTOP-VMPHGDB0\\TECNICHESVIL;Initial Catalog=tecnichedisvil;Integrated Security=True";
         public void DoWork()
         {
@@ -22,11 +30,11 @@ namespace server
 
         }
         //login con entity framework
-        public (bool,Utente) Login(Utente ut)
+        public (Esito,Utente, string) Login(Utente ut)
 
         {
-            using (TecnichedisvilEntities db = new TecnichedisvilEntities())
-            {
+            
+            
                 try
                 {
                    
@@ -35,15 +43,15 @@ namespace server
                     ut.loginEffettuato(utente);
                     Console.WriteLine("Utente " + ut.nome + " " + ut.cognome + ", benvenuto");
 
-                    return (true, ut);
+                    return (Esito.OK, ut, OK);
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("login fallito: " + ex.Message);
-                    return (false, ut);
+                    return (Esito.KO, ut, ex.Message);
                 }
 
-            }
+            
             //try
             //{
             //    using (SqlConnection conn = new SqlConnection())
@@ -70,10 +78,8 @@ namespace server
 
         }
         //registrazione con entity framework, lavoro con la classe Utente
-        public (bool, Utente) Registrazione(Utente ut)
+        public (Esito, Utente,string) Registrazione(Utente ut)
         {
-            using (TecnichedisvilEntities db = new TecnichedisvilEntities())
-            {
                 try
                 {
                     long datanascita = long.Parse(ut.nascita.ToString("yyyyMMdd"));
@@ -99,16 +105,16 @@ namespace server
                     //se l'utente è registrato e loggato popolo l'oggetto utente ut con i dati dal database
                     ut.loginEffettuato(utente);
                     Console.WriteLine("Utente " + ut.nome + " " + ut.cognome + ", benvenuto");
-                    return (true, ut);
+                    return (Esito.OK, ut, OK);
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("registrazione fallita: " + ex.Message);
-                    throw ex;
-                    return (false, ut);
+                    return (Esito.KO, ut, ex.Message);
+                    
                 }
 
-            }
+            
             //try
             //{
             //    using (SqlConnection conn = new SqlConnection())
@@ -141,6 +147,29 @@ namespace server
             //    throw new Exception(ex.Message);
             //}
         }
-    
-}
+
+        public (Esito, List<Prodotto>, string) getProdotti()
+        {
+            List<Prodotto> prodotti = new List<Prodotto>();
+            try
+            {
+                
+                var record = db.prodotto.OrderBy(product => product.titolo);
+                foreach (prodotto product in record)
+                {
+                    Prodotto prd = new Prodotto();
+                    prd.parseProduct(product);
+                    prodotti.Add(prd);
+                }
+
+                return (Esito.OK, prodotti, OK);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Record dei prodotti fallito: " + ex.Message);
+                return (Esito.KO, prodotti, ex.Message);
+            }
+
+        }
+    }
 }

@@ -28,6 +28,7 @@
     <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="007cb34e-fc6c-43f1-99d6-2d40c9ad47a4" SourceId="1" SourceUrl="http://localhost:7793/Design_Time_Addresses/server/Service1/?xsd=xsd0" />
     <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="278eb4de-fb7d-418a-8706-c3cbffe85ce7" SourceId="1" SourceUrl="http://localhost:7793/Design_Time_Addresses/server/Service1/?xsd=xsd1" />
     <MetadataFile FileName="item.disco" MetadataType="Disco" ID="5af7231e-5419-4a84-9418-7b3f13a4eea3" SourceId="1" SourceUrl="http://localhost:7793/Design_Time_Addresses/server/Service1/?disco" />
+    <MetadataFile FileName="item4.xsd" MetadataType="Schema" ID="aae8d3be-c91f-4bd7-b862-6f631ce8126d" SourceId="1" SourceUrl="http://localhost:7793/Design_Time_Addresses/server/Service1/?xsd=xsd4" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

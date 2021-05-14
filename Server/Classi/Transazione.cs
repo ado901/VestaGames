@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace server.Classi
 {
-    class Transazione
+    public class Transazione
     {
         public long codice_transazione { get; set; }
         public long codice_prodotto { get; set; }

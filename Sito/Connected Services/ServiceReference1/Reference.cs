@@ -154,6 +154,158 @@ namespace Sito.ServiceReference1 {
         }
     }
     
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Service1.Esito", Namespace="http://schemas.datacontract.org/2004/07/server")]
+    public enum Service1Esito : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        OK = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        KO = 0,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Prodotto", Namespace="http://schemas.datacontract.org/2004/07/server.Classi")]
+    [System.SerializableAttribute()]
+    public partial class Prodotto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long codice_prodottoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime data_uscitaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string genereField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double prezzoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string producerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int quantitàField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string titoloField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long codice_prodotto {
+            get {
+                return this.codice_prodottoField;
+            }
+            set {
+                if ((this.codice_prodottoField.Equals(value) != true)) {
+                    this.codice_prodottoField = value;
+                    this.RaisePropertyChanged("codice_prodotto");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime data_uscita {
+            get {
+                return this.data_uscitaField;
+            }
+            set {
+                if ((this.data_uscitaField.Equals(value) != true)) {
+                    this.data_uscitaField = value;
+                    this.RaisePropertyChanged("data_uscita");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string genere {
+            get {
+                return this.genereField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.genereField, value) != true)) {
+                    this.genereField = value;
+                    this.RaisePropertyChanged("genere");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double prezzo {
+            get {
+                return this.prezzoField;
+            }
+            set {
+                if ((this.prezzoField.Equals(value) != true)) {
+                    this.prezzoField = value;
+                    this.RaisePropertyChanged("prezzo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string producer {
+            get {
+                return this.producerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.producerField, value) != true)) {
+                    this.producerField = value;
+                    this.RaisePropertyChanged("producer");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int quantità {
+            get {
+                return this.quantitàField;
+            }
+            set {
+                if ((this.quantitàField.Equals(value) != true)) {
+                    this.quantitàField = value;
+                    this.RaisePropertyChanged("quantità");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string titolo {
+            get {
+                return this.titoloField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.titoloField, value) != true)) {
+                    this.titoloField = value;
+                    this.RaisePropertyChanged("titolo");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
@@ -171,16 +323,22 @@ namespace Sito.ServiceReference1 {
         System.Threading.Tasks.Task Dowork1Async(string arg);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Login", ReplyAction="http://tempuri.org/IService1/LoginResponse")]
-        System.ValueTuple<bool, Sito.ServiceReference1.Utente> Login(Sito.ServiceReference1.Utente ut);
+        System.ValueTuple<Sito.ServiceReference1.Service1Esito, Sito.ServiceReference1.Utente, string> Login(Sito.ServiceReference1.Utente ut);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Login", ReplyAction="http://tempuri.org/IService1/LoginResponse")]
-        System.Threading.Tasks.Task<System.ValueTuple<bool, Sito.ServiceReference1.Utente>> LoginAsync(Sito.ServiceReference1.Utente ut);
+        System.Threading.Tasks.Task<System.ValueTuple<Sito.ServiceReference1.Service1Esito, Sito.ServiceReference1.Utente, string>> LoginAsync(Sito.ServiceReference1.Utente ut);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Registrazione", ReplyAction="http://tempuri.org/IService1/RegistrazioneResponse")]
-        System.ValueTuple<bool, Sito.ServiceReference1.Utente> Registrazione(Sito.ServiceReference1.Utente ut);
+        System.ValueTuple<Sito.ServiceReference1.Service1Esito, Sito.ServiceReference1.Utente, string> Registrazione(Sito.ServiceReference1.Utente ut);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Registrazione", ReplyAction="http://tempuri.org/IService1/RegistrazioneResponse")]
-        System.Threading.Tasks.Task<System.ValueTuple<bool, Sito.ServiceReference1.Utente>> RegistrazioneAsync(Sito.ServiceReference1.Utente ut);
+        System.Threading.Tasks.Task<System.ValueTuple<Sito.ServiceReference1.Service1Esito, Sito.ServiceReference1.Utente, string>> RegistrazioneAsync(Sito.ServiceReference1.Utente ut);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getProdotti", ReplyAction="http://tempuri.org/IService1/getProdottiResponse")]
+        System.ValueTuple<Sito.ServiceReference1.Service1Esito, Sito.ServiceReference1.Prodotto[], string> getProdotti();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getProdotti", ReplyAction="http://tempuri.org/IService1/getProdottiResponse")]
+        System.Threading.Tasks.Task<System.ValueTuple<Sito.ServiceReference1.Service1Esito, Sito.ServiceReference1.Prodotto[], string>> getProdottiAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -226,20 +384,28 @@ namespace Sito.ServiceReference1 {
             return base.Channel.Dowork1Async(arg);
         }
         
-        public System.ValueTuple<bool, Sito.ServiceReference1.Utente> Login(Sito.ServiceReference1.Utente ut) {
+        public System.ValueTuple<Sito.ServiceReference1.Service1Esito, Sito.ServiceReference1.Utente, string> Login(Sito.ServiceReference1.Utente ut) {
             return base.Channel.Login(ut);
         }
         
-        public System.Threading.Tasks.Task<System.ValueTuple<bool, Sito.ServiceReference1.Utente>> LoginAsync(Sito.ServiceReference1.Utente ut) {
+        public System.Threading.Tasks.Task<System.ValueTuple<Sito.ServiceReference1.Service1Esito, Sito.ServiceReference1.Utente, string>> LoginAsync(Sito.ServiceReference1.Utente ut) {
             return base.Channel.LoginAsync(ut);
         }
         
-        public System.ValueTuple<bool, Sito.ServiceReference1.Utente> Registrazione(Sito.ServiceReference1.Utente ut) {
+        public System.ValueTuple<Sito.ServiceReference1.Service1Esito, Sito.ServiceReference1.Utente, string> Registrazione(Sito.ServiceReference1.Utente ut) {
             return base.Channel.Registrazione(ut);
         }
         
-        public System.Threading.Tasks.Task<System.ValueTuple<bool, Sito.ServiceReference1.Utente>> RegistrazioneAsync(Sito.ServiceReference1.Utente ut) {
+        public System.Threading.Tasks.Task<System.ValueTuple<Sito.ServiceReference1.Service1Esito, Sito.ServiceReference1.Utente, string>> RegistrazioneAsync(Sito.ServiceReference1.Utente ut) {
             return base.Channel.RegistrazioneAsync(ut);
+        }
+        
+        public System.ValueTuple<Sito.ServiceReference1.Service1Esito, Sito.ServiceReference1.Prodotto[], string> getProdotti() {
+            return base.Channel.getProdotti();
+        }
+        
+        public System.Threading.Tasks.Task<System.ValueTuple<Sito.ServiceReference1.Service1Esito, Sito.ServiceReference1.Prodotto[], string>> getProdottiAsync() {
+            return base.Channel.getProdottiAsync();
         }
     }
 }

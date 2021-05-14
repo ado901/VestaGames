@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Sito.ServiceReference1;
 
 namespace Sito.Controllers
 {
@@ -41,7 +42,7 @@ namespace Sito.Controllers
             if (ModelState.IsValid)
             {
                 var result= wcf.Registrazione(utente.ut);
-                if (result.Item1)
+                if (result.Item1== Service1Esito.OK)
                 {
                     Session["utenteAttivo"] = utente.ut.email;
                     return View("Index");
@@ -63,7 +64,7 @@ namespace Sito.Controllers
             if (ModelState.IsValid)
             {
                 var result = wcf.Login(utente.ut);
-                if (result.Item1)
+                if (result.Item1 == Service1Esito.OK)
                 {
                     Session["utenteAttivo"] = utente.ut.email;
                     return View("Index");

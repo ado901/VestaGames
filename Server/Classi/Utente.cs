@@ -33,11 +33,8 @@ namespace server
                 this.cognome = login.cognome;
                 DateTime dt;
                 //converto il long di nascita nel formato datetime classico
-                if (DateTime.TryParseExact(login.nascita.ToString(), "yyyyMMdd",
-                                          CultureInfo.InvariantCulture,
-                                          DateTimeStyles.None, out dt))
-                {
-                }
+                DateTime.TryParseExact(login.nascita.ToString(), "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out dt);
+
                 this.nascita = dt;
                 this.indirizzo = login.indirizzo;
                 this.portafoglio = login.portafoglio;

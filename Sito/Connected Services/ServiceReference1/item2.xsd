@@ -34,7 +34,7 @@
   <xs:element name="LoginResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="LoginResult" type="q2:ValueTupleOfbooleanUtenteijYHEZq_P" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="LoginResult" type="q2:ValueTupleOfService1.EsitoUtentestringfzOYcB0X" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -48,7 +48,19 @@
   <xs:element name="RegistrazioneResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="RegistrazioneResult" type="q4:ValueTupleOfbooleanUtenteijYHEZq_P" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="RegistrazioneResult" type="q4:ValueTupleOfService1.EsitoUtentestringfzOYcB0X" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getProdotti">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getProdottiResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="getProdottiResult" type="q5:ValueTupleOfService1.EsitoArrayOfProdottostringfIxKPqZh" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

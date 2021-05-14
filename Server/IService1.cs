@@ -1,9 +1,11 @@
-﻿using System;
+﻿using server.Classi;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using static server.Service1;
 
 namespace server
 {
@@ -18,9 +20,12 @@ namespace server
         void Dowork1(string arg);
 
         [OperationContract]
-        (bool, Utente) Login(Utente ut);
+        (Esito, Utente, string) Login(Utente ut);
 
         [OperationContract]
-        (bool, Utente) Registrazione(Utente ut);
+        (Esito, Utente, string) Registrazione(Utente ut);
+
+        [OperationContract]
+        (Esito, List<Prodotto>, string) getProdotti();
     }
 }
