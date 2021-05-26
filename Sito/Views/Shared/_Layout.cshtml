@@ -24,14 +24,17 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Informazioni", "About", "Home")</li>
                     <li>@Html.ActionLink("Contatto", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Login", "Login", "Home")</li>
-                    <li>@Html.ActionLink("Registrati", "Registrazione", "Home")</li>
+                    <li>@Html.ActionLink("Accedi", "Login", "Home")</li>
+                    <li style="text-align: end">@Html.ActionLink("Registrati", "Registrazione", "Home")</li>
 
                 </ul>
-                <ul class="nav navbar-nav navbar-right"><li style="color:white"><a> @Session["utenteAttivo"]</a></li>
-                </ul>
-
+                <!--ATstring utente = ATSession["utenteAttivo"]-->
+                <!--ul class="nav navbar-nav navbar-right">
+                    <li style="color:white"><a> @Html.ActionLink("ciao")</a></li>
+                </ul>-->
                 
+
+
 
 
 

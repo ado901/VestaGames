@@ -93,7 +93,9 @@ namespace server
                         indirizzo = ut.indirizzo,
                         portafoglio = 0
                     };
+
                     //controllo se la mail è già presente nel sistema
+
                     if (db.utenti.Where((x) => x.email == ut.email).Any())
                     {
                         throw new Exception("Email già presente nel sistema");
@@ -155,6 +157,9 @@ namespace server
             {
                 
                 var record = db.prodotto.OrderBy(product => product.titolo);
+
+                //copia-incolla da entity framework a oggetto prodotto con popolamento della lista 
+
                 foreach (prodotto product in record)
                 {
                     Prodotto prd = new Prodotto();

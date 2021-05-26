@@ -74,5 +74,10 @@ namespace Sito.Controllers
             }
             return View();
         }
+        [HttpPost]
+        public ActionResult UtenteAttivo(utenteLoggato utente)
+        {
+            return View();
+        }
     }
 }
