@@ -18,7 +18,6 @@ namespace server
             OK = 1,
             KO = 0
         }
-        public const string CONNECTIONSTRING = "Data Source=LAPTOP-VMPHGDB0\\TECNICHESVIL;Initial Catalog=tecnichedisvil;Integrated Security=True";
         public void DoWork()
         {
             Console.WriteLine("CLIENT CONNESSO AL SERVER ");
@@ -51,30 +50,6 @@ namespace server
                     return (Esito.KO, ut, ex.Message);
                 }
 
-            
-            //try
-            //{
-            //    using (SqlConnection conn = new SqlConnection())
-            //    {
-            //        conn.ConnectionString = CONNECTIONSTRING;
-            //        conn.Open();
-
-            //        SqlCommand command = new SqlCommand("SELECT email, password FROM dbo.dati_anagrafici WHERE email='" + ut.email + "'and password='" + ut.password + "'", conn);
-            //        var resultSet = command.ExecuteReader();
-            //        if (resultSet.HasRows)
-            //        {
-            //            Console.WriteLine(ut.email);
-            //            Console.WriteLine(ut.password);
-            //            conn.Close();
-            //            return true;
-            //        }
-            //        conn.Close();
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine(ex.Message);
-            //}
 
         }
         //registrazione con entity framework, lavoro con la classe Utente
@@ -115,39 +90,6 @@ namespace server
                     return (Esito.KO, ut, ex.Message);
                     
                 }
-
-            
-            //try
-            //{
-            //    using (SqlConnection conn = new SqlConnection())
-            //    {
-            //        conn.ConnectionString = CONNECTIONSTRING;
-            //        conn.Open();
-            //        long datanascita = long.Parse(ut.nascita.ToString("yyyyMMdd"));
-            //        ut.portafoglio = 0;
-            //        SqlCommand command = new SqlCommand("INSERT INTO dbo.dati_anagrafici (cognome, nome, nascita, password, email, indirizzo, portafoglio) values " +
-            //            "('" + ut.cognome + "','" + ut.nome + "','" + datanascita + "','" + ut.password + "','" + ut.email + "', '" + ut.indirizzo + "','" + ut.portafoglio + "')", conn);
-            //        var prova = command.ExecuteNonQuery();
-            //        if (prova != 0)
-            //        {
-            //            Console.WriteLine("registrazione effettuata");
-            //            conn.Close();
-            //            return true;
-            //        }
-
-            //        else
-            //        {
-            //            Console.WriteLine("registrazione fallita");
-            //            conn.Close();
-            //            return false;
-            //        }
-
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw new Exception(ex.Message);
-            //}
         }
 
         public (Esito, List<Prodotto>, string) getProdotti()
