@@ -79,5 +79,10 @@ namespace Sito.Controllers
         {
             return View();
         }
+
+        public ActionResult Prodotti(Prodotto prod)
+        {
+            return View();
+        }
     }
 }
