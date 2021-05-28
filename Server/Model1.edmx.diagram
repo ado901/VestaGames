@@ -7,7 +7,7 @@
       <Diagram DiagramId="d31f3c5432b541d3bacd4003be7cdefe" Name="Diagram1">
         <EntityTypeShape EntityType="TecnichedisvilModel.utenti" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TecnichedisvilModel.commesso" Width="2" PointX="1.5" PointY="5.75" />
-        <EntityTypeShape EntityType="TecnichedisvilModel.prodotto" Width="2" PointX="3.125" PointY="0.625" />
+        <EntityTypeShape EntityType="TecnichedisvilModel.prodotto" Width="2" PointX="3.125" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="TecnichedisvilModel.transazioni" Width="2" PointX="5.375" PointY="3.125" />
         <AssociationConnector Association="TecnichedisvilModel.FK_transazioni_commesso" />
         <AssociationConnector Association="TecnichedisvilModel.FK_transazioni_prodotto" />

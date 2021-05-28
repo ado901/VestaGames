@@ -5,6 +5,8 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.IO;
+using Microsoft.VisualBasic;
 
 namespace server
 {
@@ -12,11 +14,37 @@ namespace server
     public class Service1 : IService1
     {
         const string OK = "OK";
-        private TecnichedisvilEntities db = new TecnichedisvilEntities();
+        private static TecnichedisvilEntities db = new TecnichedisvilEntities();
         public enum Esito: int
         {
             OK = 1,
             KO = 0
+        }
+        public static void popolateTable(string titolo, string genere, string producer, long data_uscita, double prezzo, int quantità, string filepath)
+        {
+            Console.WriteLine("inserimento Record in corso...");
+            try
+            {
+                prodotto videogioco = new prodotto()
+                {
+                    titolo = titolo,
+                    genere = genere,
+                    producer = producer,
+                    data_uscita = data_uscita,
+                    prezzo = prezzo,
+                    quantità = quantità,
+                    img = filepath
+
+                };
+                db.prodotto.Add(videogioco);
+                db.SaveChanges();
+                Console.WriteLine("Inserimento completato");
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Errore: " + ex.Message);
+            }
+            
         }
         public void DoWork()
         {

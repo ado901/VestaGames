@@ -16,6 +16,7 @@ namespace server.Classi
         public int quantità { get; set; }
         public System.DateTime data_uscita { get; set; }
         public double prezzo { get; set; }
+        public string img { get; set; }
 
         public void parseProduct(prodotto rigadb)
         {
@@ -29,6 +30,7 @@ namespace server.Classi
                 DateTime.TryParseExact(rigadb.data_uscita.ToString(), "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dt);
                 this.data_uscita = dt;
                 this.prezzo = rigadb.prezzo;
+                this.img = rigadb.img;
             }
             catch (Exception ex)
             {

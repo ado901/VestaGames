@@ -27,6 +27,7 @@ namespace server
         public int quantità { get; set; }
         public long data_uscita { get; set; }
         public double prezzo { get; set; }
+        public string img { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<transazioni> transazioni { get; set; }
