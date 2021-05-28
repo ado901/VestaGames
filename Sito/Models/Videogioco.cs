@@ -8,6 +8,14 @@ namespace Sito.Models
 {
     public class Videogioco
     {
+        //DECOMMENTARE DOPO INSERIMENTO METODO GETTER CHE RESTITUISCA SOLO LA LISTA DI PRODOTTO
+
+        //public static ServiceReference1.Service1Client wcf = new ServiceReference1.Service1Client();
+        //public List<Videogioco> listaGiochi { get
+        //    {
+        //        return wcf.getProdotti();
+        //    } }
+
         public Prodotto prod { get; }
         public Videogioco()
         {
@@ -19,6 +27,10 @@ namespace Sito.Models
         public string Genere => this.prod.genere;
         public double Prezzo => this.prod.prezzo;
 
+        
+
+
+        
 
 
 

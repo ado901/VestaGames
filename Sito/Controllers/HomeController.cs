@@ -79,9 +79,10 @@ namespace Sito.Controllers
         {
             return View();
         }
-
-        public ActionResult Prodotti(Prodotto prod)
+        
+        public ActionResult Prodotti()
         {
+            var listaprodotti = wcf.getProdotti();
             return View();
         }
     }
