@@ -82,8 +82,13 @@ namespace Sito.Controllers
         
         public ActionResult Prodotti()
         {
-            var listaprodotti = wcf.getProdotti();
-            return View();
+            var model = new List<Prodotto>();
+            foreach (var item in wcf.getProdotti().Item2)
+            {
+                model.Add(item);
+            }
+
+            return View(model);
         }
     }
 }

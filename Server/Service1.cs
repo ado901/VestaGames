@@ -120,7 +120,6 @@ namespace server
                 }
         }
 
-        //se possibile, mettimi anche un metodo che restituisca solo la lista (luco104)
         public (Esito, List<Prodotto>, string) getProdotti()
         {
             List<Prodotto> prodotti = new List<Prodotto>();

@@ -206,7 +206,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Registrazione.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Home\Prodotti.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -184,6 +184,9 @@ namespace Sito.ServiceReference1 {
         private string genereField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string imgField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private double prezzoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -240,6 +243,19 @@ namespace Sito.ServiceReference1 {
                 if ((object.ReferenceEquals(this.genereField, value) != true)) {
                     this.genereField = value;
                     this.RaisePropertyChanged("genere");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string img {
+            get {
+                return this.imgField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.imgField, value) != true)) {
+                    this.imgField = value;
+                    this.RaisePropertyChanged("img");
                 }
             }
         }

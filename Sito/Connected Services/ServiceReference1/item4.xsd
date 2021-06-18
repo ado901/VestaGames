@@ -11,6 +11,7 @@
       <xs:element minOccurs="0" name="codice_prodotto" type="xs:long" />
       <xs:element minOccurs="0" name="data_uscita" type="xs:dateTime" />
       <xs:element minOccurs="0" name="genere" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="img" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="prezzo" type="xs:double" />
       <xs:element minOccurs="0" name="producer" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="quantità" type="xs:int" />
