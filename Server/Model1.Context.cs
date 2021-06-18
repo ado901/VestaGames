@@ -13,10 +13,10 @@ namespace server
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TecnichedisvilEntities : DbContext
+    public partial class VestaGamesEntities : DbContext
     {
-        public TecnichedisvilEntities()
-            : base("name=TecnichedisvilEntities")
+        public VestaGamesEntities()
+            : base("name=VestaGamesEntities")
         {
         }
     
@@ -25,9 +25,9 @@ namespace server
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<utenti> utenti { get; set; }
         public virtual DbSet<commesso> commesso { get; set; }
         public virtual DbSet<prodotto> prodotto { get; set; }
         public virtual DbSet<transazioni> transazioni { get; set; }
+        public virtual DbSet<utenti> utenti { get; set; }
     }
 }

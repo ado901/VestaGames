@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TecnichedisvilModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="VestaGamesModelEntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="commesso">
           <Key>
             <PropertyRef Name="codice_commesso" />
@@ -23,8 +23,8 @@
           <Property Name="genere" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="producer" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="quantità" Type="int" Nullable="false" />
-          <Property Name="prezzo" Type="float" Nullable="false" />
           <Property Name="data_uscita" Type="bigint" Nullable="false" />
+          <Property Name="prezzo" Type="float" Nullable="false" />
           <Property Name="img" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="transazioni">
@@ -34,7 +34,6 @@
           <Property Name="codice_transazione" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="codice_prodotto" Type="bigint" Nullable="false" />
           <Property Name="codice_commesso" Type="bigint" Nullable="false" />
-          <Property Name="prenotazione" Type="bit" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="50" />
           <Property Name="prezzo" Type="float" Nullable="false" />
           <Property Name="data" Type="datetime" Nullable="false" />
@@ -46,7 +45,7 @@
           <Property Name="cognome" Type="varchar" MaxLength="50" />
           <Property Name="nome" Type="varchar" MaxLength="50" />
           <Property Name="nascita" Type="bigint" />
-          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar(max)" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="indirizzo" Type="varchar" MaxLength="50" />
           <Property Name="portafoglio" Type="float" />
@@ -75,7 +74,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TecnichedisvilModelStoreContainer">
+        <EntityContainer Name="VestaGamesModelEntitiesStoreContainer">
           <EntitySet Name="commesso" EntityType="Self.commesso" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="prodotto" EntityType="Self.prodotto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="transazioni" EntityType="Self.transazioni" Schema="dbo" store:Type="Tables" />
@@ -89,59 +88,34 @@
             <End Role="transazioni" EntitySet="transazioni" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="TecnichedisvilModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="utenti">
-          <Key>
-            <PropertyRef Name="email" />
-          </Key>
-          <Property Name="cognome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="nascita" Type="Int64" />
-          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="indirizzo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="portafoglio" Type="Double" />
-        </EntityType>
-        <EntityContainer Name="TecnichedisvilEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="utenti" EntityType="Self.utenti" />
-          <EntitySet Name="commesso" EntityType="TecnichedisvilModel.commesso" />
-          <EntitySet Name="prodotto" EntityType="TecnichedisvilModel.prodotto" />
-          <EntitySet Name="transazioni" EntityType="TecnichedisvilModel.transazioni" />
-          <AssociationSet Name="FK_transazioni_commesso" Association="TecnichedisvilModel.FK_transazioni_commesso">
-            <End Role="commesso" EntitySet="commesso" />
-            <End Role="transazioni" EntitySet="transazioni" />
-          </AssociationSet>
-          <AssociationSet Name="FK_transazioni_prodotto" Association="TecnichedisvilModel.FK_transazioni_prodotto">
-            <End Role="prodotto" EntitySet="prodotto" />
-            <End Role="transazioni" EntitySet="transazioni" />
-          </AssociationSet>
-        </EntityContainer>
+      <Schema Namespace="VestaGamesModelEntities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="commesso">
           <Key>
             <PropertyRef Name="codice_commesso" />
           </Key>
           <Property Name="codice_commesso" Type="Int64" Nullable="false" />
-          <Property Name="nome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="cognome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cognome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="nprenotazioni" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="transazioni" Relationship="TecnichedisvilModel.FK_transazioni_commesso" FromRole="commesso" ToRole="transazioni" />
+          <NavigationProperty Name="transazioni" Relationship="Self.FK_transazioni_commesso" FromRole="commesso" ToRole="transazioni" />
         </EntityType>
         <EntityType Name="prodotto">
           <Key>
             <PropertyRef Name="codice_prodotto" />
           </Key>
           <Property Name="codice_prodotto" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="titolo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="genere" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="producer" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="titolo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="genere" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="producer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="quantità" Type="Int32" Nullable="false" />
           <Property Name="data_uscita" Type="Int64" Nullable="false" />
           <Property Name="prezzo" Type="Double" Nullable="false" />
-          <NavigationProperty Name="transazioni" Relationship="TecnichedisvilModel.FK_transazioni_prodotto" FromRole="prodotto" ToRole="transazioni" />
-          <Property Name="img" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="transazioni" Relationship="Self.FK_transazioni_prodotto" FromRole="prodotto" ToRole="transazioni" />
         </EntityType>
         <EntityType Name="transazioni">
           <Key>
@@ -150,16 +124,27 @@
           <Property Name="codice_transazione" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="codice_prodotto" Type="Int64" Nullable="false" />
           <Property Name="codice_commesso" Type="Int64" Nullable="false" />
-          <Property Name="prenotazione" Type="Boolean" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="prezzo" Type="Double" Nullable="false" />
           <Property Name="data" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="commesso" Relationship="TecnichedisvilModel.FK_transazioni_commesso" FromRole="transazioni" ToRole="commesso" />
-          <NavigationProperty Name="prodotto" Relationship="TecnichedisvilModel.FK_transazioni_prodotto" FromRole="transazioni" ToRole="prodotto" />
+          <NavigationProperty Name="commesso" Relationship="Self.FK_transazioni_commesso" FromRole="transazioni" ToRole="commesso" />
+          <NavigationProperty Name="prodotto" Relationship="Self.FK_transazioni_prodotto" FromRole="transazioni" ToRole="prodotto" />
+        </EntityType>
+        <EntityType Name="utenti">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="cognome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nascita" Type="Int64" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="indirizzo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="portafoglio" Type="Double" />
         </EntityType>
         <Association Name="FK_transazioni_commesso">
-          <End Type="TecnichedisvilModel.commesso" Role="commesso" Multiplicity="1" />
-          <End Type="TecnichedisvilModel.transazioni" Role="transazioni" Multiplicity="*" />
+          <End Role="commesso" Type="Self.commesso" Multiplicity="1" />
+          <End Role="transazioni" Type="Self.transazioni" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="commesso">
               <PropertyRef Name="codice_commesso" />
@@ -170,8 +155,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_transazioni_prodotto">
-          <End Type="TecnichedisvilModel.prodotto" Role="prodotto" Multiplicity="1" />
-          <End Type="TecnichedisvilModel.transazioni" Role="transazioni" Multiplicity="*" />
+          <End Role="prodotto" Type="Self.prodotto" Multiplicity="1" />
+          <End Role="transazioni" Type="Self.transazioni" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="prodotto">
               <PropertyRef Name="codice_prodotto" />
@@ -181,14 +166,64 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityContainer Name="VestaGamesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="commesso" EntityType="Self.commesso" />
+          <EntitySet Name="prodotto" EntityType="Self.prodotto" />
+          <EntitySet Name="transazioni" EntityType="Self.transazioni" />
+          <EntitySet Name="utenti" EntityType="Self.utenti" />
+          <AssociationSet Name="FK_transazioni_commesso" Association="Self.FK_transazioni_commesso">
+            <End Role="commesso" EntitySet="commesso" />
+            <End Role="transazioni" EntitySet="transazioni" />
+          </AssociationSet>
+          <AssociationSet Name="FK_transazioni_prodotto" Association="Self.FK_transazioni_prodotto">
+            <End Role="prodotto" EntitySet="prodotto" />
+            <End Role="transazioni" EntitySet="transazioni" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TecnichedisvilModelStoreContainer" CdmEntityContainer="TecnichedisvilEntities">
+        <EntityContainerMapping StorageEntityContainer="VestaGamesModelEntitiesStoreContainer" CdmEntityContainer="VestaGamesEntities">
+          <EntitySetMapping Name="commesso">
+            <EntityTypeMapping TypeName="VestaGamesModelEntities.commesso">
+              <MappingFragment StoreEntitySet="commesso">
+                <ScalarProperty Name="codice_commesso" ColumnName="codice_commesso" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="cognome" ColumnName="cognome" />
+                <ScalarProperty Name="nprenotazioni" ColumnName="nprenotazioni" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="prodotto">
+            <EntityTypeMapping TypeName="VestaGamesModelEntities.prodotto">
+              <MappingFragment StoreEntitySet="prodotto">
+                <ScalarProperty Name="codice_prodotto" ColumnName="codice_prodotto" />
+                <ScalarProperty Name="titolo" ColumnName="titolo" />
+                <ScalarProperty Name="genere" ColumnName="genere" />
+                <ScalarProperty Name="producer" ColumnName="producer" />
+                <ScalarProperty Name="quantità" ColumnName="quantità" />
+                <ScalarProperty Name="data_uscita" ColumnName="data_uscita" />
+                <ScalarProperty Name="prezzo" ColumnName="prezzo" />
+                <ScalarProperty Name="img" ColumnName="img" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="transazioni">
+            <EntityTypeMapping TypeName="VestaGamesModelEntities.transazioni">
+              <MappingFragment StoreEntitySet="transazioni">
+                <ScalarProperty Name="codice_transazione" ColumnName="codice_transazione" />
+                <ScalarProperty Name="codice_prodotto" ColumnName="codice_prodotto" />
+                <ScalarProperty Name="codice_commesso" ColumnName="codice_commesso" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="prezzo" ColumnName="prezzo" />
+                <ScalarProperty Name="data" ColumnName="data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="utenti">
-            <EntityTypeMapping TypeName="TecnichedisvilModel.utenti">
+            <EntityTypeMapping TypeName="VestaGamesModelEntities.utenti">
               <MappingFragment StoreEntitySet="utenti">
                 <ScalarProperty Name="cognome" ColumnName="cognome" />
                 <ScalarProperty Name="nome" ColumnName="nome" />
@@ -197,43 +232,6 @@
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="indirizzo" ColumnName="indirizzo" />
                 <ScalarProperty Name="portafoglio" ColumnName="portafoglio" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="commesso">
-            <EntityTypeMapping TypeName="TecnichedisvilModel.commesso">
-              <MappingFragment StoreEntitySet="commesso">
-                <ScalarProperty Name="nprenotazioni" ColumnName="nprenotazioni" />
-                <ScalarProperty Name="cognome" ColumnName="cognome" />
-                <ScalarProperty Name="nome" ColumnName="nome" />
-                <ScalarProperty Name="codice_commesso" ColumnName="codice_commesso" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="prodotto">
-            <EntityTypeMapping TypeName="TecnichedisvilModel.prodotto">
-              <MappingFragment StoreEntitySet="prodotto">
-                <ScalarProperty Name="img" ColumnName="img" />
-                <ScalarProperty Name="prezzo" ColumnName="prezzo" />
-                <ScalarProperty Name="data_uscita" ColumnName="data_uscita" />
-                <ScalarProperty Name="quantità" ColumnName="quantità" />
-                <ScalarProperty Name="producer" ColumnName="producer" />
-                <ScalarProperty Name="genere" ColumnName="genere" />
-                <ScalarProperty Name="titolo" ColumnName="titolo" />
-                <ScalarProperty Name="codice_prodotto" ColumnName="codice_prodotto" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="transazioni">
-            <EntityTypeMapping TypeName="TecnichedisvilModel.transazioni">
-              <MappingFragment StoreEntitySet="transazioni">
-                <ScalarProperty Name="data" ColumnName="data" />
-                <ScalarProperty Name="prezzo" ColumnName="prezzo" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="prenotazione" ColumnName="prenotazione" />
-                <ScalarProperty Name="codice_commesso" ColumnName="codice_commesso" />
-                <ScalarProperty Name="codice_prodotto" ColumnName="codice_prodotto" />
-                <ScalarProperty Name="codice_transazione" ColumnName="codice_transazione" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

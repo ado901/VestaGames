@@ -14,7 +14,7 @@ namespace server
     public class Service1 : IService1
     {
         const string OK = "OK";
-        private static TecnichedisvilEntities db = new TecnichedisvilEntities();
+        private static VestaGamesEntities db = new VestaGamesEntities();
         public enum Esito: int
         {
             OK = 1,
