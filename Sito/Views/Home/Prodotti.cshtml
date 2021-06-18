@@ -1,0 +1,57 @@
+﻿@model List<Sito.ServiceReference1.Prodotto>
+
+@{
+    ViewBag.Title = "Prodotti";
+}
+
+<h2>Prodotti</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Immagine: ")
+        </th>
+        <th>
+            @Html.DisplayName("Titolo: ")
+        </th>
+        <th>
+            @Html.DisplayName("Produttore: ")
+        </th>
+        <th>
+            @Html.DisplayName("Genere: ")
+        </th>
+        <th>
+            @Html.DisplayName("Prezzo: ")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <img src=@item.img alt=@item.titolo
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.titolo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.producer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.genere)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prezzo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
