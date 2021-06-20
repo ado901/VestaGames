@@ -30,6 +30,6 @@ namespace server
         string GetMemberName<T, TValue>(Expression<Func<T, TValue>> memberAccess);
 
         [OperationContract]
-        (Esito, Utente, Prodotto, string) compraProdotto(Prodotto prod, Utente ut)
+        (Esito, Utente, Prodotto, string) compraProdotto(Prodotto prod, Utente ut);
     }
 }
