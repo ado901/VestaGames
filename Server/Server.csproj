@@ -57,12 +57,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin.cs" />
     <Compile Include="Classi\Commesso.cs" />
     <Compile Include="Classi\Prodotto.cs" />
     <Compile Include="Classi\Transazione.cs" />
     <Compile Include="commesso.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Iadmin.cs" />
     <Compile Include="IService1.cs" />
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>

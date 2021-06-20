@@ -1,10 +1,8 @@
 ﻿using server.Classi;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
+using System.Linq.Expressions;
 using System.ServiceModel;
-using System.Text;
 using static server.Service1;
 
 namespace server
@@ -17,9 +15,6 @@ namespace server
         void DoWork();
 
         [OperationContract]
-        void Dowork1(string arg);
-
-        [OperationContract]
         (Esito, Utente, string) Login(Utente ut);
 
         [OperationContract]
@@ -27,5 +22,14 @@ namespace server
 
         [OperationContract]
         (Esito, List<Prodotto>, string) getProdotti();
+
+        [OperationContract]
+        (Esito, Utente, string) modificaUtente(Utente ut, string field, string emailnuova = null);
+
+        [OperationContract]
+        string GetMemberName<T, TValue>(Expression<Func<T, TValue>> memberAccess);
+
+        [OperationContract]
+        (Esito, Utente, Prodotto, string) compraProdotto(Prodotto prod, Utente ut)
     }
 }
