@@ -73,7 +73,7 @@ namespace server
         public (Esito,Utente, string) Login(Utente ut)
 
         {
-            
+            Console.WriteLine(ut.email + " "+  ut.password);
             
                 try
                 {
