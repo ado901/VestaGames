@@ -26,8 +26,7 @@ namespace server
         [OperationContract]
         (Esito, Utente, string) modificaUtente(Utente ut, string field, string emailnuova = null);
 
-        [OperationContract]
-        string GetMemberName<T, TValue>(Expression<Func<T, TValue>> memberAccess);
+        
 
         [OperationContract]
         (Esito, Utente, Prodotto, string) compraProdotto(Prodotto prod, Utente ut);
