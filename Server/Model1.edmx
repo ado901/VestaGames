@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="VestaGamesModelEntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="VestaGamesModelEntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="commesso">
           <Key>
             <PropertyRef Name="codice_commesso" />
@@ -40,7 +40,7 @@
         </EntityType>
         <EntityType Name="utenti">
           <Key>
-            <PropertyRef Name="email" />
+            <PropertyRef Name="id" />
           </Key>
           <Property Name="cognome" Type="varchar" MaxLength="50" />
           <Property Name="nome" Type="varchar" MaxLength="50" />
@@ -49,6 +49,7 @@
           <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="indirizzo" Type="varchar" MaxLength="50" />
           <Property Name="portafoglio" Type="float" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <Association Name="FK_transazioni_commesso">
           <End Role="commesso" Type="Self.commesso" Multiplicity="1" />
@@ -88,8 +89,7 @@
             <End Role="transazioni" EntitySet="transazioni" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="VestaGamesModelEntities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -132,7 +132,7 @@
         </EntityType>
         <EntityType Name="utenti">
           <Key>
-            <PropertyRef Name="email" />
+            <PropertyRef Name="id" />
           </Key>
           <Property Name="cognome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -141,6 +141,7 @@
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="indirizzo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="portafoglio" Type="Double" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <Association Name="FK_transazioni_commesso">
           <End Role="commesso" Type="Self.commesso" Multiplicity="1" />
@@ -225,6 +226,7 @@
           <EntitySetMapping Name="utenti">
             <EntityTypeMapping TypeName="VestaGamesModelEntities.utenti">
               <MappingFragment StoreEntitySet="utenti">
+                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="cognome" ColumnName="cognome" />
                 <ScalarProperty Name="nome" ColumnName="nome" />
                 <ScalarProperty Name="nascita" ColumnName="nascita" />

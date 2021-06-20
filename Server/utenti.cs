@@ -21,5 +21,6 @@ namespace server
         public string email { get; set; }
         public string indirizzo { get; set; }
         public Nullable<double> portafoglio { get; set; }
+        public int id { get; set; }
     }
 }
