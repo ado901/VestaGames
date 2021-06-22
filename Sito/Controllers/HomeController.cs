@@ -73,6 +73,21 @@ namespace Sito.Controllers
         {
             return View();
         }
+
+
+        public ActionResult DatiUtente(utenteLoggato utente)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = wcf.Login(utente.ut);
+                if (result.Item1 == Service1Esito.OK)
+                {
+                    Session["UtenteModificato"] = utente;
+                    return View("DatiUtente");
+                }
+            }
+            return View("Login");
+        }
         
         public ActionResult Prodotti()
         {
@@ -84,5 +99,6 @@ namespace Sito.Controllers
 
             return View(model);
         }
+        
     }
 }

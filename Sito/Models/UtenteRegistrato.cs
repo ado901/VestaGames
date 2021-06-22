@@ -13,9 +13,9 @@ namespace Sito.Models
     {
         public utenteRegistrato()
         {
-            this.ut = new Utente();
+            this.ut = new ServiceReference1.Utente();
         }
-        public Utente ut { get; private set; }
+        public ServiceReference1.Utente ut { get; private set; }
         [Required]
         [DataType(DataType.EmailAddress, ErrorMessage = "E-mail non valida")]
         public string email

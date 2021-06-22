@@ -1,0 +1,50 @@
+﻿@model Sito.Models.UtenteModificato
+
+@{
+    ViewBag.Title = "DatiUtente";
+}
+
+<h2>View</h2>
+
+<div>
+    <h4>UtenteModificato</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cognome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cognome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nascita)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nascita)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Modifica", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Indietro", "Index")
+</p>

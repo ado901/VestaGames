@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Applicazione ASP.NET</title>
+    <title>@ViewBag.Title - Vestagames</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -17,7 +17,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Nome dell'applicazione", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("VESTAGAMES", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -27,6 +27,10 @@
                     <li>@Html.ActionLink("Accedi", "Login", "Home")</li>
                     <li style="text-align: end">@Html.ActionLink("Registrati", "Registrazione", "Home")</li>
 
+                    <li>@Html.ActionLink("Pagina utente", "DatiUtente", "Home")</li>
+
+
+                    <!--non sto più capendo niente, manca solo il link per la view della pagina utente-->
                 </ul>
                 <!--ATstring utente = ATSession["utenteAttivo"]-->
                 <!--ul class="nav navbar-nav navbar-right">
@@ -45,7 +49,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Applicazione ASP.NET</p>
+            <p>&copy; @DateTime.Now.Year - Vestagames.it</p>
         </footer>
     </div>
 
