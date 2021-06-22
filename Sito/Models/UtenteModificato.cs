@@ -12,7 +12,7 @@ namespace Sito.Models
         {
             this.ut = new ServiceReference1.Utente();
         }
-        public Sito.ServiceReference1.Utente ut { get; private set; }
+        public Sito.ServiceReference1.Utente ut { get; set; }
         public string Nome
         {
             get

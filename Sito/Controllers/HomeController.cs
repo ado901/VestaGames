@@ -60,7 +60,7 @@ namespace Sito.Controllers
                 var result = wcf.Login(utente.ut);
                 if (result.Item1 == Service1Esito.OK)
                 {
-                    Session["utenteAttivo"] = utente.ut.email;
+                    Session["utenteAttivo"] = result.Item2;
                     return View("Index");
                 }
 
@@ -77,23 +77,10 @@ namespace Sito.Controllers
 
         public ActionResult DatiUtente(utenteLoggato utente)
         {
-            if (ModelState.IsValid)
-            {
-                var result = wcf.Login(utente.ut);
-                if (result.Item1 == Service1Esito.OK)
-                {
-                    var model = new UtenteModificato();
-                    model.Nome = utente.ut.nome;
-                    model.Cognome = utente.ut.cognome;
-                    model.Email = utente.ut.email;
-                    model.Nascita = utente.ut.nascita;
+            var model = new UtenteModificato();
+            model.ut = (Utente)Session["utenteAttivo"];
 
-                    return View("DatiUtente", model);
-                }
-            }
-            else { return View("Login"); }
-
-            return View();
+            return View("DatiUtente", model);
         }
         
         public ActionResult Prodotti()
@@ -106,6 +93,5 @@ namespace Sito.Controllers
 
             return View(model);
         }
-        
     }
 }
