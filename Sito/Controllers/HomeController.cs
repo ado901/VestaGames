@@ -82,11 +82,18 @@ namespace Sito.Controllers
                 var result = wcf.Login(utente.ut);
                 if (result.Item1 == Service1Esito.OK)
                 {
-                    Session["UtenteModificato"] = utente;
-                    return View("DatiUtente");
+                    var model = new UtenteModificato();
+                    model.Nome = utente.ut.nome;
+                    model.Cognome = utente.ut.cognome;
+                    model.Email = utente.ut.email;
+                    model.Nascita = utente.ut.nascita;
+
+                    return View("DatiUtente", model);
                 }
             }
-            return View("Login");
+            else { return View("Login"); }
+
+            return View();
         }
         
         public ActionResult Prodotti()
