@@ -31,9 +31,9 @@
                     @{ var utente = (Sito.ServiceReference1.Utente)Session["utenteAttivo"];}
                     @if (utente != null)
                     {
-                        <ul class="nav navbar-nav navbar-right">
+                        
                             <li>@Html.ActionLink("Pagina utente", "DatiUtente", "Home")</li>
-                        </ul>
+                        
                     }
                     
 

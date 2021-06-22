@@ -16,15 +16,24 @@
 
         <dd>
             @Html.DisplayFor(model => model.Nome)
+            @using (Html.BeginForm())
+            {
+                <p><button name="button" value="nome" formmethod="post" formaction=@Url.Action("Edit1")>Modifica</button></p>
+            }
         </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Cognome)
+            
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Cognome)
-        </dd>
+            @using (Html.BeginForm())
+            {
+                <p><button name="button" value="cognome" formmethod="post" formaction=@Url.Action("Edit")>Modifica</button></p>
+                }
+            </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Email)
@@ -32,7 +41,36 @@
 
         <dd>
             @Html.DisplayFor(model => model.Email)
-        </dd>
+            @using (Html.BeginForm())
+            {
+                <p><button name="button" value="email" formmethod="post" formaction=@Url.Action("Edit")>Modifica</button></p>
+            }
+            </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+            
+        </dt>
+
+        <dd>
+            @Html.Raw("\u2022\u2022\u2022\u2022\u2022")
+            @using (Html.BeginForm())
+            {
+                <p><button name="button" value="indirizzo" formmethod="post">Modifica</button></p>
+            }
+            </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Indirizzo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Indirizzo)
+            @using (Html.BeginForm())
+            {
+                <p><button name="button" value="indirizzo" formmethod="post">Modifica</button></p>
+            }
+            </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Nascita)
@@ -40,7 +78,20 @@
 
         <dd>
             @Html.DisplayFor(model => model.Nascita)
+            <p><button name="button" value="nascita" formmethod="post">Modifica</button></p>
         </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Portafoglio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Portafoglio)
+            @using (Html.BeginForm())
+            {
+                <p><button name="button" value="portafoglio" formmethod="post">Modifica</button></p>
+            }
+            </dd>
 
     </dl>
 </div>

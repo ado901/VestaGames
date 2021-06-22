@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Sito.ServiceReference1;
+using System.Linq.Expressions;
 
 namespace Sito.Controllers
 {
@@ -51,7 +52,10 @@ namespace Sito.Controllers
             
             return View();
         }
-
+        public string GetMemberName<T, TValue>(Expression<Func<T, TValue>> memberAccess)
+        {
+            return ((MemberExpression)memberAccess.Body).Member.Name;
+        }
         [HttpPost]
         public ActionResult Login(utenteLoggato utente)
         {
@@ -75,14 +79,43 @@ namespace Sito.Controllers
         }
 
 
-        public ActionResult DatiUtente(utenteLoggato utente)
+        public ActionResult DatiUtente()
         {
             var model = new UtenteModificato();
             model.ut = (Utente)Session["utenteAttivo"];
 
             return View("DatiUtente", model);
         }
-        
+
+        public ActionResult Edit1(string button)
+        {
+            Session["modifica"] = button;
+
+            var model = new UtenteModificato();
+            model.ut = (ServiceReference1.Utente)Session["utenteAttivo"];
+
+            return View("Edit",model);
+        }
+        [HttpPost]
+        public ActionResult Edit( UtenteModificato utente)
+        {
+            
+            if ((string)Session["modifica"] == GetMemberName((Utente c) => c.email))
+            {
+                var result = wcf.modificaUtente(utente.ut, (string)Session["modifica"], utente.Email);
+                if (result.Item1== Service1Esito.OK)
+                {
+                    Session["utenteAttivo"] = result.Item2;
+                }
+            }
+            else
+            {
+                utente.update();
+                var result = wcf.modificaUtente(utente.ut, (string)Session["modifica"],null);
+            }
+            return View("Index");
+        }
+
         public ActionResult Prodotti()
         {
             var model = new List<Prodotto>();
@@ -92,6 +125,16 @@ namespace Sito.Controllers
             }
 
             return View(model);
+        }
+
+
+        public ActionResult Nome(UtenteModificato utente)
+        {
+            if (ModelState.IsValid)
+            {
+                wcf.modificaUtente(utente.ut, "nome", null);
+            }
+            return View("Index");
         }
     }
 }

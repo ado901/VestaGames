@@ -19,10 +19,6 @@ namespace Sito.Models
             {
                 return this.ut.nome;
             }
-            set
-            {
-                this.ut.nome = value;
-            }
         }
         public string Cognome
         {
@@ -30,10 +26,7 @@ namespace Sito.Models
             {
                 return this.ut.cognome;
             }
-            set
-            {
-                this.ut.cognome = value;
-            }
+
         }
         public string Email
         {
@@ -41,10 +34,7 @@ namespace Sito.Models
             {
                 return this.ut.email;
             }
-            set
-            {
-                this.ut.email = value;
-            }
+
         }
 
         [DataType(DataType.Date)]
@@ -55,10 +45,46 @@ namespace Sito.Models
             {
                 return this.ut.nascita;
             }
-            set
+
+        }
+
+        public string Password
+        {
+            get
             {
-                this.ut.nascita = value;
+                return this.ut.password;
             }
+        }
+
+        public double? Portafoglio
+        {
+            get
+            {
+                return this.ut.portafoglio;
+            }
+        }
+
+        public string Indirizzo
+        {
+            get
+            {
+                return this.ut.indirizzo;
+            }
+        }
+
+        public void update()
+        {
+
+            
+            this.ut.password = this.Password;
+            this.ut.nome = this.Nome;
+            this.ut.cognome = this.Cognome;
+            this.ut.nascita = this.Nascita;
+            this.ut.indirizzo = this.Indirizzo;
+            this.ut.portafoglio = this.Portafoglio;
+
+            this.ut.portafoglio = this.Portafoglio;
+
         }
     }
 }

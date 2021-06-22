@@ -15,12 +15,6 @@
   <wsdl:message name="IService1_DoWork_OutputMessage">
     <wsdl:part name="parameters" element="tns:DoWorkResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_Dowork1_InputMessage">
-    <wsdl:part name="parameters" element="tns:Dowork1" />
-  </wsdl:message>
-  <wsdl:message name="IService1_Dowork1_OutputMessage">
-    <wsdl:part name="parameters" element="tns:Dowork1Response" />
-  </wsdl:message>
   <wsdl:message name="IService1_Login_InputMessage">
     <wsdl:part name="parameters" element="tns:Login" />
   </wsdl:message>
@@ -39,14 +33,22 @@
   <wsdl:message name="IService1_getProdotti_OutputMessage">
     <wsdl:part name="parameters" element="tns:getProdottiResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_modificaUtente_InputMessage">
+    <wsdl:part name="parameters" element="tns:modificaUtente" />
+  </wsdl:message>
+  <wsdl:message name="IService1_modificaUtente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:modificaUtenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_compraProdotto_InputMessage">
+    <wsdl:part name="parameters" element="tns:compraProdotto" />
+  </wsdl:message>
+  <wsdl:message name="IService1_compraProdotto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:compraProdottoResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/DoWork" message="tns:IService1_DoWork_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/DoWorkResponse" message="tns:IService1_DoWork_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="Dowork1">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Dowork1" message="tns:IService1_Dowork1_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Dowork1Response" message="tns:IService1_Dowork1_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/Login" message="tns:IService1_Login_InputMessage" />
@@ -60,20 +62,19 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getProdotti" message="tns:IService1_getProdotti_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getProdottiResponse" message="tns:IService1_getProdotti_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="modificaUtente">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/modificaUtente" message="tns:IService1_modificaUtente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/modificaUtenteResponse" message="tns:IService1_modificaUtente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="compraProdotto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/compraProdotto" message="tns:IService1_compraProdotto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/compraProdottoResponse" message="tns:IService1_compraProdotto_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="DoWork">
       <soap:operation soapAction="http://tempuri.org/IService1/DoWork" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Dowork1">
-      <soap:operation soapAction="http://tempuri.org/IService1/Dowork1" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -101,6 +102,24 @@
     </wsdl:operation>
     <wsdl:operation name="getProdotti">
       <soap:operation soapAction="http://tempuri.org/IService1/getProdotti" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificaUtente">
+      <soap:operation soapAction="http://tempuri.org/IService1/modificaUtente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="compraProdotto">
+      <soap:operation soapAction="http://tempuri.org/IService1/compraProdotto" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

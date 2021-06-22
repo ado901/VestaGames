@@ -332,12 +332,6 @@ namespace Sito.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DoWork", ReplyAction="http://tempuri.org/IService1/DoWorkResponse")]
         System.Threading.Tasks.Task DoWorkAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Dowork1", ReplyAction="http://tempuri.org/IService1/Dowork1Response")]
-        void Dowork1(string arg);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Dowork1", ReplyAction="http://tempuri.org/IService1/Dowork1Response")]
-        System.Threading.Tasks.Task Dowork1Async(string arg);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Login", ReplyAction="http://tempuri.org/IService1/LoginResponse")]
         System.ValueTuple<Sito.ServiceReference1.Service1Esito, Sito.ServiceReference1.Utente, string> Login(Sito.ServiceReference1.Utente ut);
         
@@ -355,6 +349,18 @@ namespace Sito.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getProdotti", ReplyAction="http://tempuri.org/IService1/getProdottiResponse")]
         System.Threading.Tasks.Task<System.ValueTuple<Sito.ServiceReference1.Service1Esito, Sito.ServiceReference1.Prodotto[], string>> getProdottiAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/modificaUtente", ReplyAction="http://tempuri.org/IService1/modificaUtenteResponse")]
+        System.ValueTuple<Sito.ServiceReference1.Service1Esito, Sito.ServiceReference1.Utente, string> modificaUtente(Sito.ServiceReference1.Utente ut, string field, string emailnuova);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/modificaUtente", ReplyAction="http://tempuri.org/IService1/modificaUtenteResponse")]
+        System.Threading.Tasks.Task<System.ValueTuple<Sito.ServiceReference1.Service1Esito, Sito.ServiceReference1.Utente, string>> modificaUtenteAsync(Sito.ServiceReference1.Utente ut, string field, string emailnuova);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/compraProdotto", ReplyAction="http://tempuri.org/IService1/compraProdottoResponse")]
+        System.ValueTuple<Sito.ServiceReference1.Service1Esito, Sito.ServiceReference1.Utente, Sito.ServiceReference1.Prodotto, string> compraProdotto(Sito.ServiceReference1.Prodotto prod, Sito.ServiceReference1.Utente ut);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/compraProdotto", ReplyAction="http://tempuri.org/IService1/compraProdottoResponse")]
+        System.Threading.Tasks.Task<System.ValueTuple<Sito.ServiceReference1.Service1Esito, Sito.ServiceReference1.Utente, Sito.ServiceReference1.Prodotto, string>> compraProdottoAsync(Sito.ServiceReference1.Prodotto prod, Sito.ServiceReference1.Utente ut);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -392,14 +398,6 @@ namespace Sito.ServiceReference1 {
             return base.Channel.DoWorkAsync();
         }
         
-        public void Dowork1(string arg) {
-            base.Channel.Dowork1(arg);
-        }
-        
-        public System.Threading.Tasks.Task Dowork1Async(string arg) {
-            return base.Channel.Dowork1Async(arg);
-        }
-        
         public System.ValueTuple<Sito.ServiceReference1.Service1Esito, Sito.ServiceReference1.Utente, string> Login(Sito.ServiceReference1.Utente ut) {
             return base.Channel.Login(ut);
         }
@@ -422,6 +420,22 @@ namespace Sito.ServiceReference1 {
         
         public System.Threading.Tasks.Task<System.ValueTuple<Sito.ServiceReference1.Service1Esito, Sito.ServiceReference1.Prodotto[], string>> getProdottiAsync() {
             return base.Channel.getProdottiAsync();
+        }
+        
+        public System.ValueTuple<Sito.ServiceReference1.Service1Esito, Sito.ServiceReference1.Utente, string> modificaUtente(Sito.ServiceReference1.Utente ut, string field, string emailnuova) {
+            return base.Channel.modificaUtente(ut, field, emailnuova);
+        }
+        
+        public System.Threading.Tasks.Task<System.ValueTuple<Sito.ServiceReference1.Service1Esito, Sito.ServiceReference1.Utente, string>> modificaUtenteAsync(Sito.ServiceReference1.Utente ut, string field, string emailnuova) {
+            return base.Channel.modificaUtenteAsync(ut, field, emailnuova);
+        }
+        
+        public System.ValueTuple<Sito.ServiceReference1.Service1Esito, Sito.ServiceReference1.Utente, Sito.ServiceReference1.Prodotto, string> compraProdotto(Sito.ServiceReference1.Prodotto prod, Sito.ServiceReference1.Utente ut) {
+            return base.Channel.compraProdotto(prod, ut);
+        }
+        
+        public System.Threading.Tasks.Task<System.ValueTuple<Sito.ServiceReference1.Service1Esito, Sito.ServiceReference1.Utente, Sito.ServiceReference1.Prodotto, string>> compraProdottoAsync(Sito.ServiceReference1.Prodotto prod, Sito.ServiceReference1.Utente ut) {
+            return base.Channel.compraProdottoAsync(prod, ut);
         }
     }
 }
