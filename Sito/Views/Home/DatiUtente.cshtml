@@ -31,7 +31,7 @@
             @Html.DisplayFor(model => model.Cognome)
             @using (Html.BeginForm())
             {
-                <p><button name="button" value="cognome" formmethod="post" formaction=@Url.Action("Edit")>Modifica</button></p>
+                <p><button name="button" value="cognome" formmethod="post" formaction=@Url.Action("Edit1")>Modifica</button></p>
                 }
             </dd>
 
@@ -43,7 +43,7 @@
             @Html.DisplayFor(model => model.Email)
             @using (Html.BeginForm())
             {
-                <p><button name="button" value="email" formmethod="post" formaction=@Url.Action("Edit")>Modifica</button></p>
+                <p><button name="button" value="email" formmethod="post" formaction=@Url.Action("Edit1")>Modifica</button></p>
             }
             </dd>
 
@@ -56,7 +56,7 @@
             @Html.Raw("\u2022\u2022\u2022\u2022\u2022")
             @using (Html.BeginForm())
             {
-                <p><button name="button" value="indirizzo" formmethod="post">Modifica</button></p>
+                <p><button name="button" value="password" formmethod="post" formaction=@Url.Action("Edit1")>Modifica</button></p>
             }
             </dd>
 
@@ -68,7 +68,7 @@
             @Html.DisplayFor(model => model.Indirizzo)
             @using (Html.BeginForm())
             {
-                <p><button name="button" value="indirizzo" formmethod="post">Modifica</button></p>
+                <p><button name="button" value="indirizzo" formmethod="post" formaction=@Url.Action("Edit1")>Modifica</button></p>
             }
             </dd>
 
@@ -78,7 +78,7 @@
 
         <dd>
             @Html.DisplayFor(model => model.Nascita)
-            <p><button name="button" value="nascita" formmethod="post">Modifica</button></p>
+            <p><button name="button" value="nascita" formmethod="post" formaction=@Url.Action("Edit1")>Modifica</button></p>
         </dd>
 
         <dt>
@@ -89,7 +89,7 @@
             @Html.DisplayFor(model => model.Portafoglio)
             @using (Html.BeginForm())
             {
-                <p><button name="button" value="portafoglio" formmethod="post">Modifica</button></p>
+                <p><button name="button" value="portafoglio" formmethod="post" formaction=@Url.Action("Edit1")>Modifica</button></p>
             }
             </dd>
 

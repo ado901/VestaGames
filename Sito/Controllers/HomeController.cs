@@ -18,6 +18,12 @@ namespace Sito.Controllers
             return View();
         }
 
+        public ActionResult Logout()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
 
         public ActionResult Contact()
         {
@@ -39,7 +45,7 @@ namespace Sito.Controllers
                 var result= wcf.Registrazione(utente.ut);
                 if (result.Item1== Service1Esito.OK)
                 {
-                    Session["utenteAttivo"] = utente.ut.email;
+                    Session["utenteAttivo"] = utente.ut;
                     return View("Index");
                 }
                 
@@ -83,6 +89,7 @@ namespace Sito.Controllers
         {
             var model = new UtenteModificato();
             model.ut = (Utente)Session["utenteAttivo"];
+            model.parse();
 
             return View("DatiUtente", model);
         }
@@ -93,13 +100,14 @@ namespace Sito.Controllers
 
             var model = new UtenteModificato();
             model.ut = (ServiceReference1.Utente)Session["utenteAttivo"];
+            model.parse();
 
             return View("Edit",model);
         }
         [HttpPost]
         public ActionResult Edit( UtenteModificato utente)
         {
-            
+            utente.ut = (Utente)Session["utenteAttivo"];
             if ((string)Session["modifica"] == GetMemberName((Utente c) => c.email))
             {
                 var result = wcf.modificaUtente(utente.ut, (string)Session["modifica"], utente.Email);
@@ -110,9 +118,14 @@ namespace Sito.Controllers
             }
             else
             {
-                utente.update();
+                utente.update((string)Session["modifica"]);
                 var result = wcf.modificaUtente(utente.ut, (string)Session["modifica"],null);
+                if (result.Item1 == Service1Esito.OK)
+                {
+                    Session["utenteAttivo"] = result.Item2;
+                }
             }
+            Session["modifica"] = null;
             return View("Index");
         }
 
