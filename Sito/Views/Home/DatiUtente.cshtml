@@ -78,8 +78,11 @@
 
         <dd>
             @Html.DisplayFor(model => model.Nascita)
-            <p><button name="button" value="nascita" formmethod="post" formaction=@Url.Action("Edit1")>Modifica</button></p>
-        </dd>
+            @using (Html.BeginForm())
+            {
+                <p><button name="button" value="nascita" formmethod="post" formaction=@Url.Action("Edit1")>Modifica</button></p>
+            }
+            </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Portafoglio)

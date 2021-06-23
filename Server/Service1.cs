@@ -184,7 +184,12 @@ namespace server
                 //controllo che il campo esista e sia settabile
                 if (null != prop && prop.CanWrite)
                 {
-                    prop.SetValue(utentedb, ut.GetType().GetProperty(field).GetValue(ut, null), null);
+                    if (field == "nascita")
+                    {
+                        utentedb.nascita= long.Parse(ut.nascita.ToString("yyyyMMdd"));
+                    }
+                    else { prop.SetValue(utentedb, ut.GetType().GetProperty(field).GetValue(ut, null), null); }
+                    
                 }
                 else
                 {
