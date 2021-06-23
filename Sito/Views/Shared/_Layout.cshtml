@@ -26,16 +26,19 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Contatti", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Prodotti", "Prodotti", "Home")</li>
-                    <li>@Html.ActionLink("Accedi", "Login", "Home")</li>
-                    <li style="text-align: end">@Html.ActionLink("Registrati", "Registrazione", "Home")</li>
                     @{ var utente = (Sito.ServiceReference1.Utente)Session["utenteAttivo"];}
-                    @if (utente != null)
+                    @if (utente == null)
                     {
-                        
-                            <li>@Html.ActionLink("Pagina utente", "DatiUtente", "Home")</li>
-                        
+                        <li>@Html.ActionLink("Accedi", "Login", "Home")</li>
+                        <li style="text-align: end">@Html.ActionLink("Registrati", "Registrazione", "Home")</li>
                     }
-                    
+                    else
+                    {
+                        <li>@Html.ActionLink("Pagina utente", "DatiUtente", "Home")</li>
+                        <a href='@Url.Action("Logout", "Home")'>LogOut</a>
+
+                    }
+
 
 
                     <!--non sto più capendo niente, manca solo il link per la view della pagina utente-->

@@ -20,9 +20,10 @@ namespace Sito.Controllers
 
         public ActionResult Logout()
         {
-            ViewBag.Message = "Your contact page.";
+            Session["utenteAttivo"] = null;
+            Session.Abandon();
 
-            return View();
+            return View("Index");
         }
 
         public ActionResult Contact()
