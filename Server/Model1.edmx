@@ -4,15 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="VestaGamesModelEntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="VestaGamesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="commesso">
           <Key>
             <PropertyRef Name="codice_commesso" />
           </Key>
-          <Property Name="codice_commesso" Type="bigint" Nullable="false" />
+          <Property Name="codice_commesso" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="cognome" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="nprenotazioni" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="prodotto">
           <Key>
@@ -75,7 +74,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="VestaGamesModelEntitiesStoreContainer">
+        <EntityContainer Name="VestaGamesModelStoreContainer">
           <EntitySet Name="commesso" EntityType="Self.commesso" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="prodotto" EntityType="Self.prodotto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="transazioni" EntityType="Self.transazioni" Schema="dbo" store:Type="Tables" />
@@ -89,18 +88,18 @@
             <End Role="transazioni" EntitySet="transazioni" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="VestaGamesModelEntities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="VestaGamesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="commesso">
           <Key>
             <PropertyRef Name="codice_commesso" />
           </Key>
-          <Property Name="codice_commesso" Type="Int64" Nullable="false" />
+          <Property Name="codice_commesso" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="cognome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="nprenotazioni" Type="Int32" Nullable="false" />
           <NavigationProperty Name="transazioni" Relationship="Self.FK_transazioni_commesso" FromRole="commesso" ToRole="transazioni" />
         </EntityType>
         <EntityType Name="prodotto">
@@ -186,19 +185,18 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="VestaGamesModelEntitiesStoreContainer" CdmEntityContainer="VestaGamesEntities">
+        <EntityContainerMapping StorageEntityContainer="VestaGamesModelStoreContainer" CdmEntityContainer="VestaGamesEntities">
           <EntitySetMapping Name="commesso">
-            <EntityTypeMapping TypeName="VestaGamesModelEntities.commesso">
+            <EntityTypeMapping TypeName="VestaGamesModel.commesso">
               <MappingFragment StoreEntitySet="commesso">
                 <ScalarProperty Name="codice_commesso" ColumnName="codice_commesso" />
                 <ScalarProperty Name="nome" ColumnName="nome" />
                 <ScalarProperty Name="cognome" ColumnName="cognome" />
-                <ScalarProperty Name="nprenotazioni" ColumnName="nprenotazioni" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="prodotto">
-            <EntityTypeMapping TypeName="VestaGamesModelEntities.prodotto">
+            <EntityTypeMapping TypeName="VestaGamesModel.prodotto">
               <MappingFragment StoreEntitySet="prodotto">
                 <ScalarProperty Name="codice_prodotto" ColumnName="codice_prodotto" />
                 <ScalarProperty Name="titolo" ColumnName="titolo" />
@@ -212,7 +210,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="transazioni">
-            <EntityTypeMapping TypeName="VestaGamesModelEntities.transazioni">
+            <EntityTypeMapping TypeName="VestaGamesModel.transazioni">
               <MappingFragment StoreEntitySet="transazioni">
                 <ScalarProperty Name="codice_transazione" ColumnName="codice_transazione" />
                 <ScalarProperty Name="codice_prodotto" ColumnName="codice_prodotto" />
@@ -224,9 +222,8 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="utenti">
-            <EntityTypeMapping TypeName="VestaGamesModelEntities.utenti">
+            <EntityTypeMapping TypeName="VestaGamesModel.utenti">
               <MappingFragment StoreEntitySet="utenti">
-                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="cognome" ColumnName="cognome" />
                 <ScalarProperty Name="nome" ColumnName="nome" />
                 <ScalarProperty Name="nascita" ColumnName="nascita" />
@@ -234,6 +231,7 @@
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="indirizzo" ColumnName="indirizzo" />
                 <ScalarProperty Name="portafoglio" ColumnName="portafoglio" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -220,8 +220,19 @@ namespace server
                 {
                     try
                     {
+                        var rand = new Random();
+
+                        
                         utenti utentedb = db.utenti.Where(riga => riga.email == ut.email).First();
                         prodotto prodottodb= db.prodotto.Where(riga => riga.codice_prodotto == prod.codice_prodotto).First();
+                        int random = rand.Next(db.commesso.Count());
+                        transazioni transazione = new transazioni() { 
+                        codice_commesso = db.commesso.OrderBy(x => x.codice_commesso).Skip(random).First().codice_commesso,
+                        codice_prodotto = prodottodb.codice_prodotto,
+                        email = utentedb.email,
+                        prezzo = prodottodb.prezzo
+                    };
+                        
                         if (utentedb.portafoglio!= ut.portafoglio || prodottodb.prezzo!= prod.prezzo)
                         {
                             throw new Exception("prezzo o portafoglio non combaciano con quelli in db");
@@ -231,6 +242,9 @@ namespace server
                         db.SaveChanges();
                         prodottodb.quantità -= 1;
                         prod.quantità -= 1;
+                        db.SaveChanges();
+                        transazione.data = DateTime.Now;
+                        db.transazioni.Add(transazione);
                         db.SaveChanges();
                         transaction.Commit();
                     }

@@ -32,7 +32,7 @@ namespace Sito.Controllers
             Session["utenteAttivo"] = null;
             Session.Abandon();
 
-            return View("Index");
+            return RedirectToAction("Index");
         }
 
         public ActionResult Contact()
@@ -56,7 +56,7 @@ namespace Sito.Controllers
                 if (result.Item1== Service1Esito.OK)
                 {
                     Session["utenteAttivo"] = utente.ut;
-                    return View("Index");
+                    return RedirectToAction("Index");
                 }
                 
             }
@@ -81,7 +81,7 @@ namespace Sito.Controllers
                 if (result.Item1 == Service1Esito.OK)
                 {
                     Session["utenteAttivo"] = result.Item2;
-                    return View("Index");
+                    return RedirectToAction("Index");
                 }
 
                 

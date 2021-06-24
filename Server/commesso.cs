@@ -23,7 +23,6 @@ namespace server
         public long codice_commesso { get; set; }
         public string nome { get; set; }
         public string cognome { get; set; }
-        public int nprenotazioni { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<transazioni> transazioni { get; set; }

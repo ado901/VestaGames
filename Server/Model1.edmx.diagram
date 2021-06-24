@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b43c011f643943209f9d1353e4a72eee" Name="Diagram1">
-        <EntityTypeShape EntityType="VestaGamesModelEntities.commesso" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="VestaGamesModelEntities.prodotto" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="VestaGamesModelEntities.transazioni" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="VestaGamesModelEntities.utenti" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <AssociationConnector Association="VestaGamesModelEntities.FK_transazioni_commesso" ManuallyRouted="false" />
-        <AssociationConnector Association="VestaGamesModelEntities.FK_transazioni_prodotto" ManuallyRouted="false" />
+      <Diagram DiagramId="2016080ac0a0460e923838758a04b48e" Name="Diagram1">
+        <EntityTypeShape EntityType="VestaGamesModel.commesso" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VestaGamesModel.prodotto" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VestaGamesModel.transazioni" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="VestaGamesModel.utenti" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="VestaGamesModel.FK_transazioni_commesso" ManuallyRouted="false" />
+        <AssociationConnector Association="VestaGamesModel.FK_transazioni_prodotto" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
