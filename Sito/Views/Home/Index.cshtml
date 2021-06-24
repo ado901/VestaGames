@@ -1,8 +1,57 @@
 ﻿
 @model List<Sito.ServiceReference1.Prodotto>
 
+@{ //inizializzo una nuova lista a cui verranno aggiunti prodotti a caso dalla lista di base, per poi mostrarne i dati con un foreach
+   //ERRORE - viewbag genera l'eccezione che dice che non può fare l'associazione su un riferimento a runtime
+    Random r = new Random();
+    List<Sito.ServiceReference1.Prodotto> prodottiRandom = new List<Sito.ServiceReference1.Prodotto>();
+
+    prodottiRandom.Add(ViewBag.listaProd[r.Next(ViewBag.listaProd.Count)]);
+}
 
 <div class="jumbotron">
     <h1>VESTAGAMES</h1>
     <p class="lead">Vestagames è il tuo portale per ogni bisogno videoludico. Dai un'occhiata.</p>
 </div>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Immagine: ")
+        </th>
+        <th>
+            @Html.DisplayName("Titolo: ")
+        </th>
+        <th>
+            @Html.DisplayName("Produttore: ")
+        </th>
+        <th>
+            @Html.DisplayName("Genere: ")
+        </th>
+        <th>
+            @Html.DisplayName("Prezzo: ")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in prodottiRandom)
+    {
+        <tr>
+            <td>
+                <img src=@item.img alt=@item.titolo
+            </td>
+            <td>
+                @Html.DisplayFor(Item => item.titolo)
+            </td>
+            <td>
+                @Html.DisplayFor(Item => item.producer)
+            </td>
+            <td>
+                @Html.DisplayFor(Item => item.genere)
+            </td>
+            <td>
+                @Html.DisplayFor(Item => item.prezzo)
+            </td>
+        </tr>
+    }

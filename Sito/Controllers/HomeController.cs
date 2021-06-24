@@ -15,6 +15,15 @@ namespace Sito.Controllers
         public static ServiceReference1.Service1Client wcf = new ServiceReference1.Service1Client();
         public ActionResult Index()
         {
+
+            //ERRORE - quando viene chiamato questo actionresult da altri actionresult non passa i dati della lista prodotti
+
+            var model = new List<Prodotto>();
+            foreach (var item in wcf.getProdotti().Item2)
+            {
+                model.Add(item);
+            }
+            ViewBag.listaProd = model;
             return View();
         }
 
