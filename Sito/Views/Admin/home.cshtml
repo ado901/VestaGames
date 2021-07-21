@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Pannello Admin";
+}
+<body>
+    <h2>Admin</h2>
+
+    <label for="">Quello che puoi fare è:</label>
+</body>
+<form action="staff.php" method="post">
+    <input type='submit' class="btn btn-primary" name='staff' value='Gestire il personale'>
+</form>
+<form action="inventario.php" method="post">
+    <input type='submit' class="btn btn-primary" name='inventario' value="Gestire il catalogo">
+</form>
+<form action="transactions.php" method="post">
+    <input type="submit" class="btn btn-primary" name="Transazioni" value="Gestire le transazioni effettuate">
+</form>
+<form action="customers.php" method="post">
+    <input type="submit" class="btn btn-primary" name="cliente" value="Gestire i clienti registrati">
+
+</form>
+<form action="../index.php" method="post">
+    <input type="submit" class="btn btn-default" name="logout" value="Logout">
+    </div>
+
+</form>
+

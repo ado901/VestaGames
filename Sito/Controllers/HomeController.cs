@@ -80,7 +80,13 @@ namespace Sito.Controllers
                 var result = wcf.Login(utente.ut);
                 if (result.Item1 == Service1Esito.OK)
                 {
+                    
                     Session["utenteAttivo"] = result.Item2;
+
+                    if (result.Item2.email == "admin@admin.admin")
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
                     return RedirectToAction("Index");
                 }
 
