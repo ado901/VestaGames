@@ -7,19 +7,22 @@
 
     <label for="">Quello che puoi fare è:</label>
 </body>
-<form action="staff.php" method="post">
-    <input type='submit' class="btn btn-primary" name='staff' value='Gestire il personale'>
-</form>
-<form action="inventario.php" method="post">
-    <input type='submit' class="btn btn-primary" name='inventario' value="Gestire il catalogo">
-</form>
-<form action="transactions.php" method="post">
-    <input type="submit" class="btn btn-primary" name="Transazioni" value="Gestire le transazioni effettuate">
-</form>
-<form action="customers.php" method="post">
-    <input type="submit" class="btn btn-primary" name="cliente" value="Gestire i clienti registrati">
-
-</form>
+@using (Html.BeginForm())
+{
+    <p><button name="button" value="nome" formmethod="post" formaction=@Url.Action("Edit1")>Gestire il Personale</button></p>
+}
+@using (Html.BeginForm())
+{
+    <p><button name="button" value="nome" formmethod="post" formaction=@Url.Action("Edit1")>Gestire il Catalogo</button></p>
+}
+@using (Html.BeginForm())
+{
+    <p><button name="button" value="nome" formmethod="post" formaction=@Url.Action("Edit1")>Gestire le Transazioni</button></p>
+}
+@using (Html.BeginForm())
+{
+    <p><button name="button" value="nome" formmethod="post" formaction=@Url.Action("Listautenti")>Gestire gli utenti</button></p>
+}
 <form action="../index.php" method="post">
     <input type="submit" class="btn btn-default" name="logout" value="Logout">
     </div>

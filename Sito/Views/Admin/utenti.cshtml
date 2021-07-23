@@ -1,0 +1,58 @@
+﻿@model List<Sito.ServiceReference2.Utente>
+
+@{
+    ViewBag.Title = "Utenti";
+}
+
+<h2>Prodotti</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Email: ")
+        </th>
+        <th>
+            @Html.DisplayName("Cognome: ")
+        </th>
+        <th>
+            @Html.DisplayName("Nome: ")
+        </th>
+        <th>
+            @Html.DisplayName("Nascita: ")
+        </th>
+        <th>
+            @Html.DisplayName("Indirizzo: ")
+        </th>
+        <th>
+            @Html.DisplayName("Portafoglio: ")
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.cognome)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.nome)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.nascita)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.indirizzo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.portafoglio)
+    </td>
+
+</tr>
+    }
+
+</table>

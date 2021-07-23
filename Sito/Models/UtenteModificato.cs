@@ -28,6 +28,7 @@ namespace Sito.Models
         public double? Portafoglio { get; set; }
 
         public string Indirizzo { get; set; }
+        public int id { get; set; }
 
         public void update(string field)
         {
@@ -79,6 +80,7 @@ namespace Sito.Models
             this.Indirizzo = this.ut.indirizzo;
             this.Nascita = this.ut.nascita;
             this.Portafoglio = this.ut.portafoglio;
+            this.id = this.ut.id;
         }
 
     }

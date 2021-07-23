@@ -142,7 +142,7 @@ namespace Sito.Controllers
                 }
             }
             Session["modifica"] = null;
-            return View("Index");
+            return RedirectToAction("Index");
         }
 
         public ActionResult Prodotti()

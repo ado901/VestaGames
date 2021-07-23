@@ -21,7 +21,7 @@ namespace server
         public string email { get; set; }
         public string indirizzo { get; set; }
         public double? portafoglio { get; set; }
-
+        public int id { get; set; }
         //prendo l'entity utente del db e setto tutte le proprietà dell'instanza
         public void loginEffettuato(utenti login)
         {
@@ -38,6 +38,7 @@ namespace server
                 this.nascita = dt;
                 this.indirizzo = login.indirizzo;
                 this.portafoglio = login.portafoglio;
+                this.id = login.id;
                 if (this.portafoglio == null)
                 {
                     this.portafoglio = 0;

@@ -11,7 +11,8 @@ namespace server
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Globalization;
+
     public partial class utenti
     {
         public string cognome { get; set; }
@@ -22,5 +23,27 @@ namespace server
         public string indirizzo { get; set; }
         public Nullable<double> portafoglio { get; set; }
         public int id { get; set; }
+
+        public void parseUtente(Utente login)
+        {
+            try
+            {
+                this.email = login.email;
+                this.password = login.password;
+                this.nome = login.nome;
+                this.cognome = login.cognome;
+                long datanascita = long.Parse(login.nascita.ToString("yyyyMMdd"));
+                this.nascita = datanascita;
+                this.indirizzo = login.indirizzo;
+                this.portafoglio = login.portafoglio;
+                this.id = login.id;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("metodo loginEffettuato: " + ex.Message);
+            }
+
+
+        }
     }
 }

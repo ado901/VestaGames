@@ -12,5 +12,21 @@ namespace server.Classi
         public string nome { get; set; }
         public string cognome { get; set; }
         public int nprenotazioni { get; set; }
+
+        public void parseCommesso(commesso rigadb)
+        {
+            try
+            {
+                this.codice_commesso = rigadb.codice_commesso;
+                this.nome = rigadb.nome;
+                this.cognome = rigadb.cognome;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("metodo parseCommesso: " + ex.Message);
+            }
+        }
     }
+
+    
 }

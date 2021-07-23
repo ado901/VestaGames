@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/server" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/server" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:7793/Design_Time_Addresses/server/Service1/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/server/admin/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="Utente">
     <xs:sequence>
       <xs:element minOccurs="0" name="cognome" nillable="true" type="xs:string" />
@@ -14,7 +14,7 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Utente" nillable="true" type="tns:Utente" />
-  <xs:simpleType name="Service1.Esito">
+  <xs:simpleType name="admin.Esito">
     <xs:restriction base="xs:string">
       <xs:enumeration value="OK">
         <xs:annotation>
@@ -32,5 +32,11 @@
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
-  <xs:element name="Service1.Esito" nillable="true" type="tns:Service1.Esito" />
+  <xs:element name="admin.Esito" nillable="true" type="tns:admin.Esito" />
+  <xs:complexType name="ArrayOfUtente">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Utente" nillable="true" type="tns:Utente" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUtente" nillable="true" type="tns:ArrayOfUtente" />
 </xs:schema>

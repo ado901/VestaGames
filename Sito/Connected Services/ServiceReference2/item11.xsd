@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/System" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/System" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/server/admin/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/server" />
+  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/server/admin/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/server/admin/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/server.Classi" />
+  <xs:complexType name="ValueTupleOfadmin.EsitoArrayOfUtentestringfzOYcB0X">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ValueTupleOf{0}{1}{2}{#}" Namespace="http://schemas.datacontract.org/2004/07/System" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="admin.Esito" Namespace="http://schemas.datacontract.org/2004/07/server" />
+          <GenericParameter Name="ArrayOfUtente" Namespace="http://schemas.datacontract.org/2004/07/server" />
+          <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/server" name="Item1" type="q1:admin.Esito" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/server" name="Item2" nillable="true" type="q2:ArrayOfUtente" />
+      <xs:element name="Item3" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ValueTupleOfadmin.EsitoArrayOfUtentestringfzOYcB0X" nillable="true" type="tns:ValueTupleOfadmin.EsitoArrayOfUtentestringfzOYcB0X" />
+  <xs:complexType name="ValueTupleOfadmin.EsitoArrayOfCommessostringfIxKPqZh">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ValueTupleOf{0}{1}{2}{#}" Namespace="http://schemas.datacontract.org/2004/07/System" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="admin.Esito" Namespace="http://schemas.datacontract.org/2004/07/server" />
+          <GenericParameter Name="ArrayOfCommesso" Namespace="http://schemas.datacontract.org/2004/07/server.Classi" />
+          <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/server" name="Item1" type="q3:admin.Esito" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/server.Classi" name="Item2" nillable="true" type="q4:ArrayOfCommesso" />
+      <xs:element name="Item3" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ValueTupleOfadmin.EsitoArrayOfCommessostringfIxKPqZh" nillable="true" type="tns:ValueTupleOfadmin.EsitoArrayOfCommessostringfIxKPqZh" />
+  <xs:complexType name="ValueTupleOfadmin.EsitoArrayOfProdottostringfIxKPqZh">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ValueTupleOf{0}{1}{2}{#}" Namespace="http://schemas.datacontract.org/2004/07/System" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="admin.Esito" Namespace="http://schemas.datacontract.org/2004/07/server" />
+          <GenericParameter Name="ArrayOfProdotto" Namespace="http://schemas.datacontract.org/2004/07/server.Classi" />
+          <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/server" name="Item1" type="q5:admin.Esito" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/server.Classi" name="Item2" nillable="true" type="q6:ArrayOfProdotto" />
+      <xs:element name="Item3" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ValueTupleOfadmin.EsitoArrayOfProdottostringfIxKPqZh" nillable="true" type="tns:ValueTupleOfadmin.EsitoArrayOfProdottostringfIxKPqZh" />
+  <xs:complexType name="ValueTupleOfadmin.EsitoArrayOfTransazionestringfIxKPqZh">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ValueTupleOf{0}{1}{2}{#}" Namespace="http://schemas.datacontract.org/2004/07/System" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="admin.Esito" Namespace="http://schemas.datacontract.org/2004/07/server" />
+          <GenericParameter Name="ArrayOfTransazione" Namespace="http://schemas.datacontract.org/2004/07/server.Classi" />
+          <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/server" name="Item1" type="q7:admin.Esito" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/server.Classi" name="Item2" nillable="true" type="q8:ArrayOfTransazione" />
+      <xs:element name="Item3" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ValueTupleOfadmin.EsitoArrayOfTransazionestringfIxKPqZh" nillable="true" type="tns:ValueTupleOfadmin.EsitoArrayOfTransazionestringfIxKPqZh" />
+</xs:schema>
