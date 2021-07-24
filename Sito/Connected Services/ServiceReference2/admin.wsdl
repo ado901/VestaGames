@@ -57,6 +57,12 @@
   <wsdl:message name="Iadmin_modificaProdotto_OutputMessage">
     <wsdl:part name="parameters" element="tns:modificaProdottoResponse" />
   </wsdl:message>
+  <wsdl:message name="Iadmin_modificaTransazione_InputMessage">
+    <wsdl:part name="parameters" element="tns:modificaTransazione" />
+  </wsdl:message>
+  <wsdl:message name="Iadmin_modificaTransazione_OutputMessage">
+    <wsdl:part name="parameters" element="tns:modificaTransazioneResponse" />
+  </wsdl:message>
   <wsdl:portType name="Iadmin">
     <wsdl:operation name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/Iadmin/DoWork" message="tns:Iadmin_DoWork_InputMessage" />
@@ -89,6 +95,10 @@
     <wsdl:operation name="modificaProdotto">
       <wsdl:input wsaw:Action="http://tempuri.org/Iadmin/modificaProdotto" message="tns:Iadmin_modificaProdotto_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Iadmin/modificaProdottoResponse" message="tns:Iadmin_modificaProdotto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="modificaTransazione">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iadmin/modificaTransazione" message="tns:Iadmin_modificaTransazione_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iadmin/modificaTransazioneResponse" message="tns:Iadmin_modificaTransazione_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_Iadmin" type="tns:Iadmin">
@@ -158,6 +168,15 @@
     </wsdl:operation>
     <wsdl:operation name="modificaProdotto">
       <soap:operation soapAction="http://tempuri.org/Iadmin/modificaProdotto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificaTransazione">
+      <soap:operation soapAction="http://tempuri.org/Iadmin/modificaTransazione" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

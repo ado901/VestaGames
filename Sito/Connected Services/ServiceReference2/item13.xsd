@@ -46,7 +46,6 @@
       <xs:element minOccurs="0" name="codice_transazione" type="xs:long" />
       <xs:element minOccurs="0" name="data" type="xs:dateTime" />
       <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="prenotazione" type="xs:boolean" />
       <xs:element minOccurs="0" name="prezzo" type="xs:double" />
     </xs:sequence>
   </xs:complexType>

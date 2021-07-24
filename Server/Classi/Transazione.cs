@@ -12,7 +12,6 @@ namespace server.Classi
         public long codice_transazione { get; set; }
         public long codice_prodotto { get; set; }
         public long codice_commesso { get; set; }
-        public bool prenotazione { get; set; }
         public string email { get; set; }
         public double prezzo { get; set; }
         public System.DateTime data { get; set; }
@@ -26,12 +25,12 @@ namespace server.Classi
                 this.codice_commesso = rigadb.codice_commesso;
                 this.email = rigadb.email;
                 this.prezzo = rigadb.prezzo;
-                DateTime.TryParseExact(rigadb.data.ToString(), "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dt);
-                this.data = dt;
+                
+                this.data = rigadb.data;
             }
             catch (Exception ex)
             {
-                throw new Exception("metodo parseCommesso: " + ex.Message);
+                throw new Exception("metodo parseTransazione: " + ex.Message);
             }
         }
     }

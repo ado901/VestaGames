@@ -129,4 +129,22 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ValueTupleOfadmin.EsitoProdottostringfIxKPqZh" nillable="true" type="tns:ValueTupleOfadmin.EsitoProdottostringfIxKPqZh" />
+  <xs:complexType name="ValueTupleOfadmin.EsitoTransazionestringfIxKPqZh">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ValueTupleOf{0}{1}{2}{#}" Namespace="http://schemas.datacontract.org/2004/07/System" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="admin.Esito" Namespace="http://schemas.datacontract.org/2004/07/server" />
+          <GenericParameter Name="Transazione" Namespace="http://schemas.datacontract.org/2004/07/server.Classi" />
+          <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/server" name="Item1" type="q15:admin.Esito" />
+      <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/server.Classi" name="Item2" nillable="true" type="q16:Transazione" />
+      <xs:element name="Item3" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ValueTupleOfadmin.EsitoTransazionestringfIxKPqZh" nillable="true" type="tns:ValueTupleOfadmin.EsitoTransazionestringfIxKPqZh" />
 </xs:schema>

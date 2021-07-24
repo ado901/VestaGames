@@ -111,4 +111,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="modificaTransazione">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/server.Classi" minOccurs="0" name="trn" nillable="true" type="q15:Transazione" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="modificaTransazioneResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="modificaTransazioneResult" type="q16:ValueTupleOfadmin.EsitoTransazionestringfIxKPqZh" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

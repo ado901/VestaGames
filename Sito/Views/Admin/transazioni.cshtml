@@ -1,0 +1,71 @@
+﻿@model List<Sito.ServiceReference2.Transazione>
+
+@{
+    ViewBag.Title = "Transazioni";
+}
+
+<h2>Prodotti</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Codice Transazione: ")
+        </th>
+        <th>
+            @Html.DisplayName("Codice Prodotto: ")
+        </th>
+        <th>
+            @Html.DisplayName("Codice Commesso: ")
+        </th>
+        <th>
+            @Html.DisplayName("Email: ")
+        </th>
+        <th>
+            @Html.DisplayName("Prezzo: ")
+        </th>
+        <th>
+            @Html.DisplayName("Data: ")
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.codice_transazione)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.codice_prodotto)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.codice_commesso)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.prezzo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.data)
+    </td>
+    <td>
+        @using (Html.BeginForm())
+        {
+            <button name="button" value=@item.codice_transazione formmethod="post" formaction=@Url.Action("EditTransazione")>Modifica</button>
+        }
+    </td>
+
+</tr>
+
+    }
+
+
+
+</table>
+
+<div>
+    @Html.ValidationMessage("Errore")
+</div>

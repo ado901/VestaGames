@@ -26,7 +26,7 @@ namespace Sito.Models.Admin
 
         [DataType(DataType.Date), Required]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]
-        public DateTime Nascita { get; set; } = default(DateTime);
+        public DateTime Nascita { get; set; } 
         [Required]
         public string Password { get; set; }
         [Required]

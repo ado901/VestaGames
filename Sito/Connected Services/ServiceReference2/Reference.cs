@@ -440,9 +440,6 @@ namespace Sito.ServiceReference2 {
         private string emailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool prenotazioneField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private double prezzoField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -521,19 +518,6 @@ namespace Sito.ServiceReference2 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool prenotazione {
-            get {
-                return this.prenotazioneField;
-            }
-            set {
-                if ((this.prenotazioneField.Equals(value) != true)) {
-                    this.prenotazioneField = value;
-                    this.RaisePropertyChanged("prenotazione");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public double prezzo {
             get {
                 return this.prezzoField;
@@ -607,6 +591,12 @@ namespace Sito.ServiceReference2 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iadmin/modificaProdotto", ReplyAction="http://tempuri.org/Iadmin/modificaProdottoResponse")]
         System.Threading.Tasks.Task<System.ValueTuple<Sito.ServiceReference2.adminEsito, Sito.ServiceReference2.Prodotto, string>> modificaProdottoAsync(Sito.ServiceReference2.Prodotto prd);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iadmin/modificaTransazione", ReplyAction="http://tempuri.org/Iadmin/modificaTransazioneResponse")]
+        System.ValueTuple<Sito.ServiceReference2.adminEsito, Sito.ServiceReference2.Transazione, string> modificaTransazione(Sito.ServiceReference2.Transazione trn);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iadmin/modificaTransazione", ReplyAction="http://tempuri.org/Iadmin/modificaTransazioneResponse")]
+        System.Threading.Tasks.Task<System.ValueTuple<Sito.ServiceReference2.adminEsito, Sito.ServiceReference2.Transazione, string>> modificaTransazioneAsync(Sito.ServiceReference2.Transazione trn);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -698,6 +688,14 @@ namespace Sito.ServiceReference2 {
         
         public System.Threading.Tasks.Task<System.ValueTuple<Sito.ServiceReference2.adminEsito, Sito.ServiceReference2.Prodotto, string>> modificaProdottoAsync(Sito.ServiceReference2.Prodotto prd) {
             return base.Channel.modificaProdottoAsync(prd);
+        }
+        
+        public System.ValueTuple<Sito.ServiceReference2.adminEsito, Sito.ServiceReference2.Transazione, string> modificaTransazione(Sito.ServiceReference2.Transazione trn) {
+            return base.Channel.modificaTransazione(trn);
+        }
+        
+        public System.Threading.Tasks.Task<System.ValueTuple<Sito.ServiceReference2.adminEsito, Sito.ServiceReference2.Transazione, string>> modificaTransazioneAsync(Sito.ServiceReference2.Transazione trn) {
+            return base.Channel.modificaTransazioneAsync(trn);
         }
     }
 }

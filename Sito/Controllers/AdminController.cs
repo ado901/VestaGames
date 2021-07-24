@@ -60,8 +60,8 @@ namespace Sito.Controllers
             }
             catch(Exception ex)
             {
-                ModelState.AddModelError("Errore", "Qualcosa è andato storto nella modifica dell'utente");
-                return View("Index");
+                ModelState.AddModelError("Errore", ex.Message);
+                return View("utenti");
             }
             
             
@@ -89,7 +89,7 @@ namespace Sito.Controllers
             {
                 
                 ModelState.AddModelError("Errore", ex.Message);
-                return View("Index");
+                return View("home");
             }
             
             
@@ -110,7 +110,7 @@ namespace Sito.Controllers
             catch(Exception ex)
             {
                 ModelState.AddModelError("Errore", ex.Message);
-                return View();
+                return View("home");
             }
             
         }
@@ -169,7 +169,7 @@ namespace Sito.Controllers
             {
 
                 ModelState.AddModelError("Errore", ex.Message);
-                return View("Index");
+                return View("home");
             }
 
 
@@ -191,7 +191,7 @@ namespace Sito.Controllers
             catch (Exception ex)
             {
                 ModelState.AddModelError("Errore", ex.Message);
-                return View("Index");
+                return View("home");
             }
 
         }
@@ -226,8 +226,87 @@ namespace Sito.Controllers
 
         }
 
+        public ActionResult Listatransazioni()
+        {
+            var model = new List<Transazione>();
+            try
+            {
+                ServiceReference2.Utente ut = new ServiceReference2.Utente();
+                ut.email = admin.email;
+                var listatransazioni = wcf.listaTransazioni(ut);
+                if (listatransazioni.Item1 == adminEsito.KO)
+                {
+                    throw new HttpException(listatransazioni.Item3);
+                }
+                Session["listatransazioni"] = listatransazioni.Item2;
 
-        public ActionResult Index()
+                foreach (var item in listatransazioni.Item2)
+                {
+                    model.Add(item);
+                }
+
+                return View("transazioni", model);
+            }
+            catch (Exception ex)
+            {
+
+                ModelState.AddModelError("Errore", ex.Message);
+                return View("home");
+            }
+
+
+        }
+
+        public ActionResult EditTransazione(string button)
+        {
+            try
+            {
+                Session["modifica"] = button;
+                Transazione[] listatransazioni = (Transazione[])Session["listatransazioni"];
+
+                var model = new TransazioniAdmin();
+                model.transazione = listatransazioni.Where(transazione => transazione.codice_transazione.ToString() == button).First();
+                model.parse();
+                Session["tmp"] = model.transazione;
+                return View("transazioniEdit", model);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Errore", ex.Message);
+                return View("home");
+            }
+
+        }
+
+        [HttpPost]
+        public ActionResult EditTransazione1(TransazioniAdmin model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    model.transazione = (Transazione)Session["tmp"];
+                    Session["tmp"] = null;
+                    model.update();
+                    var result = wcf.modificaTransazione(model.transazione);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View("transazioniEdit");
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Errore", ex.Message);
+                return View("transazioniEdit");
+            }
+        }
+
+
+            public ActionResult Index()
         {
             admin = (ServiceReference1.Utente)Session["utenteAttivo"];
             return View("home");

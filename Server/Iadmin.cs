@@ -29,5 +29,7 @@ namespace server
         (Esito, Commesso, string) modificaCommesso(Commesso comm);
         [OperationContract]
         (Esito, Prodotto, string) modificaProdotto(Prodotto prd);
+        [OperationContract]
+        (Esito, Transazione, string) modificaTransazione(Transazione trn);
     }
 }

@@ -190,5 +190,22 @@ namespace server
             }
 
         }
+
+        public (Esito, Transazione, string) modificaTransazione(Transazione trn)
+        {
+            try
+            {
+                transazioni transazionedb = db.transazioni.Where(transazione => transazione.codice_transazione == trn.codice_transazione).First();
+                transazionedb.parse(trn);
+                db.SaveChanges();
+                Console.WriteLine("modificaTransazione: Esito OK Stringa esito: " + OK);
+                return (Esito.OK, trn, OK);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Eccezione: " + "modificaTransazione: " + ex.Message);
+                return (Esito.KO, trn, ex.Message);
+            }
+        }
     }
 }
