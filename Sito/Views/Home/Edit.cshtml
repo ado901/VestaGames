@@ -54,7 +54,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Nascita, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Nascita, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.Nascita, new { htmlAttributes = new { @class = "form-control", default_value = Model.Nascita.ToString("dd/MM/yyyy") } })
                 </div>
             </div>
             break;

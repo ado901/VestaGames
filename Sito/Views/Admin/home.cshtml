@@ -9,11 +9,11 @@
 </body>
 @using (Html.BeginForm())
 {
-    <p><button name="button" value="nome" formmethod="post" formaction=@Url.Action("Edit1")>Gestire il Personale</button></p>
+    <p><button name="button" value="nome" formmethod="post" formaction=@Url.Action("Listacommessi")>Gestire il Personale</button></p>
 }
 @using (Html.BeginForm())
 {
-    <p><button name="button" value="nome" formmethod="post" formaction=@Url.Action("Edit1")>Gestire il Catalogo</button></p>
+    <p><button name="button" value="nome" formmethod="post" formaction=@Url.Action("Listaprodotti")>Gestire il Catalogo</button></p>
 }
 @using (Html.BeginForm())
 {
@@ -23,9 +23,12 @@
 {
     <p><button name="button" value="nome" formmethod="post" formaction=@Url.Action("Listautenti")>Gestire gli utenti</button></p>
 }
+
+<div>
+    @Html.ValidationMessage("Errore", new { @class = "text-danger" })
+</div>
 <form action="../index.php" method="post">
     <input type="submit" class="btn btn-default" name="logout" value="Logout">
-    </div>
 
 </form>
 

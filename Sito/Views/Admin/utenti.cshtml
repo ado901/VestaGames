@@ -32,27 +32,34 @@
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.email)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.cognome)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.nome)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.nascita)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.indirizzo)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.portafoglio)
-    </td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cognome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nascita)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.indirizzo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.portafoglio)
+            </td>
+            <td>
+                @using (Html.BeginForm())
+                {
+                <button name="button" value=@item.email formmethod="post" formaction=@Url.Action("EditUtente")>Modifica</button>
+                }
+            </td>
 
-</tr>
+        </tr>
+        
     }
 
 </table>

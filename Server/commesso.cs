@@ -9,6 +9,7 @@
 
 namespace server
 {
+    using server.Classi;
     using System;
     using System.Collections.Generic;
     
@@ -26,5 +27,21 @@ namespace server
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<transazioni> transazioni { get; set; }
+
+        public void parseCommesso(Commesso login)
+        {
+            try
+            {
+                this.codice_commesso = login.codice_commesso;
+                this.nome = login.nome;
+                this.cognome = login.cognome;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("metodo parseCommesso: " + ex.Message);
+            }
+
+
+        }
     }
 }

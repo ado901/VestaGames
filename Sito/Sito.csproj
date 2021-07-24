@@ -137,6 +137,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Admin\aUtenteModificato.cs" />
+    <Compile Include="Models\Admin\CommessiAdmin.cs" />
+    <Compile Include="Models\Admin\ProdottiAdmin.cs" />
     <Compile Include="Models\utenteLoggato.cs" />
     <Compile Include="Models\UtenteModificato.cs" />
     <Compile Include="Models\UtenteRegistrato.cs" />
@@ -254,6 +257,11 @@
     <Content Include="Views\Home\Edit.cshtml" />
     <Content Include="Views\Admin\home.cshtml" />
     <Content Include="Views\Admin\utenti.cshtml" />
+    <Content Include="Views\Admin\UtentiEdit.cshtml" />
+    <Content Include="Views\Admin\commessi.cshtml" />
+    <Content Include="Views\Admin\commessiEdit.cshtml" />
+    <Content Include="Views\Admin\prodotti.cshtml" />
+    <Content Include="Views\Admin\prodottiEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

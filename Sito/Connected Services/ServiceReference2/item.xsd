@@ -2,6 +2,7 @@
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/server/admin/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/server" />
   <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/server/admin/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System" />
+  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/server/admin/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/server.Classi" />
   <xs:element name="DoWork">
     <xs:complexType>
       <xs:sequence />
@@ -65,6 +66,48 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="listaTransazioniResult" type="q8:ValueTupleOfadmin.EsitoArrayOfTransazionestringfIxKPqZh" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="modificaUtente">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/server" minOccurs="0" name="ut" nillable="true" type="q9:Utente" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="modificaUtenteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="modificaUtenteResult" type="q10:ValueTupleOfadmin.EsitoUtentestringfzOYcB0X" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="modificaCommesso">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/server.Classi" minOccurs="0" name="comm" nillable="true" type="q11:Commesso" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="modificaCommessoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="modificaCommessoResult" type="q12:ValueTupleOfadmin.EsitoCommessostringfIxKPqZh" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="modificaProdotto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/server.Classi" minOccurs="0" name="prd" nillable="true" type="q13:Prodotto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="modificaProdottoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="modificaProdottoResult" type="q14:ValueTupleOfadmin.EsitoProdottostringfIxKPqZh" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -50,6 +50,7 @@ namespace server
             
         }
 
+
         public (Esito, Utente, string) modificaUtente(Utente ut)
         {
             try
@@ -57,10 +58,12 @@ namespace server
                 utenti utentedb = db.utenti.Where(utente => utente.id == ut.id).First();
                 utentedb.parseUtente(ut);
                 db.SaveChanges();
+                Console.WriteLine("modificaUtente: Esito OK Stringa esito: " + OK);
                 return (Esito.OK, ut, OK);
             }
             catch (Exception ex)
             {
+                Console.WriteLine("Eccezione: " + "modificaUtenti: " + ex.Message);
                 return (Esito.KO, ut, ex.Message);
             }
         }
@@ -94,6 +97,23 @@ namespace server
 
         }
 
+        public (Esito, Commesso, string) modificaCommesso(Commesso comm)
+        {
+            try
+            {
+                commesso commessodb = db.commesso.Where(commesso => commesso.codice_commesso == comm.codice_commesso).First();
+                commessodb.parseCommesso(comm);
+                db.SaveChanges();
+                Console.WriteLine("modificaCommesso: Esito OK Stringa esito: " + OK);
+                return (Esito.OK, comm, OK);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Eccezione: " + "modificaCommesso: " + ex.Message);
+                return (Esito.KO, comm, ex.Message);
+            }
+        }
+
         public (Esito, List<Prodotto>, string) listaProdotti(Utente ut)
         {
             List<Prodotto> prodotti = new List<Prodotto>();
@@ -123,6 +143,23 @@ namespace server
                 return (Esito.KO, prodotti, ex.Message);
             }
 
+        }
+
+        public (Esito, Prodotto, string) modificaProdotto(Prodotto prd)
+        {
+            try
+            {
+                prodotto prodottodb = db.prodotto.Where(prodotto => prodotto.codice_prodotto == prd.codice_prodotto).First();
+                prodottodb.parse(prd);
+                db.SaveChanges();
+                Console.WriteLine("modificaProdotto: Esito OK Stringa esito: " + OK);
+                return (Esito.OK, prd, OK);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Eccezione: " + "modificaProdotto: " + ex.Message);
+                return (Esito.KO, prd, ex.Message);
+            }
         }
 
         public (Esito, List<Transazione>, string) listaTransazioni(Utente ut)

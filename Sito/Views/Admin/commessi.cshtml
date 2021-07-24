@@ -1,0 +1,53 @@
+﻿@model List<Sito.ServiceReference2.Commesso>
+
+@{
+    ViewBag.Title = "Commessi";
+}
+
+<h2>Prodotti</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Codice Commesso: ")
+        </th>
+        <th>
+            @Html.DisplayName("Nome: ")
+        </th>
+        <th>
+            @Html.DisplayName("Cognome: ")
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.codice_commesso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cognome)
+            </td>
+            <td>
+                @using (Html.BeginForm())
+                {
+                    <button name="button" value=@item.codice_commesso formmethod="post" formaction=@Url.Action("EditCommesso")>Modifica</button>
+                }
+            </td>
+
+        </tr>
+
+    }
+
+
+
+</table>
+
+<div>
+    @Html.ValidationMessage("Errore")
+</div>

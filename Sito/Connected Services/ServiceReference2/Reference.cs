@@ -199,9 +199,6 @@ namespace Sito.ServiceReference2 {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string nomeField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int nprenotazioniField;
-        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -247,19 +244,6 @@ namespace Sito.ServiceReference2 {
                 if ((object.ReferenceEquals(this.nomeField, value) != true)) {
                     this.nomeField = value;
                     this.RaisePropertyChanged("nome");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int nprenotazioni {
-            get {
-                return this.nprenotazioniField;
-            }
-            set {
-                if ((this.nprenotazioniField.Equals(value) != true)) {
-                    this.nprenotazioniField = value;
-                    this.RaisePropertyChanged("nprenotazioni");
                 }
             }
         }
@@ -605,6 +589,24 @@ namespace Sito.ServiceReference2 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iadmin/listaTransazioni", ReplyAction="http://tempuri.org/Iadmin/listaTransazioniResponse")]
         System.Threading.Tasks.Task<System.ValueTuple<Sito.ServiceReference2.adminEsito, Sito.ServiceReference2.Transazione[], string>> listaTransazioniAsync(Sito.ServiceReference2.Utente ut);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iadmin/modificaUtente", ReplyAction="http://tempuri.org/Iadmin/modificaUtenteResponse")]
+        System.ValueTuple<Sito.ServiceReference2.adminEsito, Sito.ServiceReference2.Utente, string> modificaUtente(Sito.ServiceReference2.Utente ut);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iadmin/modificaUtente", ReplyAction="http://tempuri.org/Iadmin/modificaUtenteResponse")]
+        System.Threading.Tasks.Task<System.ValueTuple<Sito.ServiceReference2.adminEsito, Sito.ServiceReference2.Utente, string>> modificaUtenteAsync(Sito.ServiceReference2.Utente ut);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iadmin/modificaCommesso", ReplyAction="http://tempuri.org/Iadmin/modificaCommessoResponse")]
+        System.ValueTuple<Sito.ServiceReference2.adminEsito, Sito.ServiceReference2.Commesso, string> modificaCommesso(Sito.ServiceReference2.Commesso comm);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iadmin/modificaCommesso", ReplyAction="http://tempuri.org/Iadmin/modificaCommessoResponse")]
+        System.Threading.Tasks.Task<System.ValueTuple<Sito.ServiceReference2.adminEsito, Sito.ServiceReference2.Commesso, string>> modificaCommessoAsync(Sito.ServiceReference2.Commesso comm);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iadmin/modificaProdotto", ReplyAction="http://tempuri.org/Iadmin/modificaProdottoResponse")]
+        System.ValueTuple<Sito.ServiceReference2.adminEsito, Sito.ServiceReference2.Prodotto, string> modificaProdotto(Sito.ServiceReference2.Prodotto prd);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iadmin/modificaProdotto", ReplyAction="http://tempuri.org/Iadmin/modificaProdottoResponse")]
+        System.Threading.Tasks.Task<System.ValueTuple<Sito.ServiceReference2.adminEsito, Sito.ServiceReference2.Prodotto, string>> modificaProdottoAsync(Sito.ServiceReference2.Prodotto prd);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -672,6 +674,30 @@ namespace Sito.ServiceReference2 {
         
         public System.Threading.Tasks.Task<System.ValueTuple<Sito.ServiceReference2.adminEsito, Sito.ServiceReference2.Transazione[], string>> listaTransazioniAsync(Sito.ServiceReference2.Utente ut) {
             return base.Channel.listaTransazioniAsync(ut);
+        }
+        
+        public System.ValueTuple<Sito.ServiceReference2.adminEsito, Sito.ServiceReference2.Utente, string> modificaUtente(Sito.ServiceReference2.Utente ut) {
+            return base.Channel.modificaUtente(ut);
+        }
+        
+        public System.Threading.Tasks.Task<System.ValueTuple<Sito.ServiceReference2.adminEsito, Sito.ServiceReference2.Utente, string>> modificaUtenteAsync(Sito.ServiceReference2.Utente ut) {
+            return base.Channel.modificaUtenteAsync(ut);
+        }
+        
+        public System.ValueTuple<Sito.ServiceReference2.adminEsito, Sito.ServiceReference2.Commesso, string> modificaCommesso(Sito.ServiceReference2.Commesso comm) {
+            return base.Channel.modificaCommesso(comm);
+        }
+        
+        public System.Threading.Tasks.Task<System.ValueTuple<Sito.ServiceReference2.adminEsito, Sito.ServiceReference2.Commesso, string>> modificaCommessoAsync(Sito.ServiceReference2.Commesso comm) {
+            return base.Channel.modificaCommessoAsync(comm);
+        }
+        
+        public System.ValueTuple<Sito.ServiceReference2.adminEsito, Sito.ServiceReference2.Prodotto, string> modificaProdotto(Sito.ServiceReference2.Prodotto prd) {
+            return base.Channel.modificaProdotto(prd);
+        }
+        
+        public System.Threading.Tasks.Task<System.ValueTuple<Sito.ServiceReference2.adminEsito, Sito.ServiceReference2.Prodotto, string>> modificaProdottoAsync(Sito.ServiceReference2.Prodotto prd) {
+            return base.Channel.modificaProdottoAsync(prd);
         }
     }
 }

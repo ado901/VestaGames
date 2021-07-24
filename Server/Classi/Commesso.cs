@@ -11,7 +11,6 @@ namespace server.Classi
         public long codice_commesso { get; set; }
         public string nome { get; set; }
         public string cognome { get; set; }
-        public int nprenotazioni { get; set; }
 
         public void parseCommesso(commesso rigadb)
         {

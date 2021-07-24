@@ -50,16 +50,28 @@ namespace Sito.Controllers
         [HttpPost]
         public ActionResult Registrazione(utenteRegistrato utente)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var result= wcf.Registrazione(utente.ut);
-                if (result.Item1== Service1Esito.OK)
+                if (ModelState.IsValid)
                 {
-                    Session["utenteAttivo"] = utente.ut;
-                    return RedirectToAction("Index");
+                    var result = wcf.Registrazione(utente.ut);
+                    if (result.Item1 == Service1Esito.OK)
+                    {
+                        Session["utenteAttivo"] = utente.ut;
+                        return RedirectToAction("Index");
+                    }
+
                 }
-                
+                else
+                {
+                    throw new HttpException("Qualcosa è andato storto nella registrazione");
+                }
             }
+            catch(Exception ex)
+            {
+                ModelState.AddModelError("LogOnError", ex.Message);
+            }
+            
             return View();
         }
 
@@ -77,18 +89,30 @@ namespace Sito.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = wcf.Login(utente.ut);
-                if (result.Item1 == Service1Esito.OK)
+                try
                 {
-                    
-                    Session["utenteAttivo"] = result.Item2;
-
-                    if (result.Item2.email == "admin@admin.admin")
+                    var result = wcf.Login(utente.ut);
+                    if (result.Item1 == Service1Esito.OK)
                     {
-                        return RedirectToAction("Index", "Admin");
+
+                        Session["utenteAttivo"] = result.Item2;
+
+                        if (result.Item2.email == "admin@admin.admin")
+                        {
+                            return RedirectToAction("Index", "Admin");
+                        }
+                        return RedirectToAction("Index");
                     }
-                    return RedirectToAction("Index");
+                    else
+                    {
+                        throw new HttpException("password or email incorrect");
+                    }
                 }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("LogOnError", ex.Message);
+                }
+                
 
                 
             }

@@ -23,5 +23,11 @@ namespace server
         (Esito, List<Prodotto>, string) listaProdotti(Utente ut);
         [OperationContract]
         (Esito, List<Transazione>, string) listaTransazioni(Utente ut);
+        [OperationContract]
+        (Esito, Utente, string) modificaUtente(Utente ut);
+        [OperationContract]
+        (Esito, Commesso, string) modificaCommesso(Commesso comm);
+        [OperationContract]
+        (Esito, Prodotto, string) modificaProdotto(Prodotto prd);
     }
 }

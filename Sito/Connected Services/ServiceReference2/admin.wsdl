@@ -39,6 +39,24 @@
   <wsdl:message name="Iadmin_listaTransazioni_OutputMessage">
     <wsdl:part name="parameters" element="tns:listaTransazioniResponse" />
   </wsdl:message>
+  <wsdl:message name="Iadmin_modificaUtente_InputMessage">
+    <wsdl:part name="parameters" element="tns:modificaUtente" />
+  </wsdl:message>
+  <wsdl:message name="Iadmin_modificaUtente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:modificaUtenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="Iadmin_modificaCommesso_InputMessage">
+    <wsdl:part name="parameters" element="tns:modificaCommesso" />
+  </wsdl:message>
+  <wsdl:message name="Iadmin_modificaCommesso_OutputMessage">
+    <wsdl:part name="parameters" element="tns:modificaCommessoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Iadmin_modificaProdotto_InputMessage">
+    <wsdl:part name="parameters" element="tns:modificaProdotto" />
+  </wsdl:message>
+  <wsdl:message name="Iadmin_modificaProdotto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:modificaProdottoResponse" />
+  </wsdl:message>
   <wsdl:portType name="Iadmin">
     <wsdl:operation name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/Iadmin/DoWork" message="tns:Iadmin_DoWork_InputMessage" />
@@ -59,6 +77,18 @@
     <wsdl:operation name="listaTransazioni">
       <wsdl:input wsaw:Action="http://tempuri.org/Iadmin/listaTransazioni" message="tns:Iadmin_listaTransazioni_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Iadmin/listaTransazioniResponse" message="tns:Iadmin_listaTransazioni_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="modificaUtente">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iadmin/modificaUtente" message="tns:Iadmin_modificaUtente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iadmin/modificaUtenteResponse" message="tns:Iadmin_modificaUtente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="modificaCommesso">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iadmin/modificaCommesso" message="tns:Iadmin_modificaCommesso_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iadmin/modificaCommessoResponse" message="tns:Iadmin_modificaCommesso_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="modificaProdotto">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iadmin/modificaProdotto" message="tns:Iadmin_modificaProdotto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iadmin/modificaProdottoResponse" message="tns:Iadmin_modificaProdotto_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_Iadmin" type="tns:Iadmin">
@@ -101,6 +131,33 @@
     </wsdl:operation>
     <wsdl:operation name="listaTransazioni">
       <soap:operation soapAction="http://tempuri.org/Iadmin/listaTransazioni" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificaUtente">
+      <soap:operation soapAction="http://tempuri.org/Iadmin/modificaUtente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificaCommesso">
+      <soap:operation soapAction="http://tempuri.org/Iadmin/modificaCommesso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificaProdotto">
+      <soap:operation soapAction="http://tempuri.org/Iadmin/modificaProdotto" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
