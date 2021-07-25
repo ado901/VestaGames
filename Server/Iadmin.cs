@@ -26,10 +26,27 @@ namespace server
         [OperationContract]
         (Esito, Utente, string) modificaUtente(Utente ut);
         [OperationContract]
+        (Esito, string) eliminaUtente(Utente ut);
+        [OperationContract]
+        (Esito, Utente, string) aggiungiUtente(Utente ut);
+        [OperationContract]
         (Esito, Commesso, string) modificaCommesso(Commesso comm);
+        [OperationContract]
+        (Esito, string) eliminaCommesso(Commesso comm);
+        [OperationContract]
+        (Esito, Commesso, string) aggiungiCommesso(Commesso comm);
         [OperationContract]
         (Esito, Prodotto, string) modificaProdotto(Prodotto prd);
         [OperationContract]
+        (Esito, string) eliminaProdotto(Prodotto prd);
+        [OperationContract]
+        (Esito, Prodotto, string) aggiungiProdotto(Prodotto prd);
+        [OperationContract]
         (Esito, Transazione, string) modificaTransazione(Transazione trn);
+        [OperationContract]
+        (Esito, string) eliminaTransazione(Transazione trn);
+        [OperationContract]
+        (Esito, Transazione, string) aggiungiTransazione(Transazione trn);
+
     }
 }

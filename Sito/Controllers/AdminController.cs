@@ -51,6 +51,10 @@ namespace Sito.Controllers
                     Session["tmp"] = null;
                     model.update();
                     var result = wcf.modificaUtente(model.ut);
+                    if (result.Item1 == adminEsito.KO)
+                    {
+                        throw new HttpException(result.Item3);
+                    }
                     return RedirectToAction("Index");
                 }
                 else
@@ -65,6 +69,75 @@ namespace Sito.Controllers
             }
             
             
+
+        }
+
+        public ActionResult EliminaUtente(string button)
+        {
+            try
+            {
+                Session["modifica"] = button;
+                Utente[] listautenti = (Utente[])Session["listautenti"];
+
+                var model = new aUtenteModificato();
+                model.ut = listautenti.Where(utente => utente.email == button).First();
+                var result = wcf.eliminaUtente(model.ut);
+                if (result.Item1 == adminEsito.KO)
+                {
+                    throw new HttpException(result.Item2);
+                }
+                return RedirectToAction("Listautenti");
+            }
+            catch(Exception ex)
+            {
+                ModelState.AddModelError("Errore", ex.Message);
+                return View("home");
+                
+            }
+            
+        }
+
+        
+
+       public ActionResult AggiungiUtente()
+        {
+            
+            
+
+            var model = new aUtenteModificato();
+           
+            return View("Utentinew", model);
+        }
+
+        [HttpPost]
+        public ActionResult AggiungiUtente1(aUtenteModificato model)
+        {
+            try
+            {
+
+                if (ModelState.IsValid)
+                {
+                    
+                    model.update();
+                    var result = wcf.aggiungiUtente(model.ut);
+                    if (result.Item1== adminEsito.KO)
+                    {
+                        throw new HttpException(result.Item3);
+                    }
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View("Utentinew");
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Errore", ex.Message);
+                return View("Utentinew");
+            }
+
+
 
         }
 
@@ -126,6 +199,10 @@ namespace Sito.Controllers
                     Session["tmp"] = null;
                     model.update();
                     var result = wcf.modificaCommesso(model.commesso);
+                    if (result.Item1 == adminEsito.KO)
+                    {
+                        throw new HttpException(result.Item3);
+                    }
                     return RedirectToAction("Index");
                 }
                 else
@@ -142,6 +219,74 @@ namespace Sito.Controllers
             }
             
             
+
+        }
+
+        public ActionResult EliminaCommesso(string button)
+        {
+            try
+            {
+                Session["modifica"] = button;
+                Commesso[] listacommessi = (Commesso[])Session["listacommessi"];
+
+                var model = new CommessiAdmin();
+                model.commesso = listacommessi.Where(commesso => commesso.codice_commesso.ToString() == button).First();
+                var result = wcf.eliminaCommesso(model.commesso);
+                if (result.Item1 == adminEsito.KO)
+                {
+                    throw new HttpException(result.Item2);
+                }
+                return RedirectToAction("Listacommessi");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Errore", ex.Message);
+                return View("home");
+
+            }
+
+        }
+
+        public ActionResult AggiungiCommesso()
+        {
+            
+            
+
+            var model = new CommessiAdmin();
+           
+            
+            return View("Commessinew", model);
+        }
+
+        [HttpPost]
+        public ActionResult AggiungiCommesso1(CommessiAdmin model)
+        {
+            try
+            {
+
+                if (ModelState.IsValid)
+                {
+                    
+                    model.update();
+                    var result = wcf.aggiungiCommesso(model.commesso);
+                    if (result.Item1 == adminEsito.KO)
+                    {
+                        throw new HttpException(result.Item3);
+                    }
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View("Commessinew");
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Errore", ex.Message);
+                return View("Commessinew");
+            }
+
+
 
         }
 
@@ -207,6 +352,10 @@ namespace Sito.Controllers
                     Session["tmp"] = null;
                     model.update();
                     var result = wcf.modificaProdotto(model.prd);
+                    if (result.Item1 == adminEsito.KO)
+                    {
+                        throw new HttpException(result.Item3);
+                    }
                     return RedirectToAction("Index");
                 }
                 else
@@ -220,6 +369,73 @@ namespace Sito.Controllers
             {
                 ModelState.AddModelError("Errore", ex.Message);
                 return View("prodottiEdit");
+            }
+
+
+
+        }
+        public ActionResult EliminaProdotto(string button)
+        {
+            try
+            {
+                Session["modifica"] = button;
+                Prodotto[] listaprodotti = (Prodotto[])Session["listaprodotti"];
+
+                var model = new ProdottiAdmin();
+                model.prd = listaprodotti.Where(prodotto => prodotto.codice_prodotto.ToString() == button).First();
+                var result = wcf.eliminaProdotto(model.prd);
+                if (result.Item1 == adminEsito.KO)
+                {
+                    throw new HttpException(result.Item2);
+                }
+                return RedirectToAction("Listaprodotti");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Errore", ex.Message);
+                return View("home");
+
+            }
+
+        }
+
+        public ActionResult AggiungiProdotto()
+        {
+            
+            
+
+            var model = new ProdottiAdmin();
+            
+            
+            return View("Prodottinew", model);
+        }
+
+        [HttpPost]
+        public ActionResult AggiungiProdotto1(ProdottiAdmin model)
+        {
+            try
+            {
+
+                if (ModelState.IsValid)
+                {
+                   
+                    model.update();
+                    var result = wcf.aggiungiProdotto(model.prd);
+                    if (result.Item1 == adminEsito.KO)
+                    {
+                        throw new HttpException(result.Item3);
+                    }
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View("Prodottinew");
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Errore", ex.Message);
+                return View("Prodottinew");
             }
 
 
@@ -305,8 +521,73 @@ namespace Sito.Controllers
             }
         }
 
+        public ActionResult EliminaTransazione(string button)
+        {
+            try
+            {
+                Session["modifica"] = button;
+                Transazione[] listatransazioni = (Transazione[])Session["listatransazioni"];
 
-            public ActionResult Index()
+                var model = new TransazioniAdmin();
+                model.transazione = listatransazioni.Where(transazione => transazione.codice_transazione.ToString() == button).First();
+                var result = wcf.eliminaTransazione(model.transazione);
+                if (result.Item1 == adminEsito.KO)
+                {
+                    throw new HttpException(result.Item2);
+                }
+                return RedirectToAction("Listatransazioni");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Errore", ex.Message);
+                return View("home");
+
+            }
+
+        }
+
+        public ActionResult AggiungiTransazione()
+        {
+            
+
+            var model = new TransazioniAdmin();
+            return View("Transazioninew", model);
+        }
+
+        [HttpPost]
+        public ActionResult AggiungiTransazione1(TransazioniAdmin model)
+        {
+            try
+            {
+
+                if (ModelState.IsValid)
+                {
+                    
+                    model.update();
+                    var result = wcf.aggiungiTransazione(model.transazione);
+                    if (result.Item1 == adminEsito.KO)
+                    {
+                        throw new HttpException(result.Item3);
+                    }
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View("Transazioninew");
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Errore", ex.Message);
+                return View("Transazioninew");
+            }
+
+
+
+        }
+
+
+        public ActionResult Index()
         {
             admin = (ServiceReference1.Utente)Session["utenteAttivo"];
             return View("home");

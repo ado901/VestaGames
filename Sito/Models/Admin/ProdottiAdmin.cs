@@ -14,11 +14,18 @@ namespace Sito.Models.Admin
             this.prd = new Prodotto();
         }
         public long codice_prodotto { get; set; }
+        [Required]
         public string titolo { get; set; }
+        [Required]
         public string genere { get; set; }
+        [Required]
         public string producer { get; set; }
+        [Required]
         public int quantità { get; set; }
+        [DataType(DataType.Date), Required]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]
         public System.DateTime data_uscita { get; set; }
+        [Required]
         public double prezzo { get; set; }
         public string img { get; set; }
         public Prodotto prd { get; set; }

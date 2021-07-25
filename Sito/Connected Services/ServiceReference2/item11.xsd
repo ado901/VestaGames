@@ -93,6 +93,22 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ValueTupleOfadmin.EsitoUtentestringfzOYcB0X" nillable="true" type="tns:ValueTupleOfadmin.EsitoUtentestringfzOYcB0X" />
+  <xs:complexType name="ValueTupleOfadmin.EsitostringVN08m0cX">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ValueTupleOf{0}{1}{#}" Namespace="http://schemas.datacontract.org/2004/07/System" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="admin.Esito" Namespace="http://schemas.datacontract.org/2004/07/server" />
+          <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/server" name="Item1" type="q11:admin.Esito" />
+      <xs:element name="Item2" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ValueTupleOfadmin.EsitostringVN08m0cX" nillable="true" type="tns:ValueTupleOfadmin.EsitostringVN08m0cX" />
   <xs:complexType name="ValueTupleOfadmin.EsitoCommessostringfIxKPqZh">
     <xs:annotation>
       <xs:appinfo>
@@ -105,8 +121,8 @@
       </xs:appinfo>
     </xs:annotation>
     <xs:sequence>
-      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/server" name="Item1" type="q11:admin.Esito" />
-      <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/server.Classi" name="Item2" nillable="true" type="q12:Commesso" />
+      <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/server" name="Item1" type="q12:admin.Esito" />
+      <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/server.Classi" name="Item2" nillable="true" type="q13:Commesso" />
       <xs:element name="Item3" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -123,8 +139,8 @@
       </xs:appinfo>
     </xs:annotation>
     <xs:sequence>
-      <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/server" name="Item1" type="q13:admin.Esito" />
-      <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/server.Classi" name="Item2" nillable="true" type="q14:Prodotto" />
+      <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/server" name="Item1" type="q14:admin.Esito" />
+      <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/server.Classi" name="Item2" nillable="true" type="q15:Prodotto" />
       <xs:element name="Item3" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -141,8 +157,8 @@
       </xs:appinfo>
     </xs:annotation>
     <xs:sequence>
-      <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/server" name="Item1" type="q15:admin.Esito" />
-      <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/server.Classi" name="Item2" nillable="true" type="q16:Transazione" />
+      <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/server" name="Item1" type="q16:admin.Esito" />
+      <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/server.Classi" name="Item2" nillable="true" type="q17:Transazione" />
       <xs:element name="Item3" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>

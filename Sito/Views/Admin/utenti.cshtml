@@ -54,7 +54,9 @@
             <td>
                 @using (Html.BeginForm())
                 {
-                <button name="button" value=@item.email formmethod="post" formaction=@Url.Action("EditUtente")>Modifica</button>
+                    <button name="button" value=@item.email formmethod="post" formaction=@Url.Action("EditUtente")>Modifica</button>
+                    <button name="button" value=@item.email formmethod="post" formaction=@Url.Action("EliminaUtente")>Elimina</button>
+                    
                 }
             </td>
 
@@ -63,3 +65,7 @@
     }
 
 </table>
+@using (Html.BeginForm()) {
+    <button name="button" formmethod="post" formaction=@Url.Action("AggiungiUtente")>Aggiungi</button>
+ 
+}

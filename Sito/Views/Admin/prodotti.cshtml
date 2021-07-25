@@ -35,41 +35,43 @@
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.codice_prodotto)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.titolo)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.genere)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.producer)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.quantità)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.data_uscita)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.prezzo)
-    </td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.codice_prodotto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.titolo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.genere)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.producer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantità)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.data_uscita)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prezzo)
+            </td>
 
-    <td>
-        <img src=@item.img alt=@item.titolo/>
-    </td>
-    <td>
-        @using (Html.BeginForm())
-        {
-            <button name="button" value=@item.codice_prodotto formmethod="post" formaction=@Url.Action("EditProdotto")>Modifica</button>
-        }
-    </td>
+            <td>
+                <img src="@item.img" alt="@item.titolo" style="width: 250px; height: 375px;" />
+            </td>
+            <td>
+                @using (Html.BeginForm())
+                {
+                    <button name="button" value=@item.codice_prodotto formmethod="post" formaction=@Url.Action("EditProdotto")>Modifica</button>
+                    <button name="button" value=@item.codice_prodotto formmethod="post" formaction=@Url.Action("EliminaProdotto")>Elimina</button>
+                    
+                }
+            </td>
 
 
-</tr>
+        </tr>
 
     }
 
@@ -78,5 +80,10 @@
 </table>
 
 <div>
+    @using (Html.BeginForm())
+    {
+        <button name="button" formmethod="post" formaction=@Url.Action("AggiungiProdotto")>Aggiungi</button>
+
+    }
     @Html.ValidationMessage("Errore")
 </div>

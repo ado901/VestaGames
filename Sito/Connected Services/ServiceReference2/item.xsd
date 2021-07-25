@@ -83,45 +83,157 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="eliminaUtente">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/server" minOccurs="0" name="ut" nillable="true" type="q11:Utente" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="eliminaUtenteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="eliminaUtenteResult" type="q12:ValueTupleOfadmin.EsitostringVN08m0cX" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="aggiungiUtente">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/server" minOccurs="0" name="ut" nillable="true" type="q13:Utente" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="aggiungiUtenteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="aggiungiUtenteResult" type="q14:ValueTupleOfadmin.EsitoUtentestringfzOYcB0X" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="modificaCommesso">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/server.Classi" minOccurs="0" name="comm" nillable="true" type="q11:Commesso" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/server.Classi" minOccurs="0" name="comm" nillable="true" type="q15:Commesso" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="modificaCommessoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="modificaCommessoResult" type="q12:ValueTupleOfadmin.EsitoCommessostringfIxKPqZh" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="modificaCommessoResult" type="q16:ValueTupleOfadmin.EsitoCommessostringfIxKPqZh" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="eliminaCommesso">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/server.Classi" minOccurs="0" name="comm" nillable="true" type="q17:Commesso" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="eliminaCommessoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="eliminaCommessoResult" type="q18:ValueTupleOfadmin.EsitostringVN08m0cX" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="aggiungiCommesso">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/server.Classi" minOccurs="0" name="comm" nillable="true" type="q19:Commesso" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="aggiungiCommessoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="aggiungiCommessoResult" type="q20:ValueTupleOfadmin.EsitoCommessostringfIxKPqZh" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="modificaProdotto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/server.Classi" minOccurs="0" name="prd" nillable="true" type="q13:Prodotto" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/server.Classi" minOccurs="0" name="prd" nillable="true" type="q21:Prodotto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="modificaProdottoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="modificaProdottoResult" type="q14:ValueTupleOfadmin.EsitoProdottostringfIxKPqZh" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="modificaProdottoResult" type="q22:ValueTupleOfadmin.EsitoProdottostringfIxKPqZh" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="eliminaProdotto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/server.Classi" minOccurs="0" name="prd" nillable="true" type="q23:Prodotto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="eliminaProdottoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="eliminaProdottoResult" type="q24:ValueTupleOfadmin.EsitostringVN08m0cX" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="aggiungiProdotto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/server.Classi" minOccurs="0" name="prd" nillable="true" type="q25:Prodotto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="aggiungiProdottoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="aggiungiProdottoResult" type="q26:ValueTupleOfadmin.EsitoProdottostringfIxKPqZh" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="modificaTransazione">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/server.Classi" minOccurs="0" name="trn" nillable="true" type="q15:Transazione" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/server.Classi" minOccurs="0" name="trn" nillable="true" type="q27:Transazione" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="modificaTransazioneResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="modificaTransazioneResult" type="q16:ValueTupleOfadmin.EsitoTransazionestringfIxKPqZh" />
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="modificaTransazioneResult" type="q28:ValueTupleOfadmin.EsitoTransazionestringfIxKPqZh" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="eliminaTransazione">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/server.Classi" minOccurs="0" name="trn" nillable="true" type="q29:Transazione" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="eliminaTransazioneResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="eliminaTransazioneResult" type="q30:ValueTupleOfadmin.EsitostringVN08m0cX" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="aggiungiTransazione">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/server.Classi" minOccurs="0" name="trn" nillable="true" type="q31:Transazione" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="aggiungiTransazioneResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="aggiungiTransazioneResult" type="q32:ValueTupleOfadmin.EsitoTransazionestringfIxKPqZh" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

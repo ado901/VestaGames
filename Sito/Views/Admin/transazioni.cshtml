@@ -55,6 +55,7 @@
         @using (Html.BeginForm())
         {
             <button name="button" value=@item.codice_transazione formmethod="post" formaction=@Url.Action("EditTransazione")>Modifica</button>
+            <button name="button" value=@item.codice_transazione formmethod="post" formaction=@Url.Action("EliminaTransazione")>Elimina</button>
         }
     </td>
 
@@ -67,5 +68,10 @@
 </table>
 
 <div>
+    @using (Html.BeginForm())
+    {
+        <button name="button" formmethod="post" formaction=@Url.Action("AggiungiTransazione")>Aggiungi</button>
+
+    }
     @Html.ValidationMessage("Errore")
 </div>
