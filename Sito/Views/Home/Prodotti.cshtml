@@ -1,18 +1,27 @@
-﻿@model List<Sito.ServiceReference1.Prodotto>
+﻿
+@model PagedList.IPagedList<Sito.ServiceReference1.Prodotto>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Prodotti";
 }
 
 <h2>Prodotti</h2>
-
+@using (Html.BeginForm("Prodotti", "Prodotti", FormMethod.Get))
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" formaction="@Url.Action("Prodotti")" value="Search" />
+    </p>
+}
 <table class="table">
     <tr>
         <th>
             @Html.DisplayName("Immagine: ")
         </th>
         <th>
-            @Html.DisplayName("Titolo: ")
+            @Html.ActionLink("Titolo", "Prodotti", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
             @Html.DisplayName("Produttore: ")
@@ -23,27 +32,37 @@
         <th>
             @Html.DisplayName("Prezzo: ")
         </th>
-        <th></th>
+        <th>@Html.ActionLink("Data uscita: ", "Prodotti", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })</th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            <img src="@item.img" alt="@item.titolo" style="width: 250px; height: 375px;" />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.titolo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.producer)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.genere)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.prezzo)
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="@item.img" alt="@item.titolo" style="width: 250px; height: 375px;" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.titolo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.producer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.genere)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prezzo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.data_uscita)
+            </td>
+        </tr>
+    }
 
 </table>
+
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Prodotti",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
