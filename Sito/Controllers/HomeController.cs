@@ -175,6 +175,7 @@ namespace Sito.Controllers
             foreach (var item in wcf.getProdotti().Item2)
             {
                 model.Add(item);
+                //dfdff
             }
 
             return View(model);
