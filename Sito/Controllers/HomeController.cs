@@ -6,7 +6,6 @@ using System.Web;
 using System.Web.Mvc;
 using Sito.ServiceReference1;
 using System.Linq.Expressions;
-using PagedList;
 
 namespace Sito.Controllers
 {
@@ -170,46 +169,15 @@ namespace Sito.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Prodotti(string sortOrder,string currentFilter,string searchString, int? page)
+        public ActionResult Prodotti()
         {
-            ViewBag.CurrentSort = sortOrder;
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "genere" : "";
-            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
-
-            if (searchString != null)
+            var model = new List<Prodotto>();
+            foreach (var item in wcf.getProdotti().Item2)
             {
-                page = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
+                model.Add(item);
             }
 
-            ViewBag.CurrentFilter = searchString;
-            var model = from s in wcf.getProdotti().Item2 select s;
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                model = model.Where(s => s.titolo.IndexOf(searchString, StringComparison.InvariantCultureIgnoreCase) >= 0
-                                       || s.producer.IndexOf(searchString, StringComparison.InvariantCultureIgnoreCase) >= 0);
-            }
-            switch (sortOrder)
-            {
-                case "genere":
-                    model = model.OrderByDescending(s => s.genere);
-                    break;
-                case "Date":
-                    model = model.OrderBy(s => s.data_uscita);
-                    break;
-                case "date_desc":
-                    model = model.OrderByDescending(s => s.data_uscita);
-                    break;
-                default:
-                    model = model.OrderBy(s => s.titolo);
-                    break;
-            }
-            int pageSize = 3;
-            int pageNumber = (page ?? 1);
-            return View(model.ToPagedList(pageNumber,pageSize));
+            return View(model);
         }
 
 
