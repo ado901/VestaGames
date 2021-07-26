@@ -34,7 +34,11 @@
         </th>
         <th></th>
     </tr>
-
+    <strong> @Session["acquistocompletato"]</strong>
+    @if (Session["acquistocompletato"] != null)
+    {
+        Session["acquistocompletato"] = null;
+    }
     @foreach (var item in prodottiRandom)
     {
         <tr>
@@ -55,4 +59,4 @@
             </td>
         </tr>
     }
-    </table>
+</table>

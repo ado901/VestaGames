@@ -17,6 +17,7 @@ namespace Sito.Controllers
         {
 
             //ERRORE - quando viene chiamato questo actionresult da altri actionresult non passa i dati della lista prodotti
+            var ciao = ViewBag.Message;
 
             var model = new List<Prodotto>();
             foreach (var item in wcf.getProdotti().Item2)
@@ -24,6 +25,7 @@ namespace Sito.Controllers
                 model.Add(item);
             }
             ViewBag.listaProd = model;
+
             return View();
         }
 
@@ -217,6 +219,7 @@ namespace Sito.Controllers
                 {
                     throw new Exception(result.Item4);
                 }
+                Session["acquistocompletato"] = "Acquisto completato";
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
