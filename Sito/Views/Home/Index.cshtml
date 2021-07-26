@@ -2,7 +2,7 @@
 @model List<Sito.ServiceReference1.Prodotto>
 
 @{ //inizializzo una nuova lista a cui verranno aggiunti prodotti a caso dalla lista di base, per poi mostrarne i dati con un foreach
-   //ERRORE - viewbag genera l'eccezione che dice che non può fare l'associazione su un riferimento a runtime
+    //ERRORE - viewbag genera l'eccezione che dice che non può fare l'associazione su un riferimento a runtime
     Random r = new Random();
     List<Sito.ServiceReference1.Prodotto> prodottiRandom = new List<Sito.ServiceReference1.Prodotto>();
 
@@ -13,8 +13,13 @@
     <h1>VESTAGAMES</h1>
     <p class="lead">Vestagames è il tuo portale per ogni bisogno videoludico. Dai un'occhiata.</p>
 </div>
-
-
+<div class="alert-danger">
+<strong> @Session["acquistocompletato"]</strong>
+    </div>
+@if (Session["acquistocompletato"] != null)
+{
+    Session["acquistocompletato"] = null;
+}
 <table class="table">
     <tr>
         <th>
@@ -34,11 +39,7 @@
         </th>
         <th></th>
     </tr>
-    <strong> @Session["acquistocompletato"]</strong>
-    @if (Session["acquistocompletato"] != null)
-    {
-        Session["acquistocompletato"] = null;
-    }
+
     @foreach (var item in prodottiRandom)
     {
         <tr>

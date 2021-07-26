@@ -271,6 +271,9 @@
     <Content Include="Views\Admin\prodottinew.cshtml" />
     <Content Include="Views\Admin\transazioninew.cshtml" />
     <Content Include="Views\Home\prodottodettagli.cshtml" />
+    <Content Include="Views\Admin\dettagliUtente.cshtml" />
+    <Content Include="Views\Admin\dettagliProdotto.cshtml" />
+    <Content Include="Views\Admin\dettagliCommesso.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

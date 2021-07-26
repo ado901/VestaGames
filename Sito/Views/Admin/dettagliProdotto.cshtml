@@ -1,21 +1,26 @@
-﻿@model Sito.Models.ProdottoModel
+﻿@model Sito.Models.Admin.ProdottiAdmin
 
 @{
-    ViewBag.Title = "prodottodettagli";
+    ViewBag.Title = "dettagliProdotto";
 }
 
-<h2>prodottodettagli</h2>
+<h2>dettagliProdotto</h2>
 
 <div>
-    <h4>ProdottoModel</h4>
+    <h4>ProdottiAdmin</h4>
     <hr />
+    <strong> @Session["Errore"]</strong>
+    @if (Session["Errore"] != null)
+    {
+        Session["Errore"] = null;
+    }
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.img)
+            @Html.DisplayNameFor(model => model.codice_prodotto)
         </dt>
 
         <dd>
-            <img src="@Model.img" alt="@Model.titolo" style="width: 250px; height: 375px;" />
+            @Html.DisplayFor(model => model.codice_prodotto)
         </dd>
 
         <dt>
@@ -66,15 +71,22 @@
             @Html.DisplayFor(model => model.prezzo)
         </dd>
 
-    </dl>
-    <strong>@Html.ValidationMessage("Errore")</strong>
-    @using (Html.BeginForm())
-    {
-        <button name="button" formmethod="post" formaction=@Url.Action("compra1",new { id = Model.codice_prodotto })>Conferma acquisto</button>
+        <dt>
+            @Html.DisplayNameFor(model => model.img)
+        </dt>
 
-    }
+        <dd>
+            @Html.DisplayFor(model => model.img)
+        </dd>
+
+    </dl>
 </div>
 <p>
+    @using (Html.BeginForm())
+    {
+        <button name="button" value=@Model.codice_prodotto formmethod="post" formaction=@Url.Action("EditProdotto")>Modifica</button>
+        
 
-    @Html.ActionLink("Back to List", "Index")
+    } |
+    @Html.ActionLink("Back to List", "Listatransazioni")
 </p>

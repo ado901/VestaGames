@@ -141,6 +141,41 @@ namespace Sito.Controllers
 
         }
 
+        public ActionResult dettagliUtente()
+        {
+
+            try
+            {
+                string email = (string)Session["email"];
+                Session["email"] = null;
+                ServiceReference2.Utente ut = new ServiceReference2.Utente();
+                ut.email = admin.email;
+                var listautenti = wcf.listaUtenti(ut);
+                if (listautenti.Item1 == adminEsito.KO)
+                {
+                    throw new Exception(listautenti.Item3);
+                }
+                Session["listautenti"] = listautenti.Item2;
+                Utente utente = listautenti.Item2.Where(prodotto => prodotto.email == email).First();
+
+                var model = new aUtenteModificato();
+                model.ut = utente;
+                model.parse();
+                return View("dettagliUtente", model);
+
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Errore", ex.Message);
+                return RedirectToAction("Listatransazioni");
+            }
+
+
+
+
+
+        }
+
         public ActionResult Listacommessi()
         {
             var model = new List<Commesso>();
@@ -193,6 +228,7 @@ namespace Sito.Controllers
         {
             try
             {
+                
                 if (ModelState.IsValid)
                 {
                     model.commesso = (Commesso)Session["tmp"];
@@ -285,6 +321,39 @@ namespace Sito.Controllers
                 ModelState.AddModelError("Errore", ex.Message);
                 return View("Commessinew");
             }
+
+
+
+        }
+
+        public ActionResult dettagliCommesso(long id)
+        {
+
+            try
+            {
+                ServiceReference2.Utente ut = new ServiceReference2.Utente();
+                ut.email = admin.email;
+                var listacommessi = wcf.listaCommessi(ut);
+                if (listacommessi.Item1 == adminEsito.KO)
+                {
+                    throw new Exception(listacommessi.Item3);
+                }
+                Session["listacommessi"] = listacommessi.Item2;
+                Commesso comm = listacommessi.Item2.Where(prodotto => prodotto.codice_commesso == id).First();
+
+                var model = new CommessiAdmin();
+                model.commesso = comm;
+                model.parse();
+                return View("dettagliCommesso", model);
+
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Errore", ex.Message);
+                return RedirectToAction("Listatransazioni");
+            }
+
+
 
 
 
@@ -410,6 +479,10 @@ namespace Sito.Controllers
             return View("Prodottinew", model);
         }
 
+        
+
+
+
         [HttpPost]
         public ActionResult AggiungiProdotto1(ProdottiAdmin model)
         {
@@ -437,6 +510,39 @@ namespace Sito.Controllers
                 ModelState.AddModelError("Errore", ex.Message);
                 return View("Prodottinew");
             }
+
+
+
+        }
+
+        public ActionResult dettagliProdotto(long id)
+        {
+
+            try
+            {
+                ServiceReference2.Utente ut = new ServiceReference2.Utente();
+                ut.email = admin.email;
+                var listaprodotti = wcf.listaProdotti(ut);
+                if (listaprodotti.Item1 == adminEsito.KO)
+                {
+                    throw new Exception(listaprodotti.Item3);
+                }
+                Session["listaprodotti"] = listaprodotti.Item2;
+                Prodotto prd = listaprodotti.Item2.Where(prodotto => prodotto.codice_prodotto == id).First();
+
+                var model = new ProdottiAdmin();
+                model.prd = prd;
+                model.parse();
+                return View("dettagliProdotto", model);
+
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Errore", ex.Message);
+                return RedirectToAction("Listatransazioni");
+            }
+
+
 
 
 

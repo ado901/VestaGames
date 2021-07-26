@@ -37,13 +37,17 @@
         @Html.DisplayFor(modelItem => item.codice_transazione)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.codice_prodotto)
+        @Html.ActionLink(item.codice_prodotto.ToString(), "dettagliProdotto", new { id = item.codice_prodotto })
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.codice_commesso)
+        @Html.ActionLink(item.codice_commesso.ToString(), "dettagliCommesso", new { id = item.codice_commesso })
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.email)
+        @Html.ActionLink(item.email, "dettagliUtente")
+
+        @{
+            Session["email"] = item.email;
+                }
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.prezzo)
@@ -74,4 +78,7 @@
 
     }
     @Html.ValidationMessage("Errore")
+</div>
+<div>
+    @Html.ActionLink("Back", "Index")
 </div>

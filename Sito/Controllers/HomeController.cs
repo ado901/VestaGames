@@ -62,6 +62,7 @@ namespace Sito.Controllers
                         Session["utenteAttivo"] = utente.ut;
                         return RedirectToAction("Index");
                     }
+                    else throw new Exception(result.Item3);
 
                 }
                 else
@@ -118,11 +119,6 @@ namespace Sito.Controllers
 
                 
             }
-            return View();
-        }
-        [HttpPost]
-        public ActionResult UtenteAttivo(utenteLoggato utente)
-        {
             return View();
         }
 
@@ -231,14 +227,5 @@ namespace Sito.Controllers
 
         }
 
-
-        public ActionResult Nome(UtenteModificato utente)
-        {
-            if (ModelState.IsValid)
-            {
-                wcf.modificaUtente(utente.ut, "nome", null);
-            }
-            return View("Index");
-        }
     }
 }

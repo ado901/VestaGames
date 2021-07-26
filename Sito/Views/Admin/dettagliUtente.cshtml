@@ -1,0 +1,76 @@
+﻿@model Sito.Models.Admin.aUtenteModificato
+
+@{
+    ViewBag.Title = "dettagliUtente";
+}
+
+<h2>dettagliUtente</h2>
+
+<div>
+    <h4>Utente</h4>
+    <hr />
+    <strong> @Session["Errore"]</strong>
+    @if (Session["Errore"] != null)
+    {
+        Session["Errore"] = null;
+    }
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cognome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cognome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nascita)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nascita)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Portafoglio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Portafoglio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Indirizzo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Indirizzo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @using (Html.BeginForm())
+    {
+        <button name="button" value=@Model.Email formmethod="post" formaction=@Url.Action("EditUtente")>Modifica</button>
+        
+
+    } | 
+    @Html.ActionLink("Back to List", "Listatransazioni")
+</p>

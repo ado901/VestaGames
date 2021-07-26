@@ -1,0 +1,52 @@
+﻿@model Sito.Models.Admin.CommessiAdmin
+
+@{
+    ViewBag.Title = "dettagliCommesso";
+}
+
+<h2>dettagliCommesso</h2>
+
+<div>
+    <h4>CommessiAdmin</h4>
+    <hr />
+    <strong> @Session["Errore"]</strong>
+    @if (Session["Errore"] != null)
+    {
+        Session["Errore"] = null;
+    }
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.codice_commesso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codice_commesso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cognome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cognome)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @using (Html.BeginForm())
+    {
+        <button name="button" value=@Model.codice_commesso formmethod="post" formaction=@Url.Action("EditCommesso")>Modifica</button>
+        
+
+    } |
+    @Html.ActionLink("Back to List", "Listatransazioni")
+</p>
