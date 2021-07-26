@@ -172,12 +172,60 @@ namespace Sito.Controllers
         public ActionResult Prodotti()
         {
             var model = new List<Prodotto>();
-            foreach (var item in wcf.getProdotti().Item2)
+            var result = wcf.getProdotti();
+            foreach (var item in result.Item2)
             {
                 model.Add(item);
             }
-
+            Session["listaprodotti"] = result.Item2;
             return View(model);
+        }
+
+        public ActionResult compra(long id)
+        {
+            Prodotto[] listaprodotti = (Prodotto[])Session["listaprodotti"];
+            Prodotto prodotto = listaprodotti.Where(p => p.codice_prodotto == id).First();
+            var model = new ProdottoModel();
+            model.prd = prodotto;
+            model.parse();
+            return View("prodottodettagli", model);
+
+        }
+        [HttpPost]
+        public ActionResult compra1(long id, ProdottoModel model)
+        {
+            try
+            {
+                Prodotto[] listaprodotti = (Prodotto[])Session["listaprodotti"];
+                Prodotto prodotto = listaprodotti.Where(p => p.codice_prodotto == id).First();
+                model.prd = prodotto;
+                model.parse();
+                if (Session["utenteAttivo"]== null)
+                {
+                    throw new Exception("devi effettuare il login prima di acquistare");
+                }
+                Utente ut = (Utente)Session["utenteAttivo"];
+                /*var model = new ProdottoModel();
+                model.prd = prodotto;
+                model.parse();*/
+                if (ut.portafoglio < prodotto.prezzo)
+                {
+                    throw new Exception("Denaro non sufficiente");
+                }
+                var result = wcf.compraProdotto(prodotto, ut);
+                if (result.Item1 == Service1Esito.KO)
+                {
+                    throw new Exception(result.Item4);
+                }
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Errore", ex.Message);
+                return View("prodottodettagli",model);
+            }
+
+
         }
 
 

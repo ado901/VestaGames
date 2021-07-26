@@ -27,23 +27,31 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            <img src="@item.img" alt="@item.titolo" style="width: 250px; height: 375px;" />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.titolo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.producer)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.genere)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.prezzo)
-        </td>
-    </tr>
-}
+<tr>
+    <td>
+        <img src="@item.img" alt="@item.titolo" style="width: 250px; height: 375px;" />
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.titolo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.producer)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.genere)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.prezzo)
+    </td>
+    <td>
+        @using (Html.BeginForm())
+        {
+            <button name="button" value=@item.codice_prodotto formmethod="post" formaction=@Url.Action("compra", new { id = item.codice_prodotto })>Compra</button>
+            
+
+        }
+    </td>
+</tr>
+}@Html.ValidationMessage("Errore")
 
 </table>

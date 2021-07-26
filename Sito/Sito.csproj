@@ -141,6 +141,7 @@
     <Compile Include="Models\Admin\CommessiAdmin.cs" />
     <Compile Include="Models\Admin\ProdottiAdmin.cs" />
     <Compile Include="Models\Admin\TransazioniAdmin.cs" />
+    <Compile Include="Models\ProdottoModel.cs" />
     <Compile Include="Models\utenteLoggato.cs" />
     <Compile Include="Models\UtenteModificato.cs" />
     <Compile Include="Models\UtenteRegistrato.cs" />
@@ -269,6 +270,7 @@
     <Content Include="Views\Admin\commessinew.cshtml" />
     <Content Include="Views\Admin\prodottinew.cshtml" />
     <Content Include="Views\Admin\transazioninew.cshtml" />
+    <Content Include="Views\Home\prodottodettagli.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

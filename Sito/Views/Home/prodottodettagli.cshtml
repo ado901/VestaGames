@@ -1,0 +1,80 @@
+﻿@model Sito.Models.ProdottoModel
+
+@{
+    ViewBag.Title = "prodottodettagli";
+}
+
+<h2>prodottodettagli</h2>
+
+<div>
+    <h4>ProdottoModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.img)
+        </dt>
+
+        <dd>
+            <img src="@Model.img" alt="@Model.titolo" style="width: 250px; height: 375px;" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.titolo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.titolo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.genere)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.genere)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.producer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.producer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quantità)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantità)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.data_uscita)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data_uscita)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prezzo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prezzo)
+        </dd>
+
+    </dl>
+    <strong>@Html.ValidationMessage("Errore")</strong>
+    @using (Html.BeginForm())
+    {
+        <button name="button" formmethod="post" formaction=@Url.Action("compra1",new { id = Model.codice_prodotto })>Prodotti</button>
+
+    }
+</div>
+<p>
+
+    @Html.ActionLink("Back to List", "Index")
+</p>
