@@ -9,6 +9,9 @@
 <div>
     <h4>ProdottoModel</h4>
     <hr />
+    <div>
+        @Html.ValidationMessage("Errore", new { @class = "text-danger" })
+    </div>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.img)

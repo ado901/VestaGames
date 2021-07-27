@@ -5,7 +5,9 @@
 }
 
 <h2>Prodotti</h2>
-
+<div>
+    @Html.ValidationMessage("Errore", new { @class = "text-danger" })
+</div>
 <table class="table">
     <tr>
         <th>

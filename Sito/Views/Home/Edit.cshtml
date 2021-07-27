@@ -12,6 +12,9 @@
     @Html.AntiForgeryToken()<div class="form-horizontal">
     <h4>Immetti i tuoi dati</h4>
     <hr />
+    <div>
+        @Html.ValidationMessage("Errore", new { @class = "text-danger" })
+    </div>
     @switch ((string)Session["modifica"])
     {
         case "nome":

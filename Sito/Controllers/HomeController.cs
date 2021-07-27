@@ -13,18 +13,25 @@ namespace Sito.Controllers
     public class HomeController : Controller
     {
         public static ServiceReference1.Service1Client wcf = new ServiceReference1.Service1Client();
+        [HandleError]
         public ActionResult Index()
         {
-
-            //ERRORE - quando viene chiamato questo actionresult da altri actionresult non passa i dati della lista prodotti
-            var ciao = ViewBag.Message;
-
-            var model = new List<Prodotto>();
-            foreach (var item in wcf.getProdotti().Item2)
+            try
             {
-                model.Add(item);
+                var ciao = ViewBag.Message;
+
+                var model = new List<Prodotto>();
+                foreach (var item in wcf.getProdotti().Item2)
+                {
+                    model.Add(item);
+                }
+                ViewBag.listaProd = model;
             }
-            ViewBag.listaProd = model;
+            catch (Exception ex) {
+                return View("Error");
+            }
+            //ERRORE - quando viene chiamato questo actionresult da altri actionresult non passa i dati della lista prodotti
+            
 
             return View();
         }
@@ -125,68 +132,120 @@ namespace Sito.Controllers
 
         public ActionResult DatiUtente()
         {
-            var model = new UtenteModificato();
-            model.ut = (Utente)Session["utenteAttivo"];
-            model.parse();
+            try {
 
-            return View("DatiUtente", model);
+                var model = new UtenteModificato();
+                model.ut = (Utente)Session["utenteAttivo"];
+                model.parse();
+
+                return View("DatiUtente", model);
+
+            } catch (Exception ex) {
+                ModelState.AddModelError("Errore", ex.Message);
+                return RedirectToAction("Index");
+            }
+            
         }
 
         public ActionResult Edit1(string button)
         {
-            Session["modifica"] = button;
+            try {
+                Session["modifica"] = button;
 
-            var model = new UtenteModificato();
-            model.ut = (ServiceReference1.Utente)Session["utenteAttivo"];
-            model.parse();
+                var model = new UtenteModificato();
+                model.ut = (ServiceReference1.Utente)Session["utenteAttivo"];
+                model.parse();
 
-            return View("Edit",model);
+                return View("Edit", model);
+            }
+            catch(Exception ex)
+            {
+                ModelState.AddModelError("Errore", ex.Message);
+                return RedirectToAction("DatiUtente");
+            }
+            
         }
         [HttpPost]
         public ActionResult Edit( UtenteModificato utente)
         {
             utente.ut = (Utente)Session["utenteAttivo"];
-            if ((string)Session["modifica"] == GetMemberName((Utente c) => c.email))
+            try
             {
-                var result = wcf.modificaUtente(utente.ut, (string)Session["modifica"], utente.Email);
-                if (result.Item1== Service1Esito.OK)
-                {
-                    Session["utenteAttivo"] = result.Item2;
-                }
+                if (ModelState.IsValid) {
+
+                    if ((string)Session["modifica"] == GetMemberName((Utente c) => c.email))
+                    {
+                        var result = wcf.modificaUtente(utente.ut, (string)Session["modifica"], utente.Email);
+                        if (result.Item1 == Service1Esito.OK)
+                        {
+                            Session["utenteAttivo"] = result.Item2;
+                        }
+                    }
+                    else
+                    {
+                        utente.update((string)Session["modifica"]);
+                        var result = wcf.modificaUtente(utente.ut, (string)Session["modifica"], null);
+                        if (result.Item1 == Service1Esito.OK)
+                        {
+                            Session["utenteAttivo"] = result.Item2;
+                        }
+                    }
+                    Session["modifica"] = null;
+                    return RedirectToAction("DatiUtente");
+
+
+                } else { return View("Edit", utente); }
+                
             }
-            else
+            catch(Exception ex)
             {
-                utente.update((string)Session["modifica"]);
-                var result = wcf.modificaUtente(utente.ut, (string)Session["modifica"],null);
-                if (result.Item1 == Service1Esito.OK)
-                {
-                    Session["utenteAttivo"] = result.Item2;
-                }
+                var model = new UtenteModificato();
+                model.ut = utente.ut;
+                model.parse();
+                ModelState.AddModelError("Errore", ex.Message);
+                return View("Edit", model);
             }
-            Session["modifica"] = null;
-            return RedirectToAction("Index");
+           
         }
 
         public ActionResult Prodotti()
         {
-            var model = new List<Prodotto>();
-            var result = wcf.getProdotti();
-            foreach (var item in result.Item2)
+            try
             {
-                model.Add(item);
+                var model = new List<Prodotto>();
+                var result = wcf.getProdotti();
+                foreach (var item in result.Item2)
+                {
+                    model.Add(item);
+                }
+                Session["listaprodotti"] = result.Item2;
+                return View(model);
             }
-            Session["listaprodotti"] = result.Item2;
-            return View(model);
+            catch(Exception ex)
+            {
+                ModelState.AddModelError("Errore", ex.Message);
+                return RedirectToAction("Index");
+            }
+            
         }
 
         public ActionResult compra(long id)
         {
-            Prodotto[] listaprodotti = (Prodotto[])Session["listaprodotti"];
-            Prodotto prodotto = listaprodotti.Where(p => p.codice_prodotto == id).First();
-            var model = new ProdottoModel();
-            model.prd = prodotto;
-            model.parse();
-            return View("prodottodettagli", model);
+            try
+            {
+                Prodotto[] listaprodotti = (Prodotto[])Session["listaprodotti"];
+                Prodotto prodotto = listaprodotti.Where(p => p.codice_prodotto == id).First();
+                var model = new ProdottoModel();
+                model.prd = prodotto;
+                model.parse();
+                return View("prodottodettagli", model);
+            }
+            catch(Exception ex)
+            {
+                ModelState.AddModelError("Errore", ex.Message);
+                return RedirectToAction("Prodotti");
+            }
+            
 
         }
         [HttpPost]

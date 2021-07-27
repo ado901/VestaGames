@@ -20,6 +20,10 @@
 {
     Session["acquistocompletato"] = null;
 }
+
+<div>
+    @Html.ValidationMessage("Errore", new { @class = "text-danger" })
+</div>
 <table class="table">
     <tr>
         <th>

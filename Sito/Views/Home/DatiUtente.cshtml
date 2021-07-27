@@ -9,6 +9,9 @@
 <div>
     <h4>UtenteModificato</h4>
     <hr />
+    <div>
+        @Html.ValidationMessage("Errore", new { @class = "text-danger" })
+    </div>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Nome)
@@ -24,7 +27,7 @@
 
         <dt>
             @Html.DisplayNameFor(model => model.Cognome)
-            
+
         </dt>
 
         <dd>
@@ -32,8 +35,8 @@
             @using (Html.BeginForm())
             {
                 <p><button name="button" value="cognome" formmethod="post" formaction=@Url.Action("Edit1")>Modifica</button></p>
-                }
-            </dd>
+            }
+        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Email)
@@ -45,11 +48,11 @@
             {
                 <p><button name="button" value="email" formmethod="post" formaction=@Url.Action("Edit1")>Modifica</button></p>
             }
-            </dd>
+        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Password)
-            
+
         </dt>
 
         <dd>
@@ -58,7 +61,7 @@
             {
                 <p><button name="button" value="password" formmethod="post" formaction=@Url.Action("Edit1")>Modifica</button></p>
             }
-            </dd>
+        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Indirizzo)
@@ -70,7 +73,7 @@
             {
                 <p><button name="button" value="indirizzo" formmethod="post" formaction=@Url.Action("Edit1")>Modifica</button></p>
             }
-            </dd>
+        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Nascita)
@@ -82,7 +85,7 @@
             {
                 <p><button name="button" value="nascita" formmethod="post" formaction=@Url.Action("Edit1")>Modifica</button></p>
             }
-            </dd>
+        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Portafoglio)
@@ -94,7 +97,7 @@
             {
                 <p><button name="button" value="portafoglio" formmethod="post" formaction=@Url.Action("Edit1")>Modifica</button></p>
             }
-            </dd>
+        </dd>
 
     </dl>
 </div>

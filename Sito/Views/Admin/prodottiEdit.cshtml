@@ -5,7 +5,9 @@
 }
 
 <h2>prodottiEdit</h2>
-
+<div>
+    @Html.ValidationMessage("Errore", new { @class = "text-danger" })
+</div>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
