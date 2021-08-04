@@ -87,7 +87,9 @@
         </div>
     </div>
 }
-
+<div>
+    @Html.ValidationMessage("Errore", new { @class = "text-danger" })
+</div>
 <div>
     @Html.ActionLink("Back to List", "Listaprodotti")
 </div>

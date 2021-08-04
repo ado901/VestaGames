@@ -405,7 +405,7 @@ namespace Sito.Controllers
             catch (Exception ex)
             {
                 ModelState.AddModelError("Errore", ex.Message);
-                return View("home");
+                return RedirectToAction("Listaprodotti");
             }
 
         }

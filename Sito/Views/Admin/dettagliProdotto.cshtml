@@ -9,11 +9,9 @@
 <div>
     <h4>ProdottiAdmin</h4>
     <hr />
-    <strong> @Session["Errore"]</strong>
-    @if (Session["Errore"] != null)
-    {
-        Session["Errore"] = null;
-    }
+    <div>
+        @Html.ValidationMessage("Errore", new { @class = "text-danger" })
+    </div>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.codice_prodotto)
