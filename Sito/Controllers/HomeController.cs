@@ -208,7 +208,7 @@ namespace Sito.Controllers
            
         }
 
-        public ActionResult Prodotti()
+        public ActionResult Prodotti(string searchName)
         {
             try
             {
@@ -218,6 +218,12 @@ namespace Sito.Controllers
                 {
                     model.Add(item);
                 }
+                if (!String.IsNullOrEmpty(searchName))
+                {
+                    searchName = searchName.ToLower();
+                    model = model.Where(c => c.titolo.ToLower().Contains(searchName)|| c.genere.ToLower().Contains(searchName) || c.producer.ToLower().Contains(searchName) ).ToList();
+                }
+
                 Session["listaprodotti"] = result.Item2;
                 return View(model);
             }

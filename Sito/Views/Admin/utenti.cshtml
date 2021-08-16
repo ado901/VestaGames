@@ -5,7 +5,13 @@
 }
 
 <h2>Prodotti</h2>
-
+@using (Html.BeginForm())
+{
+    <p>
+        Name  : @Html.TextBox("SearchName")<br />
+        <input type="submit" value="Search" />
+    </p>
+}
 <table class="table">
     <tr>
         <th>

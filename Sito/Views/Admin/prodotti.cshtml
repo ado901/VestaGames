@@ -8,6 +8,15 @@
 <div>
     @Html.ValidationMessage("Errore", new { @class = "text-danger" })
 </div>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Name  : @Html.TextBox("SearchName")<br />
+        <input type="submit" value="Search" />
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>
@@ -68,7 +77,7 @@
                 {
                     <button name="button" value=@item.codice_prodotto formmethod="post" formaction=@Url.Action("EditProdotto")>Modifica</button>
                     <button name="button" value=@item.codice_prodotto formmethod="post" formaction=@Url.Action("EliminaProdotto")>Elimina</button>
-                    
+
                 }
             </td>
 

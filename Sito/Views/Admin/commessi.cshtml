@@ -5,7 +5,13 @@
 }
 
 <h2>Prodotti</h2>
-
+@using (Html.BeginForm())
+{
+    <p>
+        Name  : @Html.TextBox("SearchName")<br />
+        <input type="submit" value="Search" />
+    </p>
+}
 <table class="table">
     <tr>
         <th>
@@ -38,7 +44,7 @@
                 {
                     <button name="button" value=@item.codice_commesso formmethod="post" formaction=@Url.Action("EditCommesso")>Modifica</button>
                     <button name="button" value=@item.codice_commesso formmethod="post" formaction=@Url.Action("EliminaCommesso")>Elimina</button>
-                    
+
                 }
             </td>
 
@@ -56,9 +62,9 @@
         <button name="button" formmethod="post" formaction=@Url.Action("AggiungiCommesso")>Aggiungi</button>
 
     }
-<div>
-    @Html.ValidationMessage("Errore", new { @class = "text-danger" })
-</div>
+    <div>
+        @Html.ValidationMessage("Errore", new { @class = "text-danger" })
+    </div>
 </div>
 
 <div>

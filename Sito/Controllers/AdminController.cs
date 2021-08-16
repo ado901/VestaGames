@@ -14,7 +14,7 @@ namespace Sito.Controllers
         // GET: Admi
         private static ServiceReference1.Utente admin = new ServiceReference1.Utente();
          public static ServiceReference2.IadminClient wcf = new ServiceReference2.IadminClient();
-        public ActionResult Listautenti()
+        public ActionResult Listautenti(string searchName)
         {
             ServiceReference2.Utente ut = new ServiceReference2.Utente();
             ut.email = admin.email;
@@ -24,6 +24,12 @@ namespace Sito.Controllers
             foreach (var item in listautenti.Item2)
             {
                 model.Add(item);
+            }
+
+            if (!String.IsNullOrEmpty(searchName))
+            {
+                searchName = searchName.ToLower();
+                model = model.Where(c => c.nome.ToLower().Contains(searchName) || c.cognome.ToLower().Contains(searchName) || c.email.ToLower().Contains(searchName) || c.indirizzo.ToLower().Contains(searchName)).ToList();
             }
             return View("utenti",model);
         }
@@ -176,7 +182,7 @@ namespace Sito.Controllers
 
         }
 
-        public ActionResult Listacommessi()
+        public ActionResult Listacommessi(string searchName)
         {
             var model = new List<Commesso>();
             try
@@ -190,7 +196,11 @@ namespace Sito.Controllers
                 {
                     model.Add(item);
                 }
-
+                if (!String.IsNullOrEmpty(searchName))
+                {
+                    searchName = searchName.ToLower();
+                    model = model.Where(c => c.nome.ToLower().Contains(searchName) || c.cognome.ToLower().Contains(searchName)).ToList();
+                }
                 return View("commessi", model);
             }
             catch(Exception ex)
@@ -359,7 +369,7 @@ namespace Sito.Controllers
 
         }
 
-        public ActionResult Listaprodotti()
+        public ActionResult Listaprodotti(string searchName)
         {
             var model = new List<Prodotto>();
             try
@@ -376,7 +386,11 @@ namespace Sito.Controllers
                 {
                     model.Add(item);
                 }
-
+                if (!String.IsNullOrEmpty(searchName))
+                {
+                    searchName = searchName.ToLower();
+                    model = model.Where(c => c.titolo.ToLower().Contains(searchName) || c.genere.ToLower().Contains(searchName) || c.producer.ToLower().Contains(searchName)).ToList();
+                }
                 return View("prodotti", model);
             }
             catch (Exception ex)

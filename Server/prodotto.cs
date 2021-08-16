@@ -32,7 +32,7 @@ namespace server
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<transazioni> transazioni { get; set; }
-
+        
         public void parse(Prodotto prd)
         {
             this.codice_prodotto = prd.codice_prodotto;

@@ -23,7 +23,7 @@ namespace server
         public string indirizzo { get; set; }
         public Nullable<double> portafoglio { get; set; }
         public int id { get; set; }
-
+        
         public void parseUtente(Utente login)
         {
             try
@@ -46,4 +46,4 @@ namespace server
 
         }
     }
-}
+    }
