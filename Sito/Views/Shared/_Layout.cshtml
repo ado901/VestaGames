@@ -34,7 +34,7 @@
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Pagina utente", "DatiUtente", "Home")</li>
+                        <li>@Html.ActionLink("I tuoi dati, " + utente.nome, "DatiUtente", "Home")</li>
                         <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
 
                     }
