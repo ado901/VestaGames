@@ -36,6 +36,7 @@ namespace Sito.Controllers
                 ViewBag.listaProd = model;
             }
             catch (Exception ex) {
+                ModelState.AddModelError("Errore", ex.Message);
                 return View("Error");
             }
             
