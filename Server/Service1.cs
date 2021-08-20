@@ -38,10 +38,11 @@ namespace server
         //funzione di test di popolamento della tabella Prodotti, accantonata dal bot di scraping in python
         public static void popolateTable(string titolo, string genere, string producer, long data_uscita, double prezzo, int quantità, string filepath)
         {
-            VestaGamesEntities db = new VestaGamesEntities();
+            
             Console.WriteLine("inserimento Record in corso...");
             try
             {
+                VestaGamesEntities db = new VestaGamesEntities();
                 prodotto videogioco = new prodotto()
                 {
                     titolo = titolo,
@@ -77,12 +78,12 @@ namespace server
         public (Esito,Utente, string) Login(Utente ut)
 
         {
-            VestaGamesEntities db = new VestaGamesEntities();
+            
             Console.WriteLine(ut.email + " "+  ut.password);
             
                 try
                 {
-                   
+                    VestaGamesEntities db = new VestaGamesEntities();
                     utenti utente = db.utenti.Where((x) => x.email == ut.email && x.password == ut.password).First();
                     //se l'utente è loggato popolo l'oggetto Utente ut con i dati dal database
                     ut.loginEffettuato(utente);
@@ -101,9 +102,10 @@ namespace server
         //registrazione con entity framework, lavoro con la classe Utente
         public (Esito, Utente,string) Registrazione(Utente ut)
         {
-            VestaGamesEntities db = new VestaGamesEntities();
+            
             try
                 {
+                    VestaGamesEntities db = new VestaGamesEntities();
                     long datanascita = long.Parse(ut.nascita.ToString("yyyyMMdd"));
                     utenti utente = new utenti()
                     {
@@ -143,11 +145,11 @@ namespace server
         public (Esito, List<Prodotto>, string) getProdotti()
 
         {
-            VestaGamesEntities db = new VestaGamesEntities();
+            
             List<Prodotto> prodotti = new List<Prodotto>();
             try
             {
-                
+                VestaGamesEntities db = new VestaGamesEntities();
                 var record = db.prodotto.OrderBy(product => product.titolo);
 
                 //copia-incolla da entity framework a oggetto prodotto con popolamento della lista 
@@ -172,9 +174,10 @@ namespace server
         //questa funzione usa la reflection, prende il nome della proprietà della classe "Utente" e "utenti(Entityframework)" e cambia il valore di quella proprietà
         public (Esito, Utente, string) modificaUtente(Utente ut, string field, string emailnuova=null)
         {
-            VestaGamesEntities db = new VestaGamesEntities();
+            
             try
             {
+                VestaGamesEntities db = new VestaGamesEntities();
                 //cerchiamo l'utente nel db con la chiave primaria email
                 utenti utentedb = db.utenti.Where(riga => riga.email == ut.email).First();
 
@@ -218,9 +221,10 @@ namespace server
 
         public (Esito, Utente,Prodotto, string) compraProdotto(Prodotto prod, Utente ut)
         {
-            VestaGamesEntities db = new VestaGamesEntities();
+            
             try
             {
+                VestaGamesEntities db = new VestaGamesEntities();
                 if (ut.portafoglio< prod.prezzo)
                 {
                     throw new Exception("prezzo prodotto maggiore della disponibilità portafoglio");

@@ -12,7 +12,14 @@ namespace Sito.Controllers
     
     public class HomeController : Controller
     {
-        public static ServiceReference1.Service1Client wcf = new ServiceReference1.Service1Client();
+        public static ServiceReference1.Service1Client wcf;
+
+        //unico modo più semplice che mi viene in mente per gestire le eccezioni nell'apertura della connessione al wcf
+        public void connessionewcf() 
+        {
+            wcf = new Service1Client();
+        
+        }
         //pagina dove mostro un prodotto casuale tra quelli nel catalogo
         [HandleError]
         public ActionResult Index()
@@ -20,7 +27,7 @@ namespace Sito.Controllers
             try
             {
                 
-
+                connessionewcf();
                 var model = new List<Prodotto>();
                 foreach (var item in wcf.getProdotti().Item2)
                 {

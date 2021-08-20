@@ -20,10 +20,11 @@ namespace server
         }
         public (Esito, List<Utente>, string) listaUtenti(Utente ut)
         {
-            VestaGamesEntities db = new VestaGamesEntities();
+            
             List<Utente> listaUser = new List<Utente>();
             try
             {
+                VestaGamesEntities db = new VestaGamesEntities();
                 //controllo che chi fa la richiesta abbia le credenziali di amministratore
                 if (ut.email == "admin@admin.admin")
                 {
@@ -51,9 +52,10 @@ namespace server
 
         public (Esito, Utente, string) modificaUtente(Utente ut)
         {
-            VestaGamesEntities db = new VestaGamesEntities();
+            
             try
             {
+                VestaGamesEntities db = new VestaGamesEntities();
                 //prendo la prima riga contenente la email, progettualmente è sempre univoca
                 utenti utentedb = db.utenti.Where(utente => utente.email == ut.email).First();
                 //passo i dati dall'oggetto Utente alla riga e salvo i cambiamenti
@@ -71,9 +73,10 @@ namespace server
 
         public (Esito, string) eliminaUtente(Utente ut)
         {
-            VestaGamesEntities db = new VestaGamesEntities();
+            
             try
             {
+                VestaGamesEntities db = new VestaGamesEntities();
                 //prendo la prima riga che coincide con la mail, la rimuovo e salvo
                 utenti utentedb = db.utenti.Where(utente => utente.email == ut.email).First();
                 db.utenti.Remove(utentedb);
@@ -90,9 +93,10 @@ namespace server
 
         public (Esito, Utente, string) aggiungiUtente(Utente ut)
         {
-            VestaGamesEntities db = new VestaGamesEntities();
+            
             try
             {
+                VestaGamesEntities db = new VestaGamesEntities();
                 //controllo che la mail non sia già presente per vincolo progettuale
                 if (db.utenti.Where(utente => utente.email == ut.email).Any())
                 {
@@ -125,11 +129,12 @@ namespace server
 
         public (Esito, List<Commesso>, string) listaCommessi(Utente ut)
         {
-            VestaGamesEntities db = new VestaGamesEntities();
+            
             List<Commesso> listaCommessi = new List<Commesso>();
             try
             {
-               //la possibilità di accedere ai dati è vincolata all'amministratore quindi controllo che abbia le credenziali
+                VestaGamesEntities db = new VestaGamesEntities();
+                //la possibilità di accedere ai dati è vincolata all'amministratore quindi controllo che abbia le credenziali
                 if (ut.email == "admin@admin.admin")
                 {
                     var record = db.commesso.OrderBy(commesso => commesso.codice_commesso);
@@ -155,9 +160,10 @@ namespace server
 
         public (Esito, Commesso, string) modificaCommesso(Commesso comm)
         {
-            VestaGamesEntities db = new VestaGamesEntities();
+            
             try
             {
+                VestaGamesEntities db = new VestaGamesEntities();
                 //ricerco per chiave primaria
                 commesso commessodb = db.commesso.Where(commesso => commesso.codice_commesso == comm.codice_commesso).First();
                 //inserisco i nuovi valori nella riga e salvo
@@ -175,9 +181,10 @@ namespace server
 
         public (Esito, string) eliminaCommesso(Commesso comm)
         {
-            VestaGamesEntities db = new VestaGamesEntities();
+            
             try
             {
+                VestaGamesEntities db = new VestaGamesEntities();
                 //ricerca per chiave primaria, rimuovo e salvo
                 commesso commessodb = db.commesso.Where(commesso => commesso.codice_commesso == comm.codice_commesso).First();
                 db.commesso.Remove(commessodb);
@@ -199,9 +206,10 @@ namespace server
 
         public (Esito,Commesso, string) aggiungiCommesso(Commesso comm)
         {
-            VestaGamesEntities db = new VestaGamesEntities();
+            
             try
             {
+                VestaGamesEntities db = new VestaGamesEntities();
                 //creo la nuova riga, inserisco nel db e salvo
                 commesso nuovocommesso = new commesso()
                 {
@@ -222,10 +230,11 @@ namespace server
 
         public (Esito, List<Prodotto>, string) listaProdotti(Utente ut)
         {
-            VestaGamesEntities db = new VestaGamesEntities();
+            
             List<Prodotto> prodotti = new List<Prodotto>();
             try
             {
+                VestaGamesEntities db = new VestaGamesEntities();
                 //per accedere a queste info serve essere admin
                 if (ut.email == "admin@admin.admin")
                 {
@@ -255,9 +264,10 @@ namespace server
 
         public (Esito, Prodotto, string) modificaProdotto(Prodotto prd)
         {
-            VestaGamesEntities db = new VestaGamesEntities();
+            
             try
             {
+                VestaGamesEntities db = new VestaGamesEntities();
                 //cerco per chiave primaria e copio incollo i dati dell'oggetto dentro la riga
                 prodotto prodottodb = db.prodotto.Where(prodotto => prodotto.codice_prodotto == prd.codice_prodotto).First();
                 prodottodb.parse(prd);
@@ -274,9 +284,10 @@ namespace server
 
         public (Esito, string) eliminaProdotto(Prodotto prd)
         {
-            VestaGamesEntities db = new VestaGamesEntities();
+            
             try
             {
+                VestaGamesEntities db = new VestaGamesEntities();
                 //ricerco per chiave primaria, rimuovo la riga e salvo
                 prodotto prodottodb = db.prodotto.Where(prodotto => prodotto.codice_prodotto == prd.codice_prodotto).First();
                 db.prodotto.Remove(prodottodb);
@@ -293,9 +304,10 @@ namespace server
 
         public (Esito, Prodotto, string) aggiungiProdotto(Prodotto prd)
         {
-            VestaGamesEntities db = new VestaGamesEntities();
+            
             try
             {
+                VestaGamesEntities db = new VestaGamesEntities();
                 //conversione date time in long
                 long data = long.Parse(prd.data_uscita.ToString("yyyyMMdd"));
                 //prendo i dati del prodotto e li inserisco
@@ -324,10 +336,11 @@ namespace server
 
         public (Esito, List<Transazione>, string) listaTransazioni(Utente ut)
         {
-            VestaGamesEntities db = new VestaGamesEntities();
+            
             List<Transazione> listaTransazioni = new List<Transazione>();
             try
             {
+                VestaGamesEntities db = new VestaGamesEntities();
                 // dati accessibili solo dall'admin
                 if (ut.email == "admin@admin.admin")
                 {
@@ -354,9 +367,11 @@ namespace server
 
         public (Esito, Transazione, string) modificaTransazione(Transazione trn)
         {
-            VestaGamesEntities db = new VestaGamesEntities();
+            
             try
-            {//ricerca per chiave primaria, copio i dati nuovi nella riga e salvo
+            {
+                VestaGamesEntities db = new VestaGamesEntities();
+                //ricerca per chiave primaria, copio i dati nuovi nella riga e salvo
                 transazioni transazionedb = db.transazioni.Where(transazione => transazione.codice_transazione == trn.codice_transazione).First();
                 transazionedb.parse(trn);
                 db.SaveChanges();
@@ -372,9 +387,10 @@ namespace server
 
         public (Esito, string) eliminaTransazione(Transazione trn)
         {
-            VestaGamesEntities db = new VestaGamesEntities();
+            
             try
             {
+                VestaGamesEntities db = new VestaGamesEntities();
                 //ricerca per chiave primaria, rimuovo la riga e salvo
                 transazioni transazionidb = db.transazioni.Where(transazione => transazione.codice_transazione == trn.codice_transazione).First();
                 db.transazioni.Remove(transazionidb);
@@ -391,10 +407,10 @@ namespace server
 
         public (Esito, Transazione, string) aggiungiTransazione(Transazione trn)
         {
-            VestaGamesEntities db = new VestaGamesEntities();
+            
             try
             {
-                
+                VestaGamesEntities db = new VestaGamesEntities();
                 transazioni nuovatransazione = new transazioni()
                 {
                     codice_commesso = trn.codice_commesso,

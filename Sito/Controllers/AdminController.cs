@@ -15,7 +15,7 @@ namespace Sito.Controllers
         // 1 LISTA, 2 PER LA MODIFICA, 1 PER ELIMINARE, 1 PER I DETTAGLI DI UNA SINGOLA RIGA, 2 PER AGGIUNGERE UNA NUOVA RIGA
         // GET: Admi
         private static ServiceReference1.Utente admin = new ServiceReference1.Utente();
-         public static ServiceReference2.IadminClient wcf = new ServiceReference2.IadminClient();
+         public static ServiceReference2.IadminClient wcf;
 
         
         public ActionResult Listautenti(string searchName)
@@ -725,10 +725,14 @@ namespace Sito.Controllers
 
 
         }
-
+        public void aperturawcf()
+        {
+            wcf = new ServiceReference2.IadminClient();
+        }
         //home dove ho 4 strade da percorrere, in questa action salvo l'utente admin come variabile globale statica
         public ActionResult Index()
         {
+            aperturawcf();
             admin = (ServiceReference1.Utente)Session["utenteAttivo"];
             return View("home");
         }
