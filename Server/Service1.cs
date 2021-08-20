@@ -11,16 +11,18 @@ namespace server
     public class Service1 : IService1
     {
         const string OK = "OK";
-        private static VestaGamesEntities db = new VestaGamesEntities();
+        //private static VestaGamesEntities db = new VestaGamesEntities();
         public enum Esito: int
         {
             OK = 1,
             KO = 0
         }
+        //funzione che restituisce il nome del parametro
         public string GetMemberName<T, TValue>(Expression<Func<T, TValue>> memberAccess)
         {
             return ((MemberExpression)memberAccess.Body).Member.Name;
         }
+        //controllo che il formato della email è valido
         private bool IsValidEmail(string email)
         {
             try
@@ -33,8 +35,10 @@ namespace server
                 return false;
             }
         }
+        //funzione di test di popolamento della tabella Prodotti, accantonata dal bot di scraping in python
         public static void popolateTable(string titolo, string genere, string producer, long data_uscita, double prezzo, int quantità, string filepath)
         {
+            VestaGamesEntities db = new VestaGamesEntities();
             Console.WriteLine("inserimento Record in corso...");
             try
             {
@@ -73,13 +77,14 @@ namespace server
         public (Esito,Utente, string) Login(Utente ut)
 
         {
+            VestaGamesEntities db = new VestaGamesEntities();
             Console.WriteLine(ut.email + " "+  ut.password);
             
                 try
                 {
                    
                     utenti utente = db.utenti.Where((x) => x.email == ut.email && x.password == ut.password).First();
-                    //se l'utente è loggato popolo l'oggetto utente ut con i dati dal database
+                    //se l'utente è loggato popolo l'oggetto Utente ut con i dati dal database
                     ut.loginEffettuato(utente);
                     Console.WriteLine("Utente " + ut.nome + " " + ut.cognome + ", benvenuto");
                 Console.WriteLine("Login utente: Esito OK Stringa esito: " + OK);
@@ -96,7 +101,8 @@ namespace server
         //registrazione con entity framework, lavoro con la classe Utente
         public (Esito, Utente,string) Registrazione(Utente ut)
         {
-                try
+            VestaGamesEntities db = new VestaGamesEntities();
+            try
                 {
                     long datanascita = long.Parse(ut.nascita.ToString("yyyyMMdd"));
                     utenti utente = new utenti()
@@ -135,7 +141,9 @@ namespace server
         }
 
         public (Esito, List<Prodotto>, string) getProdotti()
+
         {
+            VestaGamesEntities db = new VestaGamesEntities();
             List<Prodotto> prodotti = new List<Prodotto>();
             try
             {
@@ -164,6 +172,7 @@ namespace server
         //questa funzione usa la reflection, prende il nome della proprietà della classe "Utente" e "utenti(Entityframework)" e cambia il valore di quella proprietà
         public (Esito, Utente, string) modificaUtente(Utente ut, string field, string emailnuova=null)
         {
+            VestaGamesEntities db = new VestaGamesEntities();
             try
             {
                 //cerchiamo l'utente nel db con la chiave primaria email
@@ -209,6 +218,7 @@ namespace server
 
         public (Esito, Utente,Prodotto, string) compraProdotto(Prodotto prod, Utente ut)
         {
+            VestaGamesEntities db = new VestaGamesEntities();
             try
             {
                 if (ut.portafoglio< prod.prezzo)
@@ -222,7 +232,7 @@ namespace server
                     {
                         var rand = new Random();
 
-                        
+                        //prima prendo i dati che servono per la transazione. Quindi in ordine: utente loggato, prodotto scelto e commesso casuale
                         utenti utentedb = db.utenti.Where(riga => riga.email == ut.email).First();
                         prodotto prodottodb= db.prodotto.Where(riga => riga.codice_prodotto == prod.codice_prodotto).First();
                         int random = rand.Next(db.commesso.Count());
@@ -237,6 +247,8 @@ namespace server
                         {
                             throw new Exception("prezzo o portafoglio non combaciano con quelli in db");
                         }
+                        // prima tolgo i soldi dal portafoglio dell'utente, poi tolgo di uno l'inventario del prodotto e infine
+                        // se tutto va bene completo la transazione committando la transaction
                         utentedb.portafoglio -= prodottodb.prezzo;
                         ut.portafoglio -= prodottodb.prezzo;
                         db.SaveChanges();

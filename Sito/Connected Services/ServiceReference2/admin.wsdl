@@ -9,12 +9,6 @@
       <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/server/admin/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/server.Classi" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="Iadmin_DoWork_InputMessage">
-    <wsdl:part name="parameters" element="tns:DoWork" />
-  </wsdl:message>
-  <wsdl:message name="Iadmin_DoWork_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DoWorkResponse" />
-  </wsdl:message>
   <wsdl:message name="Iadmin_listaUtenti_InputMessage">
     <wsdl:part name="parameters" element="tns:listaUtenti" />
   </wsdl:message>
@@ -112,10 +106,6 @@
     <wsdl:part name="parameters" element="tns:aggiungiTransazioneResponse" />
   </wsdl:message>
   <wsdl:portType name="Iadmin">
-    <wsdl:operation name="DoWork">
-      <wsdl:input wsaw:Action="http://tempuri.org/Iadmin/DoWork" message="tns:Iadmin_DoWork_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/Iadmin/DoWorkResponse" message="tns:Iadmin_DoWork_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="listaUtenti">
       <wsdl:input wsaw:Action="http://tempuri.org/Iadmin/listaUtenti" message="tns:Iadmin_listaUtenti_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Iadmin/listaUtentiResponse" message="tns:Iadmin_listaUtenti_OutputMessage" />
@@ -183,15 +173,6 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_Iadmin" type="tns:Iadmin">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="DoWork">
-      <soap:operation soapAction="http://tempuri.org/Iadmin/DoWork" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="listaUtenti">
       <soap:operation soapAction="http://tempuri.org/Iadmin/listaUtenti" style="document" />
       <wsdl:input>

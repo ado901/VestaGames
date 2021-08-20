@@ -3,16 +3,6 @@
   <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/server/admin/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/server" />
   <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/server/admin/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System" />
   <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/server/admin/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/server.Classi" />
-  <xs:element name="DoWork">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DoWorkResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
   <xs:element name="listaUtenti">
     <xs:complexType>
       <xs:sequence>

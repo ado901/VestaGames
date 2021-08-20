@@ -544,12 +544,6 @@ namespace Sito.ServiceReference2 {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference2.Iadmin")]
     public interface Iadmin {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iadmin/DoWork", ReplyAction="http://tempuri.org/Iadmin/DoWorkResponse")]
-        void DoWork();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iadmin/DoWork", ReplyAction="http://tempuri.org/Iadmin/DoWorkResponse")]
-        System.Threading.Tasks.Task DoWorkAsync();
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iadmin/listaUtenti", ReplyAction="http://tempuri.org/Iadmin/listaUtentiResponse")]
         System.ValueTuple<Sito.ServiceReference2.adminEsito, Sito.ServiceReference2.Utente[], string> listaUtenti(Sito.ServiceReference2.Utente ut);
         
@@ -672,14 +666,6 @@ namespace Sito.ServiceReference2 {
         
         public IadminClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
-        }
-        
-        public void DoWork() {
-            base.Channel.DoWork();
-        }
-        
-        public System.Threading.Tasks.Task DoWorkAsync() {
-            return base.Channel.DoWorkAsync();
         }
         
         public System.ValueTuple<Sito.ServiceReference2.adminEsito, Sito.ServiceReference2.Utente[], string> listaUtenti(Sito.ServiceReference2.Utente ut) {

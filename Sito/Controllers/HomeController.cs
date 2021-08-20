@@ -13,12 +13,13 @@ namespace Sito.Controllers
     public class HomeController : Controller
     {
         public static ServiceReference1.Service1Client wcf = new ServiceReference1.Service1Client();
+        //pagina dove mostro un prodotto casuale tra quelli nel catalogo
         [HandleError]
         public ActionResult Index()
         {
             try
             {
-                var ciao = ViewBag.Message;
+                
 
                 var model = new List<Prodotto>();
                 foreach (var item in wcf.getProdotti().Item2)
@@ -30,12 +31,13 @@ namespace Sito.Controllers
             catch (Exception ex) {
                 return View("Error");
             }
-            //ERRORE - quando viene chiamato questo actionresult da altri actionresult non passa i dati della lista prodotti
+            
             
 
             return View();
         }
 
+        //rilascio la memoria usata per le Session
         public ActionResult Logout()
         {
             Session["utenteAttivo"] = null;
@@ -43,19 +45,22 @@ namespace Sito.Controllers
 
             return RedirectToAction("Index");
         }
-
+        //questa action e view ritornano le info di contatto nostre
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
 
             return View();
         }
-
+        //si rifa al model UtenteRegistrato
         public ActionResult Registrazione()
         {
 
             return View();
         }
+        
+        //una volta compilato i dati si controlla se il model è valido, se lo è si chiama il wcf per inserire il record
+        //si salva in una session l'utente che si è loggato e si setta a 0 il portafoglio (l'utente potrà farlo successivamente nella modifica)
         [HttpPost]
         public ActionResult Registrazione(utenteRegistrato utente)
         {
@@ -64,8 +69,10 @@ namespace Sito.Controllers
                 if (ModelState.IsValid)
                 {
                     var result = wcf.Registrazione(utente.ut);
+
                     if (result.Item1 == Service1Esito.OK)
                     {
+                        utente.ut.portafoglio = 0;
                         Session["utenteAttivo"] = utente.ut;
                         return RedirectToAction("Index");
                     }
@@ -90,10 +97,13 @@ namespace Sito.Controllers
             
             return View();
         }
+        //restituisce il nome del parametro dell'oggetto
         public string GetMemberName<T, TValue>(Expression<Func<T, TValue>> memberAccess)
         {
             return ((MemberExpression)memberAccess.Body).Member.Name;
         }
+
+        // qui si dividono le strade tra admin e utente, se il login va a buon fine l'utente normale torna alla homepage, l'admin nel pannello apposito
         [HttpPost]
         public ActionResult Login(utenteLoggato utente)
         {
@@ -129,11 +139,11 @@ namespace Sito.Controllers
             return View();
         }
 
-
+        // pagina dove l'utente può vedere i propri dati e modificarli
         public ActionResult DatiUtente()
         {
             try {
-
+                //passo al model i dati dell'utente loggato in sessione
                 var model = new UtenteModificato();
                 model.ut = (Utente)Session["utenteAttivo"];
                 model.parse();
@@ -146,7 +156,7 @@ namespace Sito.Controllers
             }
             
         }
-
+        // in base al valore del bottone premuto la view Edit decide che form mostrare
         public ActionResult Edit1(string button)
         {
             try {
@@ -165,6 +175,8 @@ namespace Sito.Controllers
             }
             
         }
+
+        //questa è complicata
         [HttpPost]
         public ActionResult Edit( UtenteModificato utente)
         {
@@ -172,7 +184,7 @@ namespace Sito.Controllers
             try
             {
                 if (ModelState.IsValid) {
-
+                    //se il campo da cambiare è la email viene chiamato il wcf col campo facoltativo nuovaemail e il secondo parametro "email"
                     if ((string)Session["modifica"] == GetMemberName((Utente c) => c.email))
                     {
                         var result = wcf.modificaUtente(utente.ut, (string)Session["modifica"], utente.Email);
@@ -180,15 +192,18 @@ namespace Sito.Controllers
                         {
                             Session["utenteAttivo"] = result.Item2;
                         }
+                        else throw new Exception(result.Item3);
                     }
                     else
                     {
+                        //altrimenti chiamo il wcf con il campo facoltativo null e il secondo parametro come indicazione di quale campo modificare
                         utente.update((string)Session["modifica"]);
                         var result = wcf.modificaUtente(utente.ut, (string)Session["modifica"], null);
                         if (result.Item1 == Service1Esito.OK)
                         {
                             Session["utenteAttivo"] = result.Item2;
                         }
+                        else throw new Exception(result.Item3);
                     }
                     Session["modifica"] = null;
                     return RedirectToAction("DatiUtente");
@@ -207,25 +222,31 @@ namespace Sito.Controllers
             }
            
         }
-
+        //pagina dove visualizzo la lista dei prodotti
         public ActionResult Prodotti(string searchName)
         {
             try
             {
                 var model = new List<Prodotto>();
                 var result = wcf.getProdotti();
-                foreach (var item in result.Item2)
+                if (result.Item1 == Service1Esito.OK)
                 {
-                    model.Add(item);
-                }
-                if (!String.IsNullOrEmpty(searchName))
-                {
-                    searchName = searchName.ToLower();
-                    model = model.Where(c => c.titolo.ToLower().Contains(searchName)|| c.genere.ToLower().Contains(searchName) || c.producer.ToLower().Contains(searchName) ).ToList();
-                }
+                    foreach (var item in result.Item2)
+                    {
+                        model.Add(item);
+                    }
+                    if (!String.IsNullOrEmpty(searchName))
+                    {
+                        //se la barra di ricerca è stata riempita filtro la lista ottenuta
+                        searchName = searchName.ToLower();
+                        model = model.Where(c => c.titolo.ToLower().Contains(searchName) || c.genere.ToLower().Contains(searchName) || c.producer.ToLower().Contains(searchName)).ToList();
+                    }
 
-                Session["listaprodotti"] = result.Item2;
-                return View(model);
+                    Session["listaprodotti"] = result.Item2;
+                    return View(model);
+                }
+                else throw new Exception(result.Item3);
+                
             }
             catch(Exception ex)
             {
@@ -234,7 +255,7 @@ namespace Sito.Controllers
             }
             
         }
-
+        // pagina dove mostro in primo piano il prodotto che l'utente ha scelto
         public ActionResult compra(long id)
         {
             try
@@ -242,6 +263,7 @@ namespace Sito.Controllers
                 Prodotto[] listaprodotti = (Prodotto[])Session["listaprodotti"];
                 Prodotto prodotto = listaprodotti.Where(p => p.codice_prodotto == id).First();
                 var model = new ProdottoModel();
+                //associo il prodotto trovato nella matrice al model e gli passo i dati con il parse()
                 model.prd = prodotto;
                 model.parse();
                 return View("prodottodettagli", model);
@@ -254,11 +276,13 @@ namespace Sito.Controllers
             
 
         }
+        //l'utente ha confermato l'acquisto
         [HttpPost]
         public ActionResult compra1(long id, ProdottoModel model)
         {
             try
             {
+                
                 Prodotto[] listaprodotti = (Prodotto[])Session["listaprodotti"];
                 Prodotto prodotto = listaprodotti.Where(p => p.codice_prodotto == id).First();
                 model.prd = prodotto;
@@ -268,9 +292,7 @@ namespace Sito.Controllers
                     throw new Exception("devi effettuare il login prima di acquistare");
                 }
                 Utente ut = (Utente)Session["utenteAttivo"];
-                /*var model = new ProdottoModel();
-                model.prd = prodotto;
-                model.parse();*/
+                //controllo che si possa comprare
                 if (ut.portafoglio < prodotto.prezzo)
                 {
                     throw new Exception("Denaro non sufficiente");

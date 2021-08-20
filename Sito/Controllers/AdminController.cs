@@ -11,21 +11,28 @@ namespace Sito.Controllers
 {
     public class AdminController : Controller
     {
+        //QUESTO CONTROLLER E' PRESSOCHE' COMPLETAMENTE MODULARE IN OGNI SUA PARTE, PER OGNI TABELLA ABBIAMO 7 FUNZIONI:
+        // 1 LISTA, 2 PER LA MODIFICA, 1 PER ELIMINARE, 1 PER I DETTAGLI DI UNA SINGOLA RIGA, 2 PER AGGIUNGERE UNA NUOVA RIGA
         // GET: Admi
         private static ServiceReference1.Utente admin = new ServiceReference1.Utente();
          public static ServiceReference2.IadminClient wcf = new ServiceReference2.IadminClient();
+
+        
         public ActionResult Listautenti(string searchName)
         {
             ServiceReference2.Utente ut = new ServiceReference2.Utente();
             ut.email = admin.email;
+            //passo le credenziali di admin al wcf
             var listautenti = wcf.listaUtenti(ut);
+            //salvo in una session lla matrice degli utenti
             Session["listautenti"] = listautenti.Item2;
             var model = new List<Utente>();
+            //converto la matrice in una lista
             foreach (var item in listautenti.Item2)
             {
                 model.Add(item);
             }
-
+            //se la searchbar è stata riempita filtro la lista in base a quello che ha cercato l'admin
             if (!String.IsNullOrEmpty(searchName))
             {
                 searchName = searchName.ToLower();
@@ -33,29 +40,37 @@ namespace Sito.Controllers
             }
             return View("utenti",model);
         }
+        //controller che fornisce il modello alla view
         public ActionResult EditUtente(string button)
         {
             Session["modifica"] = button;
+            //prendo la session salvata nel controller Listautenti
             Utente[] listautenti = (Utente[])Session["listautenti"];
             
             var model = new aUtenteModificato();
+            //ricerca tramite email, unica per vincolo progettuale
             model.ut = listautenti.Where(utente => utente.email == button).First();
+            //passo i dati dell'utente al model di riferimento
             model.parse();
+            //e salvo l'utente in una tmp che servirà nel submit
             Session["tmp"] = model.ut;
             return View("UtentiEdit", model);
         }
 
+        //controller di submit dei dati inseriti
         [HttpPost]
         public ActionResult EditUtente1(aUtenteModificato model)
         {
             try
             {
-                
+                // se è valido procedo a chiamare il wcf
                 if (ModelState.IsValid)
                 {
                     model.ut = (Utente)Session["tmp"];
                     Session["tmp"] = null;
+                    //passo i dati dal model all'utente
                     model.update();
+                    //chiamo il wcf passando l'utente modificato
                     var result = wcf.modificaUtente(model.ut);
                     if (result.Item1 == adminEsito.KO)
                     {
@@ -83,6 +98,7 @@ namespace Sito.Controllers
             try
             {
                 Session["modifica"] = button;
+                //la session salvata nella funzione Listautenti
                 Utente[] listautenti = (Utente[])Session["listautenti"];
 
                 var model = new aUtenteModificato();
@@ -104,7 +120,7 @@ namespace Sito.Controllers
         }
 
         
-
+        //controller per fornire il model alla view
        public ActionResult AggiungiUtente()
         {
             
@@ -115,6 +131,7 @@ namespace Sito.Controllers
             return View("Utentinew", model);
         }
 
+        //controller per la submit dei dati inseriti
         [HttpPost]
         public ActionResult AggiungiUtente1(aUtenteModificato model)
         {
@@ -123,8 +140,9 @@ namespace Sito.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    
+                    //fornisco i dati all'oggetto Utente dentro il model
                     model.update();
+                    
                     var result = wcf.aggiungiUtente(model.ut);
                     if (result.Item1== adminEsito.KO)
                     {
@@ -146,7 +164,7 @@ namespace Sito.Controllers
 
 
         }
-
+        //questa actionresult viene chiamata dalla view delle transazioni
         public ActionResult dettagliUtente()
         {
 
@@ -156,12 +174,14 @@ namespace Sito.Controllers
                 Session["email"] = null;
                 ServiceReference2.Utente ut = new ServiceReference2.Utente();
                 ut.email = admin.email;
+                //chiamo ancora listautenti per consistenza
                 var listautenti = wcf.listaUtenti(ut);
                 if (listautenti.Item1 == adminEsito.KO)
                 {
                     throw new Exception(listautenti.Item3);
                 }
                 Session["listautenti"] = listautenti.Item2;
+                //passo i dati al model
                 Utente utente = listautenti.Item2.Where(prodotto => prodotto.email == email).First();
 
                 var model = new aUtenteModificato();
@@ -181,7 +201,7 @@ namespace Sito.Controllers
 
 
         }
-
+        // le prossime ActionResult relative ai commessi usano lo stesso pattern per la parte degli Utenti
         public ActionResult Listacommessi(string searchName)
         {
             var model = new List<Commesso>();
@@ -335,7 +355,7 @@ namespace Sito.Controllers
 
 
         }
-
+        //chiamato dalla view delle transazioni
         public ActionResult dettagliCommesso(long id)
         {
 
@@ -368,7 +388,7 @@ namespace Sito.Controllers
 
 
         }
-
+        // stesso pattern degli utenti per queste actionresult
         public ActionResult Listaprodotti(string searchName)
         {
             var model = new List<Prodotto>();
@@ -528,7 +548,7 @@ namespace Sito.Controllers
 
 
         }
-
+        //chiamato dalle transazioni
         public ActionResult dettagliProdotto(long id)
         {
 
@@ -561,7 +581,7 @@ namespace Sito.Controllers
 
 
         }
-
+        //stesso pattern delle altre senza però la parte "dettagli..."
         public ActionResult Listatransazioni()
         {
             var model = new List<Transazione>();
@@ -706,7 +726,7 @@ namespace Sito.Controllers
 
         }
 
-
+        //home dove ho 4 strade da percorrere, in questa action salvo l'utente admin come variabile globale statica
         public ActionResult Index()
         {
             admin = (ServiceReference1.Utente)Session["utenteAttivo"];

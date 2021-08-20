@@ -13,8 +13,7 @@ namespace server
     [ServiceContract]
     public interface Iadmin
     {
-        [OperationContract]
-        void DoWork();
+        
         [OperationContract]
         (Esito, List<Utente>, string) listaUtenti(Utente ut);
         [OperationContract]
