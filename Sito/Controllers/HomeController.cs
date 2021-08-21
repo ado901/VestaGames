@@ -305,6 +305,7 @@ namespace Sito.Controllers
                 {
                     throw new Exception("Denaro non sufficiente");
                 }
+                if (prodotto.quantità < 1) throw new Exception("Prodotto non disponibile");
                 var result = wcf.compraProdotto(prodotto, ut);
                 if (result.Item1 == Service1Esito.KO)
                 {

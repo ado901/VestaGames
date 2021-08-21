@@ -256,6 +256,7 @@ namespace server
                         utentedb.portafoglio -= prodottodb.prezzo;
                         ut.portafoglio -= prodottodb.prezzo;
                         db.SaveChanges();
+                        if (prodottodb.quantità < 1) throw new Exception("quantità non sufficiente");
                         prodottodb.quantità -= 1;
                         prod.quantità -= 1;
                         db.SaveChanges();
