@@ -453,6 +453,7 @@ namespace Sito.Controllers
                 {
                     model.prd = (Prodotto)Session["tmp"];
                     Session["tmp"] = null;
+                    model.codice_prodotto = model.prd.codice_prodotto;
                     model.update();
                     var result = wcf.modificaProdotto(model.prd);
                     if (result.Item1 == adminEsito.KO)
