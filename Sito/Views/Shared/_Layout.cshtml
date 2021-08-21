@@ -34,6 +34,10 @@
                     }
                     else
                     {
+                        if (utente.email == "admin@admin.admin")
+                        {
+                            <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
+                        }
                         <li>@Html.ActionLink("I tuoi dati, " + utente.nome, "DatiUtente", "Home")</li>
                         <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
 

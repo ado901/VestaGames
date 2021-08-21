@@ -12,6 +12,15 @@
         <input type="submit" value="Search" />
     </p>
 }
+@using (Html.BeginForm())
+{
+    <button name="button" formmethod="post" formaction=@Url.Action("AggiungiUtente")>Aggiungi</button>
+
+}
+@Html.ValidationMessage("Errore")
+<div>
+    @Html.ActionLink("Back", "Index")
+</div>
 <table class="table">
     <tr>
         <th>
@@ -71,12 +80,3 @@
     }
 
 </table>
-@using (Html.BeginForm())
-{
-    <button name="button" formmethod="post" formaction=@Url.Action("AggiungiUtente")>Aggiungi</button>
-
-}
-@Html.ValidationMessage("Errore")
-<div>
-    @Html.ActionLink("Back", "Index")
-</div>

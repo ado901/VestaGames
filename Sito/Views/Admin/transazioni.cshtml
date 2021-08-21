@@ -8,6 +8,17 @@
 <div>
     @Html.ValidationMessage("Errore", new { @class = "text-danger" })
 </div>
+<div>
+    @using (Html.BeginForm())
+    {
+        <button name="button" formmethod="post" formaction=@Url.Action("AggiungiTransazione")>Aggiungi</button>
+
+    }
+    @Html.ValidationMessage("Errore")
+</div>
+<div>
+    @Html.ActionLink("Back", "Index")
+</div>
 <table class="table">
     <tr>
         <th>
@@ -34,38 +45,38 @@
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.codice_transazione)
-    </td>
-    <td>
-        @Html.ActionLink(item.codice_prodotto.ToString(), "dettagliProdotto", new { id = item.codice_prodotto })
-    </td>
-    <td>
-        @Html.ActionLink(item.codice_commesso.ToString(), "dettagliCommesso", new { id = item.codice_commesso })
-    </td>
-    <td>
-        @Html.ActionLink(item.email, "dettagliUtente")
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.codice_transazione)
+            </td>
+            <td>
+                @Html.ActionLink(item.codice_prodotto.ToString(), "dettagliProdotto", new { id = item.codice_prodotto })
+            </td>
+            <td>
+                @Html.ActionLink(item.codice_commesso.ToString(), "dettagliCommesso", new { id = item.codice_commesso })
+            </td>
+            <td>
+                @Html.ActionLink(item.email, "dettagliUtente")
 
-        @{
-            Session["email"] = item.email;
+                @{
+                    Session["email"] = item.email;
                 }
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.prezzo)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.data)
-    </td>
-    <td>
-        @using (Html.BeginForm())
-        {
-            <button name="button" value=@item.codice_transazione formmethod="post" formaction=@Url.Action("EditTransazione")>Modifica</button>
-            <button name="button" value=@item.codice_transazione formmethod="post" formaction=@Url.Action("EliminaTransazione")>Elimina</button>
-        }
-    </td>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prezzo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.data)
+            </td>
+            <td>
+                @using (Html.BeginForm())
+                {
+                    <button name="button" value=@item.codice_transazione formmethod="post" formaction=@Url.Action("EditTransazione")>Modifica</button>
+                    <button name="button" value=@item.codice_transazione formmethod="post" formaction=@Url.Action("EliminaTransazione")>Elimina</button>
+                }
+            </td>
 
-</tr>
+        </tr>
 
     }
 
@@ -73,14 +84,3 @@
 
 </table>
 
-<div>
-    @using (Html.BeginForm())
-    {
-        <button name="button" formmethod="post" formaction=@Url.Action("AggiungiTransazione")>Aggiungi</button>
-
-    }
-    @Html.ValidationMessage("Errore")
-</div>
-<div>
-    @Html.ActionLink("Back", "Index")
-</div>
